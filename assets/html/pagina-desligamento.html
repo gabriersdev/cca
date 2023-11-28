@@ -1,0 +1,119 @@
+<main>
+  <div class="container mt-5 mb-5">
+    <hgroup class="hgroup" data-hgroup="confirmacao-cca">
+      <h3 class="hgroup-titulo">Desligamento</h3>
+    </hgroup>
+    <div class="card mb-4">
+      <div class="card-header">
+        <b>Links</b>
+      </div>
+      <div class="card-body" data-content="area-links">
+        <div class="links">
+          <a class="content" href="https://gabrieszin.github.io/damp/" target="_blank" rel="noreferrer noopener">
+            <span class="content-tag">Desligamento</span>
+            <div class="content-principal">
+              <h5>Damp</h5>
+              <span>GitHub</span>
+            </div>
+          </a>
+          <a class="content" href="https://gabrieszin.github.io/ateste-processo" target="_blank" rel="noreferrer noopener">
+            <span class="content-tag">Desligamento</span>
+            <div class="content-principal">
+              <h5>Ateste</h5>
+              <span>GitHub</span>
+            </div>
+          </a>
+          <a class="content" href="https://gabrieszin.github.io/capa-de-dossies" target="_blank" rel="noreferrer noopener">
+            <span class="content-tag">Desligamento</span>
+            <div class="content-principal">
+              <h5>Capa de Dossiês</h5>
+              <span>GitHub</span>
+            </div>
+          </a>
+          <a class="content" href="https://gabrieszin.github.io/confirmacao-cca/desligamento/checklist-desligamento.html" onclick="event.preventDefault(); window.open(this.href, '_blank', 'width=800, height=1000')" rel="noreferrer noopener">
+            <span class="content-tag">Desligamento</span>
+            <div class="content-principal">
+              <h5>Checklist - Acompanhamento do Processo</h5>
+              <span>GitHub</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-4" style="display: block;">
+      <div class="card-header">
+        <b>Laudo</b>
+      </div>
+      <div class="card-body">
+        <form data-content="form-laudo" action="#" method="GET" data-action="form-laudo">
+          <div class="form-group">
+            <label for="matricula" class="form-label">Matrícula e Cartório</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="matricula" name="matricula" placeholder="000000" data-input="matricula" data-element="input" required>
+              <input type="text" list="lista-cartorios" class="form-control" id="cartorio" name="cartorio" placeholder="Cartório" aria-label="Cartório" data-input="cartorio" data-element="input" required>
+            </div>
+            <datalist id="lista-cartorios">
+            </datalist>
+          </div>
+          <div class="form-group">
+            <label for="CEP" class="form-label">CEP</label>
+            <input type="text" class="form-control" id="CEP" name="CEP" placeholder="00000-000" data-input="cep" data-element="input" required>
+          </div>
+          <div class="form-group">
+            <label for="numero-ou-complemento" class="form-label">N.º ou Complemento</label>
+            <input type="text" class="form-control" id="numero-ou-complemento" name="numero-ou-complemento" data-input="numero-ou-complemento" data-element="input" required>
+          </div>
+          <div class="form-group">
+            <label for="contato" class="form-label">Contato e Telefone</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="contato" name="contato" placeholder="" data-input="contato" data-element="input">
+              <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(31) 00000-0000" aria-label="Telefone da pessoa de contato" data-input="telefone" data-element="input">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="descricao" class="form-label">Descrição</label>
+            <a href="https://www.ocr2edit.com/pt/converter-para-txt" rel="noopener noreferrer" target="_blank" class="btn btn-light d-block mb-3">Converter imagem em texto <span class="seta">-></span></a>
+            <textarea name="descricao" id="descricao" cols="30" rows="10" class="form-control" style="height: 100px;" data-input="descricao" data-element="input" required spellcheck="true"></textarea>
+          </div>
+          <div class="forms-groups">
+            <div class="form-group">
+              <label for="valor-compra-e-venda" class="form-label">Valor de compra e venda</label>
+              <input type="text" id="valor-compra-e-venda" data-maskc="money" name="valor-compra-e-venda" class="form-control" placeholder="R$ 0.000,00"  value="" data-input="valor-compra-e-venda" data-element="input" required>
+              <span class="text-secondary mt-2 d-block">O valor solicitado corresponderá a 80% do valor de compra e venda</span>
+            </div>
+            <div class="form-group mt-3">
+              <label for="cliente" class="form-label">Cliente e CPF</label>
+              <div class="input-group">
+                <input type="text" id="cliente" name="cliente" class="form-control" placeholder="" data-input="cliente" data-element="input">
+                <input type="text" id="CPF" name="CPF" class="form-control" placeholder="000.000.000-00" aria-label="CPF" data-input="cpf" data-element="input">
+              </div>
+            </div>
+          </div>
+          <button type="reset" class="btn btn-outline-secondary">Limpar</button>
+          <button type="submit" id="botao-submit-form" name="botao-submit-form" class="btn btn-primary">Baixar arquivo</button>
+        </form>
+      </div>
+    </div>
+    <section class="card mt-4 mb-4" data-content="secao-controlada">
+      <div class="card-header d-flex justify-content-between align-center">
+        <b>Desligamento de Análise Internalizada</b>
+        <span class="text-muted span">Clique para abrir</span>
+      </div>
+      <div class="card-body none">
+        <div class="alert info alert-secondary">
+          Rascunho para enviar processo internalizado para desligamento
+        </div>
+        <form action="" method="GET" data-form="desligamento-internalizado" class="form-btn-copy-float">
+          <button type="button" class="btn-copy-float"><i class="bi bi-clipboard2"></i></button><textarea style="height: calc(20 * 1rem);" data-form="conteudo-texto" id="conteudo-texto" name="conteudo-texto" contenteditable="true" class="form-control"></textarea>
+        </form>
+      </div>
+    </section>
+    <div class="card mb-4 banner">
+      <div>
+        <h5 class="title">O que achou dessa página?</h5>
+        <p class="text-muted mt-1">Conte pra gente o que você achou</p>
+      </div>
+      <a href="mailto:devgabrielribeiro@gmail.com?subject=Sobre a página de Desligamento do projeto" class="btn btn-light">Enviar um e-mail</a>
+    </div>
+  </div>
+</main>

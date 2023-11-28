@@ -2,35 +2,160 @@ import { isEmpty } from "./utilitarios.js";
 
 // Array com dados de links que serão usados no sistema
 const consultas = [
-  { tag: 'cadastro', titulo: 'Pesquisa Cadastral', sistema: 'SICAQ', link: 'https://caixaaqui.caixa.gov.br/caixaaqui/CaixaAquiController' }, 
-  { tag: 'cadastro', titulo: 'CNIS', sistema: 'INSS', link: 'https://cnisnet.inss.gov.br/' },
-  { tag: 'cadastro', titulo: 'Restitução IRPF', sistema: 'Receita Federal', link: 'https://www.restituicao.receita.fazenda.gov.br/' },
-  { tag: 'cadastro', titulo: 'Simulador SIOPI', sistema: 'SIOPI', link: 'https://www8.caixa.gov.br/siopiinternet-web/simulaOperacaoInternet.do?method=inicializarCasoUso&isVoltar=true' },
-  { tag: 'cadastro', titulo: 'Simulador Portal', sistema: 'Portal de Empreendimentos', link: 'https://www.portaldeempreendimentos.caixa.gov.br/simulador/' },
-  { tag: 'cadastro', titulo: 'Busca CEP', sistema: 'Correios', link: 'https://buscacepinter.correios.com.br/app/endereco/index.php' }, 
-  { tag: 'cadastro', titulo: 'Situação Cadastral', sistema: 'Receita Federal', link: 'https://servicos.receita.fazenda.gov.br/Servicos/CPF/ConsultaSituacao/ConsultaPublica.asp' },
-  { tag: 'cadastro', titulo: 'CND Pessoa Física', sistema: 'Receita Federal', link: 'https://solucoes.receita.fazenda.gov.br/servicos/certidaointernet/pf/emitir/' },
-  { tag: 'cadastro', titulo: 'CND Pessoa Jurídica', sistema: 'Receita Federal', link: 'https://solucoes.receita.fazenda.gov.br/servicos/certidaointernet/pj/emitir/' },
-  { tag: 'cadastro', titulo: 'CIWEB', sistema: 'Portal', link: 'https://www.portaldeempreendimentos.caixa.gov.br/sso/menu' },
-  { tag: 'cadastro', titulo: 'CADMUT', sistema: 'SICDM', link: 'https://www.cadastromutuarios.caixa.gov.br/' },
-  { tag: 'cadastro', titulo: 'Consulta CNPJ', sistema: 'Receita Federal', link: 'https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp' },  
-  { tag: 'dossiê', titulo: 'Consulta FGTS', sistema: 'SIOPI', link: 'https://habitacao.caixa.gov.br/siopiweb-web/siopientrada.do' },
-  { tag: 'dossiê', titulo: 'FGTS', sistema: 'CIWEB', link: 'https://www.ciweb.caixa.gov.br/sso/' },
-  { tag: 'dossiê', titulo: 'Conformidade', sistema: 'SICTD', link: 'https://digitalizar.caixa.gov.br/sictd-digitalizar/' },  
-  { tag: 'útil', titulo: 'Calculadora IRRF', sistema: 'iDinheiro', link: 'https://www.idinheiro.com.br/calculadoras/calculadora-imposto-de-renda/' },  
-  { tag: 'útil', titulo: 'Calculadora INSS', sistema: 'iDinheiro', link: 'https://www.idinheiro.com.br/calculadoras/calculadora-inss/' },  
-  { tag: 'útil', titulo: 'Tempo de Serviço', sistema: 'GitHub', link: 'https://gabrieszin.github.io/calculadora-tempo-de-servico/' },  
-  { tag: 'útil', titulo: 'Municípios RMBH', sistema: 'Agência RMBH', link: 'http://www.agenciarmbh.mg.gov.br/mapa-conheca-os-municipios/' },  
+  {
+    "tag": "cadastro",
+    "titulo": "Pesquisa Cadastral",
+    "sistema": "SICAQ",
+    "link": "https://caixaaqui.caixa.gov.br/caixaaqui/CaixaAquiController"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "CNIS",
+    "sistema": "INSS",
+    "link": "https://cnisnet.inss.gov.br/"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "Restitução IRPF",
+    "sistema": "Receita Federal",
+    "link": "https://www.restituicao.receita.fazenda.gov.br/"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "Simulador SIOPI",
+    "sistema": "SIOPI",
+    "link": "https://www8.caixa.gov.br/siopiinternet-web/simulaOperacaoInternet.do?method=inicializarCasoUso&isVoltar=true"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "Simulador Portal",
+    "sistema": "Portal de Empreendimentos",
+    "link": "https://www.portaldeempreendimentos.caixa.gov.br/simulador/"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "Busca CEP",
+    "sistema": "Correios",
+    "link": "https://buscacepinter.correios.com.br/app/endereco/index.php"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "Situação Cadastral",
+    "sistema": "Receita Federal",
+    "link": "https://servicos.receita.fazenda.gov.br/Servicos/CPF/ConsultaSituacao/ConsultaPublica.asp"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "CND Pessoa Física",
+    "sistema": "Receita Federal",
+    "link": "https://solucoes.receita.fazenda.gov.br/servicos/certidaointernet/pf/emitir/"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "CND Pessoa Jurídica",
+    "sistema": "Receita Federal",
+    "link": "https://solucoes.receita.fazenda.gov.br/servicos/certidaointernet/pj/emitir/"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "CIWEB",
+    "sistema": "Portal",
+    "link": "https://www.portaldeempreendimentos.caixa.gov.br/sso/menu"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "CADMUT",
+    "sistema": "SICDM",
+    "link": "https://www.cadastromutuarios.caixa.gov.br/"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "Consulta CNPJ",
+    "sistema": "Receita Federal",
+    "link": "https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp"
+  },
+  {
+    "tag": "dossiê",
+    "titulo": "Consulta FGTS",
+    "sistema": "SIOPI",
+    "link": "https://habitacao.caixa.gov.br/siopiweb-web/siopientrada.do"
+  },
+  {
+    "tag": "dossiê",
+    "titulo": "FGTS",
+    "sistema": "CIWEB",
+    "link": "https://www.ciweb.caixa.gov.br/sso/"
+  },
+  {
+    "tag": "dossiê",
+    "titulo": "Conformidade",
+    "sistema": "SICTD",
+    "link": "https://digitalizar.caixa.gov.br/sictd-digitalizar/"
+  },
+  {
+    "tag": "útil",
+    "titulo": "Calculadora IRRF",
+    "sistema": "iDinheiro",
+    "link": "https://www.idinheiro.com.br/calculadoras/calculadora-imposto-de-renda/"
+  },
+  {
+    "tag": "útil",
+    "titulo": "Calculadora INSS",
+    "sistema": "iDinheiro",
+    "link": "https://www.idinheiro.com.br/calculadoras/calculadora-inss/"
+  },
+  {
+    "tag": "útil",
+    "titulo": "Tempo de Serviço",
+    "sistema": "GitHub",
+    "link": "https://gabrieszin.github.io/calculadora-tempo-de-servico/"
+  },
+  {
+    "tag": "útil",
+    "titulo": "Municípios RMBH",
+    "sistema": "Agência RMBH",
+    "link": "http://www.agenciarmbh.mg.gov.br/mapa-conheca-os-municipios/"
+  }
 ]
 
 // Array com dados de arquivos que serão usados no sistema
 const arquivos = [
-  { tag: 'cadastro', titulo: 'Relatório', sistema: 'Word', link: 'Relatório' },
-  { tag: 'cadastro', titulo: 'Tabela de Apuração', sistema: 'Excel', link: 'Tabela de Apuração' },
-  { tag: 'dossiê', titulo: 'Capa', sistema: 'Word', link: 'Capa' },
-  { tag: 'dossiê', titulo: 'Ateste', sistema: 'Word', link: 'Ateste' },
-  { tag: 'dossiê', titulo: 'Checklist', sistema: 'Word', link: 'Checklist' },
-  { tag: 'validação', titulo: 'Validação de Pesquisa', sistema: 'Word', link: 'Validação de Pesquisa' },
+  {
+    "tag": "cadastro",
+    "titulo": "Relatório",
+    "sistema": "Word",
+    "link": "Relatório"
+  },
+  {
+    "tag": "cadastro",
+    "titulo": "Tabela de Apuração",
+    "sistema": "Excel",
+    "link": "Tabela de Apuração"
+  },
+  {
+    "tag": "dossiê",
+    "titulo": "Capa",
+    "sistema": "Word",
+    "link": "Capa"
+  },
+  {
+    "tag": "dossiê",
+    "titulo": "Ateste",
+    "sistema": "Word",
+    "link": "Ateste"
+  },
+  {
+    "tag": "dossiê",
+    "titulo": "Checklist",
+    "sistema": "Word",
+    "link": "Checklist"
+  },
+  {
+    "tag": "validação",
+    "titulo": "Validação de Pesquisa",
+    "sistema": "Word",
+    "link": "Validação de Pesquisa"
+  }
 ]
 
 const accordion_item = (indice) => {
@@ -43,7 +168,7 @@ const secao_rendas = (indice) => {
   return `<div class="input-group-text"> <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Comprovante de renda" data-element="input" data-input="renda" required> </div> <input type="text" list="tipos-comprovantes-renda-${indice}" class="form-control" aria-label="Text input with checkbox" placeholder="Comprovante de Renda" data-element="input" data-input="tipo_renda"> <datalist name="" id="tipos-comprovantes-renda-${indice}"> <option value="Contracheque/Hollerith"></option> <option value="IRPF"></option> <option value="Contrato de Aluguel"></option> <option value="Extratos Bancários"></option> <option value="Outro"></option> </datalist> <button class="input-group-text btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Remover" data-bs-custom-class="custom-tooltip" data-action="remover-renda"><i class="bi bi-trash"></i></button> <div class="input-group-text"> <input class="form-check-input mt-0" id="comprovante-renda-valido-${indice}" type="checkbox" value="" aria-label="Comprovante de renda" data-element="input" data-input="renda_valida" required> <label for="comprovante-renda-valido-${indice}" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-title="Comprovante válido" data-bs-content="O comprovante de renda é válido para a análise de crédito quando ele foi emitido a partir do últimos 2 meses.">&nbsp;&nbsp;Comprovante válido&nbsp;<i class="bi bi-info-circle text-secondary"></i></label> </div>`
 };
 
-const rodape = ` <div class="container"> <footer class="pt-4 my-md-5 pt-md-5 border-top"> <div class="row"> <div class="col-12 col-md"> <small class="d-block text-muted">Desenvolvido por</small> <a href="" data-link="github-dev"><h5 class="bold">Gabriel Ribeiro</h5></a><br> <small class="d-block text-muted">&copy; <span data-ano-atual=''>2023</span></small> <small class="d-block mb-3 text-muted">Todos os direitos reservados.</small> </div> <div class="col-6 col-md"> <h5>Recursos</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="confirmacao">Confirmação</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="consultas">Consultas</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="arquivos">Arquivos</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="desligamento">Desligamento</a></li> </ul> </div> <div class="col-6 col-md"> <h5>Navegação</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="confirmacao">Confirmação</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="consultas">Consultas</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="arquivos">Arquivos</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="desligamento">Desligamento</a></li> </ul> </div> <div class="col-6 col-md"> <h5>Sobre</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="github-dev">Desenvolvedor</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="github-projeto">GitHub</a></li> </ul> </div> </div> </footer><br> </div>`;
+const rodape = `<div class="container"> <footer class="pt-4 my-md-5 pt-md-5 border-top"> <div class="row"> <div class="col-12 col-md"> <small class="d-block text-muted">Desenvolvido por</small> <a href="" data-link="github-dev"><h5 class="bold">Gabriel Ribeiro</h5></a><br> <small class="d-block text-muted">&copy; <span data-ano-atual=''>2023</span></small> <small class="d-block mb-3 text-muted">Todos os direitos reservados.</small> </div> <div class="col-6 col-md"> <h5>Recursos</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="confirmacao">Confirmação</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="consultas">Consultas</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="arquivos">Arquivos</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="desligamento">Desligamento</a></li> </ul> </div> <div class="col-6 col-md"> <h5>Navegação</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="confirmacao">Confirmação</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="consultas">Consultas</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="arquivos">Arquivos</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="desligamento">Desligamento</a></li> </ul> </div> <div class="col-6 col-md"> <h5>Sobre</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="github-dev">Desenvolvedor</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="github-projeto">GitHub</a></li> </ul> </div> </div> </footer><br> </div>`;
 
 const html_funcoes_nao_implementadas = `
 <button type="button" class="btn btn-light">Exportar&nbsp;<i class="bi bi-file-earmark-arrow-up"></i></button><button type="button" class="btn btn-light">Importar&nbsp;<i class="bi bi-file-earmark-arrow-down"></i></button>&nbsp;&nbsp;<button class="btn btn-danger mt-3" data-action="incluir-vendedor">Incluir vendedor</button>
@@ -62,123 +187,123 @@ const conteudo_pagina_arquivos = `<div class="container mt-5 mb-5"><hgroup class
 
 const conteudo_pagina_desligamento = `  
 <main>
-  <div class="container mt-5 mb-5">
-    <hgroup class="hgroup" data-hgroup="confirmacao-cca">
-      <h3 class="hgroup-titulo">Desligamento</h3>
-    </hgroup>
-    <div class="card mb-4">
-      <div class="card-header">
-        <b>Links</b>
-      </div>
-      <div class="card-body" data-content="area-links">
-        <div class="links">
-          <a class="content" href="https://gabrieszin.github.io/damp/" target="_blank" rel="noreferrer noopener">
-            <span class="content-tag">Desligamento</span>
-            <div class="content-principal">
-              <h5>Damp</h5>
-              <span>GitHub</span>
-            </div>
-          </a>
-          <a class="content" href="https://gabrieszin.github.io/ateste-processo" target="_blank" rel="noreferrer noopener">
-            <span class="content-tag">Desligamento</span>
-            <div class="content-principal">
-              <h5>Ateste</h5>
-              <span>GitHub</span>
-            </div>
-          </a>
-          <a class="content" href="https://gabrieszin.github.io/capa-de-dossies" target="_blank" rel="noreferrer noopener">
-            <span class="content-tag">Desligamento</span>
-            <div class="content-principal">
-              <h5>Capa de Dossiês</h5>
-              <span>GitHub</span>
-            </div>
-          </a>
-          <a class="content" href="https://gabrieszin.github.io/confirmacao-cca/desligamento/checklist-desligamento.html" onclick="event.preventDefault(); window.open(this.href, '_blank', 'width=800, height=1000')" rel="noreferrer noopener">
-            <span class="content-tag">Desligamento</span>
-            <div class="content-principal">
-              <h5>Checklist - Acompanhamento do Processo</h5>
-              <span>GitHub</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-4" style="display: block;">
-      <div class="card-header">
-        <b>Laudo</b>
-      </div>
-      <div class="card-body">
-        <form data-content="form-laudo" action="#" method="GET" data-action="form-laudo">
-          <div class="form-group">
-            <label for="matricula" class="form-label">Matrícula e Cartório</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="matricula" name="matricula" placeholder="000000" data-input="matricula" data-element="input" required>
-              <input type="text" list="lista-cartorios" class="form-control" id="cartorio" name="cartorio" placeholder="Cartório" aria-label="Cartório" data-input="cartorio" data-element="input" required>
-            </div>
-            <datalist id="lista-cartorios">
-            </datalist>
-          </div>
-          <div class="form-group">
-            <label for="CEP" class="form-label">CEP</label>
-            <input type="text" class="form-control" id="CEP" name="CEP" placeholder="00000-000" data-input="cep" data-element="input" required>
-          </div>
-          <div class="form-group">
-            <label for="numero-ou-complemento" class="form-label">N.º ou Complemento</label>
-            <input type="text" class="form-control" id="numero-ou-complemento" name="numero-ou-complemento" data-input="numero-ou-complemento" data-element="input" required>
-          </div>
-          <div class="form-group">
-            <label for="contato" class="form-label">Contato e Telefone</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="contato" name="contato" placeholder="" data-input="contato" data-element="input">
-              <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(31) 00000-0000" aria-label="Telefone da pessoa de contato" data-input="telefone" data-element="input">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="descricao" class="form-label">Descrição</label>
-            <a href="https://www.ocr2edit.com/pt/converter-para-txt" rel="noopener noreferrer" target="_blank" class="btn btn-light d-block mb-3">Converter imagem em texto <span class="seta">-></span></a>
-            <textarea name="descricao" id="descricao" cols="30" rows="10" class="form-control" style="height: 100px;" data-input="descricao" data-element="input" required spellcheck="true"></textarea>
-          </div>
-          <div class="forms-groups">
-            <div class="form-group">
-              <label for="valor-compra-e-venda" class="form-label">Valor de compra e venda</label>
-              <input type="text" id="valor-compra-e-venda" data-maskc="money" name="valor-compra-e-venda" class="form-control" placeholder="R$ 0.000,00"  value="" data-input="valor-compra-e-venda" data-element="input" required>
-              <span class="text-secondary mt-2 d-block">O valor solicitado corresponderá a 80% do valor de compra e venda</span>
-            </div>
-            <div class="form-group mt-3">
-              <label for="cliente" class="form-label">Cliente e CPF</label>
-              <div class="input-group">
-                <input type="text" id="cliente" name="cliente" class="form-control" placeholder="" data-input="cliente" data-element="input">
-                <input type="text" id="CPF" name="CPF" class="form-control" placeholder="000.000.000-00" aria-label="CPF" data-input="cpf" data-element="input">
-              </div>
-            </div>
-          </div>
-          <button type="reset" class="btn btn-outline-secondary">Limpar</button>
-          <button type="submit" id="botao-submit-form" name="botao-submit-form" class="btn btn-primary">Baixar arquivo</button>
-        </form>
-      </div>
-    </div>
-    <section class="card mt-4 mb-4" data-content="secao-controlada">
-      <div class="card-header d-flex justify-content-between align-center">
-        <b>Desligamento de Análise Internalizada</b>
-        <span class="text-muted span">Clique para abrir</span>
-      </div>
-      <div class="card-body none">
-        <div class="alert info alert-secondary">
-          Rascunho para enviar processo internalizado para desligamento
-        </div>
-        <form action="" method="GET" data-form="desligamento-internalizado" class="form-btn-copy-float">
-          <button type="button" class="btn-copy-float"><i class="bi bi-clipboard2"></i></button><textarea style="height: calc(20 * 1rem);" data-form="conteudo-texto" id="conteudo-texto" name="conteudo-texto" contenteditable="true" class="form-control"></textarea>
-        </form>
-      </div>
-    </section>
-    <div class="card mb-4 banner">
-      <div>
-        <h5 class="title">O que achou dessa página?</h5>
-        <p class="text-muted mt-1">Conte pra gente o que você achou</p>
-      </div>
-      <a href="mailto:devgabrielribeiro@gmail.com?subject=Sobre a página de Desligamento do projeto" class="btn btn-light">Enviar um e-mail</a>
-    </div>
-  </div>
+<div class="container mt-5 mb-5">
+<hgroup class="hgroup" data-hgroup="confirmacao-cca">
+<h3 class="hgroup-titulo">Desligamento</h3>
+</hgroup>
+<div class="card mb-4">
+<div class="card-header">
+<b>Links</b>
+</div>
+<div class="card-body" data-content="area-links">
+<div class="links">
+<a class="content" href="https://gabrieszin.github.io/damp/" target="_blank" rel="noreferrer noopener">
+<span class="content-tag">Desligamento</span>
+<div class="content-principal">
+<h5>Damp</h5>
+<span>GitHub</span>
+</div>
+</a>
+<a class="content" href="https://gabrieszin.github.io/ateste-processo" target="_blank" rel="noreferrer noopener">
+<span class="content-tag">Desligamento</span>
+<div class="content-principal">
+<h5>Ateste</h5>
+<span>GitHub</span>
+</div>
+</a>
+<a class="content" href="https://gabrieszin.github.io/capa-de-dossies" target="_blank" rel="noreferrer noopener">
+<span class="content-tag">Desligamento</span>
+<div class="content-principal">
+<h5>Capa de Dossiês</h5>
+<span>GitHub</span>
+</div>
+</a>
+<a class="content" href="https://gabrieszin.github.io/confirmacao-cca/desligamento/checklist-desligamento.html" onclick="event.preventDefault(); window.open(this.href, '_blank', 'width=800, height=1000')" rel="noreferrer noopener">
+<span class="content-tag">Desligamento</span>
+<div class="content-principal">
+<h5>Checklist - Acompanhamento do Processo</h5>
+<span>GitHub</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="card mb-4" style="display: block;">
+<div class="card-header">
+<b>Laudo</b>
+</div>
+<div class="card-body">
+<form data-content="form-laudo" action="#" method="GET" data-action="form-laudo">
+<div class="form-group">
+<label for="matricula" class="form-label">Matrícula e Cartório</label>
+<div class="input-group">
+<input type="text" class="form-control" id="matricula" name="matricula" placeholder="000000" data-input="matricula" data-element="input" required>
+<input type="text" list="lista-cartorios" class="form-control" id="cartorio" name="cartorio" placeholder="Cartório" aria-label="Cartório" data-input="cartorio" data-element="input" required>
+</div>
+<datalist id="lista-cartorios">
+</datalist>
+</div>
+<div class="form-group">
+<label for="CEP" class="form-label">CEP</label>
+<input type="text" class="form-control" id="CEP" name="CEP" placeholder="00000-000" data-input="cep" data-element="input" required>
+</div>
+<div class="form-group">
+<label for="numero-ou-complemento" class="form-label">N.º ou Complemento</label>
+<input type="text" class="form-control" id="numero-ou-complemento" name="numero-ou-complemento" data-input="numero-ou-complemento" data-element="input" required>
+</div>
+<div class="form-group">
+<label for="contato" class="form-label">Contato e Telefone</label>
+<div class="input-group">
+<input type="text" class="form-control" id="contato" name="contato" placeholder="" data-input="contato" data-element="input">
+<input type="text" class="form-control" id="telefone" name="telefone" placeholder="(31) 00000-0000" aria-label="Telefone da pessoa de contato" data-input="telefone" data-element="input">
+</div>
+</div>
+<div class="form-group">
+<label for="descricao" class="form-label">Descrição</label>
+<a href="https://www.ocr2edit.com/pt/converter-para-txt" rel="noopener noreferrer" target="_blank" class="btn btn-light d-block mb-3">Converter imagem em texto <span class="seta">-></span></a>
+<textarea name="descricao" id="descricao" cols="30" rows="10" class="form-control" style="height: 100px;" data-input="descricao" data-element="input" required spellcheck="true"></textarea>
+</div>
+<div class="forms-groups">
+<div class="form-group">
+<label for="valor-compra-e-venda" class="form-label">Valor de compra e venda</label>
+<input type="text" id="valor-compra-e-venda" data-maskc="money" name="valor-compra-e-venda" class="form-control" placeholder="R$ 0.000,00"  value="" data-input="valor-compra-e-venda" data-element="input" required>
+<span class="text-secondary mt-2 d-block">O valor solicitado corresponderá a 80% do valor de compra e venda</span>
+</div>
+<div class="form-group mt-3">
+<label for="cliente" class="form-label">Cliente e CPF</label>
+<div class="input-group">
+<input type="text" id="cliente" name="cliente" class="form-control" placeholder="" data-input="cliente" data-element="input">
+<input type="text" id="CPF" name="CPF" class="form-control" placeholder="000.000.000-00" aria-label="CPF" data-input="cpf" data-element="input">
+</div>
+</div>
+</div>
+<button type="reset" class="btn btn-outline-secondary">Limpar</button>
+<button type="submit" id="botao-submit-form" name="botao-submit-form" class="btn btn-primary">Baixar arquivo</button>
+</form>
+</div>
+</div>
+<section class="card mt-4 mb-4" data-content="secao-controlada">
+<div class="card-header d-flex justify-content-between align-center">
+<b>Desligamento de Análise Internalizada</b>
+<span class="text-muted span">Clique para abrir</span>
+</div>
+<div class="card-body none">
+<div class="alert info alert-secondary">
+Rascunho para enviar processo internalizado para desligamento
+</div>
+<form action="" method="GET" data-form="desligamento-internalizado" class="form-btn-copy-float">
+<button type="button" class="btn-copy-float"><i class="bi bi-clipboard2"></i></button><textarea style="height: calc(20 * 1rem);" data-form="conteudo-texto" id="conteudo-texto" name="conteudo-texto" contenteditable="true" class="form-control"></textarea>
+</form>
+</div>
+</section>
+<div class="card mb-4 banner">
+<div>
+<h5 class="title">O que achou dessa página?</h5>
+<p class="text-muted mt-1">Conte pra gente o que você achou</p>
+</div>
+<a href="mailto:devgabrielribeiro@gmail.com?subject=Sobre a página de Desligamento do projeto" class="btn btn-light">Enviar um e-mail</a>
+</div>
+</div>
 </main>`
 
 const HTMLacompanharFID = (FID, link) => {
@@ -188,23 +313,23 @@ const HTMLacompanharFID = (FID, link) => {
 
 const nav = `
 <nav class="navbar mt-5">
-  <div class="container container-fluid d-flex justify-content-between">
-    <div style="display: flex; align-items: center;">
-      <span class="navbar-icon"></span>
-      <b class="navbar-brand"></b>
-    </div>
-    <div class="btn-group dropstart" role="group">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Ir para
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#" data-link="confirmacao"><i class="bi bi-file-earmark-break"></i> Confirmação CCA</a></li>
-        <li><a class="dropdown-item" href="#" data-link="consultas"><i class="bi bi-file-earmark-check"></i> Consultas</a></li>
-        <li><a class="dropdown-item" href="#" data-link="arquivos"><i class="bi bi-file-earmark-medical"></i> Arquivos</a></li>
-        <li><a class="dropdown-item" href="#" data-link="desligamento"><i class="bi bi-file-earmark-text"></i> Desligamento</a></li>
-      </ul>
-    </div>
-  </div>
+<div class="container container-fluid d-flex justify-content-between">
+<div style="display: flex; align-items: center;">
+<span class="navbar-icon"></span>
+<b class="navbar-brand"></b>
+</div>
+<div class="btn-group dropstart" role="group">
+<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+Ir para
+</button>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="#" data-link="confirmacao"><i class="bi bi-file-earmark-break"></i> Confirmação CCA</a></li>
+<li><a class="dropdown-item" href="#" data-link="consultas"><i class="bi bi-file-earmark-check"></i> Consultas</a></li>
+<li><a class="dropdown-item" href="#" data-link="arquivos"><i class="bi bi-file-earmark-medical"></i> Arquivos</a></li>
+<li><a class="dropdown-item" href="#" data-link="desligamento"><i class="bi bi-file-earmark-text"></i> Desligamento</a></li>
+</ul>
+</div>
+</div>
 </nav>`
 
 export const conteudos = {

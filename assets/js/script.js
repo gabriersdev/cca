@@ -70,6 +70,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
   
   else if(pagina == 'desligamento/index.html' || pagina == 'confirmacao-cca/desligamento/' || pagina == 'confirmacao-cca/desligamento/index.html'){
     $(body).append(conteudos.conteudo_pagina_desligamento)
+    // $(body).load('../assets/html/pagina-desligamento.html')
     
     setTimeout(() => {
       // $('[data-input="contato"]').mask('SSSSSSSSSSSSSSS ')
