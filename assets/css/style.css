@@ -219,3 +219,36 @@ textarea::-webkit-scrollbar{
     }
   }
 }
+
+[data-element="area-relatorio"]{
+
+}
+
+@media screen and (width <= 445px) {
+  [data-element="area-relatorio"] .d-flex.align-items-center.justify-content-between{
+    flex-direction: column;
+    place-content: flex-start !important;
+    place-items: flex-start !important;
+  }
+
+  [data-element="area-relatorio"] .d-flex.align-items-center.justify-content-between div:first-child{
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (width <= 315px) {
+  [data-element="area-pendencias"] .d-flex.align-items-center.justify-content-between{
+    flex-direction: column;
+    flex-wrap: wrap;
+    place-items: flex-start !important;
+  }
+
+  [data-element="area-pendencias"] .d-flex.align-items-center.justify-content-between b{
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}

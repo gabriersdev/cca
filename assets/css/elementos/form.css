@@ -83,8 +83,8 @@ button i{
     }
 
     &:hover:not(.checked), &:focus:not(.checked){
-      background-color: rgba(0, 123, 255, 0.05) !important;
-      color: #007BFF;
+      background-color: rgba(0, 123, 255, 1) !important;
+      color: #FFF;
     }
 
     &::before{
