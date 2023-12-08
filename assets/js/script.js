@@ -1,7 +1,7 @@
 "use strict";
 
 import { conteudos } from './modulos/conteudos.js';
-import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarCPF, sanitizarNumero, sanitizarString, criarEBaixarArquivo, resizeTextArea } from './modulos/utilitarios.js';
+import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarNumero, sanitizarString, criarEBaixarArquivo, resizeTextArea } from './modulos/utilitarios.js';
 import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
 import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/funcoes-de-conteudo.js';
@@ -185,52 +185,57 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     funcoesBase();
     atribuirLinks();
     atualizarDatas();
-    
-    setTimeout(() => {
-      $('[data-content="secao-controlada"] .card-header').on('click', (evento) => {
-        $('[data-content="secao-controlada"] .card-body').toggleClass('none');
-        if($('[data-content="secao-controlada"] .card-body').css('display') !== 'none'){
-          // $('[data-content="secao-controlada"] .card-header span').text('Clique para fechar');
-          $('[data-content="secao-controlada"] .card-header span').text('');
-        }else{
-          $('[data-content="secao-controlada"] .card-header span').text('Clique para abrir');
-        }
-      })
-      
-      $('.btn-copy-float').on('click', (evento) => {
-        evento.preventDefault();
-        const btn = document.querySelector('.btn-copy-float')
-        const [html_inicial, cor_inicial, display_inicial] = ['<i class="bi bi-clipboard2"></i>', '#D3D3D3', 'none'];
-        try{
-          navigator.clipboard.writeText(document.querySelector('[data-form="conteudo-texto"]').innerText.trim() || document.querySelector('[data-form="conteudo-texto"]').value.trim()).then(() => {
-          })
-          btn.style.backgroundColor = '#99CC99';
-          btn.innerHTML = '<i class="bi bi-clipboard2-check"></i>';
-        }catch{
-          btn.style.backgroundColor = '#F0928B';
-          btn.innerHTML = '<i class="bi bi-clipboard2-x"></i>';
-        }finally{
-          btn.style.display = 'block';
-        }
-        
-        setTimeout(() => {
-          btn.style.backgroundColor = cor_inicial;
-          btn.innerHTML = html_inicial;
-          btn.style.display = display_inicial;
-        }, 1000)
-      })
-    }, 0)
   });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    $('[data-content="secao-controlada"] .card-header').on('click', (evento) => {
+      $('[data-content="secao-controlada"] .card-body').toggleClass('none');
+      if($('[data-content="secao-controlada"] .card-body').css('display') !== 'none'){
+        // $('[data-content="secao-controlada"] .card-header span').text('Clique para fechar');
+        $('[data-content="secao-controlada"] .card-header span').text('');
+      }else{
+        $('[data-content="secao-controlada"] .card-header span').text('Clique para abrir');
+      }
+    })
+    
+    $('.btn-copy-float').on('click', (evento) => {
+      evento.preventDefault();
+      const btn = document.querySelector('.btn-copy-float')
+      const [html_inicial, cor_inicial, display_inicial] = ['<i class="bi bi-clipboard2"></i>', '#D3D3D3', 'none'];
+      try{
+        navigator.clipboard.writeText(document.querySelector('[data-form="conteudo-texto"]').innerText.trim() || document.querySelector('[data-form="conteudo-texto"]').value.trim()).then(() => {
+        })
+        btn.style.backgroundColor = '#99CC99';
+        btn.innerHTML = '<i class="bi bi-clipboard2-check"></i>';
+      }catch{
+        btn.style.backgroundColor = '#F0928B';
+        btn.innerHTML = '<i class="bi bi-clipboard2-x"></i>';
+      }finally{
+        btn.style.display = 'block';
+      }
+      
+      setTimeout(() => {
+        btn.style.backgroundColor = cor_inicial;
+        btn.innerHTML = html_inicial;
+        btn.style.display = display_inicial;
+      }, 1000)
+    })
+  })
   
 })();
 
-let text_areas_edicao = false;
+let text_areas_foram_editados = false;
 
 export function text_areas_editados(condicao){
-  if(isEmpty(condicao)){
-    return text_areas_edicao;
+  if(isEmpty(condicao) && !typeof condicao !== 'boolean'){
+    try{
+      return text_areas_foram_editados
+    }catch(error){
+      return false;
+    }
   }else{
-    text_areas_edicao = condicao;
+    text_areas_foram_editados = condicao;
+    return condicao;
   }
 };
 
