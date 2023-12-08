@@ -1,5 +1,5 @@
 import { text_areas_editados } from "../script.js";
-import { isEmpty, resizeTextArea, sanitizarString } from "./utilitarios.js";
+import { isEmpty, resizeTextArea } from "./utilitarios.js";
 
 const renderTooltips = () => {
   $(function () {
@@ -89,10 +89,8 @@ const renderFeedbacks = (proponente) => {
   })
 }
 
-const pendencias = null;
-
 const renderPendencias = () => {
-  if(text_areas_editados() !== true){
+  if(!text_areas_editados()){
     const txt = document.querySelector('[data-content="pendencias"]');
     if(!isEmpty(txt)){
       txt.value = '';
@@ -201,6 +199,7 @@ function listarProponentesPendencias(){
     (document.querySelectorAll('.card-body-header [data-content="nome"]').forEach((nome, index) => {
       const nomeApresentacao = nome.textContent.trim() === 'Nome do cliente' ? `PROPONENTE ${index + 1} -` : `PROPONENTE ${index + 1} - ${nome.textContent.trim().toUpperCase()}:`;
       document.querySelector('[data-content="pendencias"]').value += index !== 0 ? `\n\n${nomeApresentacao}` : nomeApresentacao;
+      text_areas_editados(true);
     }))
   }catch(error){
     console.warn('Ocorreu um erro ao tentar listar apenas os nomes dos proponentes na listagem de pendências.')

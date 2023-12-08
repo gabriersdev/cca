@@ -33,6 +33,13 @@ const clickIncluirRenda = (botao) => {
   try{length = proponente.querySelectorAll('[data-element="renda"]').length}catch(error){}
   div.innerHTML = `${conteudos.secao_rendas(!isEmpty(length) ? length + 1 : 1)}`;
   proponente.querySelector('[data-element="area_rendas"]').appendChild(div);
+
+  try{
+    if(botao.closest('[data-element="secao_rendas"]').querySelector('[data-element="area_rendas"]').querySelector(`div.alert.alert-primary`) !== null){
+      botao.closest('[data-element="secao_rendas"]').querySelector('[data-element="area_rendas"]').querySelector(`div.alert.alert-primary`).remove();
+    }
+  }catch(error){}
+
   escutaEventoInput();
   clickRemoverRenda(div);
   renderPendencias();
@@ -49,10 +56,22 @@ const clickRemoverRenda = (elemento) => {
       renderPendencias();
     })
   }
-  
+
   function acao(botao){
     removeEventListener('click', botao);
     botao.addEventListener('click', (evento) => {
+      try{
+        if(elemento.closest('[data-element="area_rendas"]').querySelectorAll('[data-element="renda"]').length - 1 === 0){
+          $(elemento.closest('[data-element="area_rendas"]')).html(`<div class="alert alert-primary mt-2 mb-2">Proponente sem renda</div>`);
+        }
+      }catch(error){
+        try{
+          if(evento.target.closest('[data-element="area_rendas"]').querySelectorAll('[data-element="renda"]').length - 1 === 0){
+            $(evento.target.closest('[data-element="area_rendas"]')).html(`<div class="alert alert-primary mt-2 mb-2">Proponente sem renda</div>`);
+          }
+        }catch(error){}
+      }
+
       evento.preventDefault();
       $(botao).tooltip('dispose')
       botao.closest('[data-element="renda"]').remove();
