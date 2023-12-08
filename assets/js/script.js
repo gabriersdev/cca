@@ -21,7 +21,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
   const pagina = new URL(window.location).pathname.trim().replace('/', '');
   const body = document.querySelector('body');
   
-  if(pagina == 'index.html' || pagina == 'confirmacao-cca/' || pagina == 'confirmacao-cca/index.html' || isEmpty(pagina)){
+  if(pagina == 'index.html' || pagina == 'cca/' || pagina == 'cca/index.html' || isEmpty(pagina)){
     body.innerHTML += conteudos.conteudo_pagina_confirmacao;
     const accordion_item = document.createElement('div');
     accordion_item.classList.value = 'accordion-item';
@@ -29,7 +29,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     document.querySelector('.accordion').appendChild(accordion_item);
   }
   
-  else if(pagina == 'consultas/index.html' || pagina == 'confirmacao-cca/consultas/' || pagina == 'confirmacao-cca/consultas/index.html'){
+  else if(pagina == 'consultas/index.html' || pagina == 'cca/consultas/' || pagina == 'cca/consultas/index.html'){
     body.innerHTML += conteudos.conteudo_pagina_consultas;
     const area_consultas = document.querySelector('[data-content="area-consultas"]');
     
@@ -37,7 +37,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     adicionarOpcoesAutoComplete();
   }
   
-  else if(pagina == 'arquivos/index.html' || pagina == 'confirmacao-cca/arquivos/' || pagina == 'confirmacao-cca/arquivos/index.html'){
+  else if(pagina == 'arquivos/index.html' || pagina == 'cca/arquivos/' || pagina == 'cca/arquivos/index.html'){
     body.innerHTML += conteudos.conteudo_pagina_arquivos;
     const area_arquivos = document.querySelector('[data-content="area-arquivos"]');
     
@@ -68,7 +68,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     window.clickConfirm = clickConfirm;
   }
   
-  else if(pagina == 'desligamento/index.html' || pagina == 'confirmacao-cca/desligamento/' || pagina == 'confirmacao-cca/desligamento/index.html'){
+  else if(pagina == 'desligamento/index.html' || pagina == 'cca/desligamento/' || pagina == 'cca/desligamento/index.html'){
     $(body).append(conteudos.conteudo_pagina_desligamento)
     // $(body).load('../assets/html/pagina-desligamento.html')
     

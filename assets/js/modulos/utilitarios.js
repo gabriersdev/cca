@@ -105,7 +105,7 @@ function atribuirLinks(){
       break;
       
       case 'github-projeto':
-      link.href = 'https://github.com/gabrieszin/confirmacao-cca';
+      link.href = 'https://github.com/gabrieszin/cca';
       break;
     }
     

@@ -218,7 +218,7 @@ const conteudo_pagina_desligamento = `
 <span>GitHub</span>
 </div>
 </a>
-<a class="content" href="https://gabrieszin.github.io/confirmacao-cca/desligamento/checklist-desligamento.html" onclick="event.preventDefault(); window.open(this.href, '_blank', 'width=800, height=1000')" rel="noreferrer noopener">
+<a class="content" href="https://gabrieszin.github.io/cca/desligamento/checklist-desligamento.html" onclick="event.preventDefault(); window.open(this.href, '_blank', 'width=800, height=1000')" rel="noreferrer noopener">
 <span class="content-tag">Desligamento</span>
 <div class="content-principal">
 <h5>Checklist - Acompanhamento do Processo</h5>
