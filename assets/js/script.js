@@ -188,6 +188,35 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
   });
 
   document.addEventListener('DOMContentLoaded', () => {
+    const id_pagina_atual = new String(Date.now() + Math.ceil(Math.random() * 5));
+    let houve_edicao = true;
+
+    const intervalo_verificacao = (() => {
+      if(houve_edicao){
+        const els = Array.from($('[data-element="input"]'));
+
+        // Elementos de preenchimento que não estão vazios
+        els.filter((el) => !isEmpty(el.value) && el.value !== 'R$ 0,00');
+      }
+    }, (1000 * 10))
+
+    const ids = [
+      '1702214356904',
+      '1702214249098',
+      '1702214390871',
+      '1702214373348',
+      '1702214378456',
+      '1702214386370',
+    ]
+
+    let id_mais_recente = null;
+    const ids_apenas_numericos = ids.filter((id) => parseInt(id) && !isNaN(parseInt(id))).map((id) => parseInt(id));
+
+    if(!isEmpty(ids) && ids_apenas_numericos.length > 0){
+      id_mais_recente = new Number(ids.toSorted((a, b) => b - a)[0]);
+    }
+
+
     $('[data-content="secao-controlada"] .card-header').on('click', (evento) => {
       $('[data-content="secao-controlada"] .card-body').toggleClass('none');
       if($('[data-content="secao-controlada"] .card-body').css('display') !== 'none'){
