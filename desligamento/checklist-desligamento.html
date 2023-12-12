@@ -2,8 +2,18 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+  <meta name="keywords" content="CCA; Checklist; Desligamento">
+  <meta name="author" content="Gabriel Ribeiro">
+  <meta name="robots" content="follow">
+  <meta name="description" content="Checklist de processos habitacionais para facilitar a validação e a verificação de dados e documentação.">
+  <meta name="theme-color" content="#FFF">
+  
   <title>Acompanhamento do Processo</title>
+
+  <link rel="shortcut icon" href="../assets/img/favicon-desligamento.svg" type="image/x-icon">
 </head>
 <body>
   
@@ -36,7 +46,7 @@
     tr td:not(td[colspan]){
       padding: 0.075rem 0.5rem;
     }
-
+    
     hr{
       border: 0.75px dashed #000;
       margin: 1.5rem 0;
@@ -114,38 +124,42 @@
   
   <script>
     try{
-      document.querySelector('body').outerHTML += document.querySelector('table').outerHTML
+      document.querySelector('body').outerHTML += document.querySelector('table').outerHTML;
       const table = document.querySelectorAll('table')[0];
       
       try{
         table.querySelector('tbody').querySelectorAll('tr').forEach((tr, index) => {
-          const segundo_td = tr.querySelectorAll('td')[1];
+          const td = tr.querySelectorAll('td')[1];
           
-          if(segundo_td !== null){
-            segundo_td.setAttribute('contenteditable', 'true')
+          if(td !== null){
+            td.setAttribute('contenteditable', 'true');
             try{
-              segundo_td.addEventListener('input', () => {
-                document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText = segundo_td.innerText.trim()
+              // Evento de input no campo da primeira tabela
+              td.addEventListener('input', () => {
+                // Inserindo texto no campo da segunda tabela com base no texto inserido no campo da primeira tabela
+                document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText = td.innerText.trim();
               })
-
-              segundo_td.addEventListener('blur', () => {
+              
+              // Evento de blur (perdeu o foco) no campo da primeira tabela
+              td.addEventListener('blur', () => {
+                // Removendo estilos e tags HTML do texto inserido no campo da primeira tabela, através do que foi inserido no campo da segunda tabela pela propriedade innerText
                 const innerText = document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText.trim();
-                segundo_td.innerHTML = ''
-                segundo_td.innerText = innerText;
+                td.innerHTML = '';
+                td.innerText = innerText;
               })
             }catch(error){
-              alert('Ocorreu um erro ao tentar replicar o texto preenchido. Gentileza verificar o console.')
-              console.log(error)
+              alert('Ocorreu um erro ao tentar replicar o texto preenchido. Gentileza verificar o console.');
+              console.log(error);
             }
           }
         })
       }catch(error){
-        alert('Ocorreu um erro ao implementar edição dos campos. Gentileza verificar o console.')
-        console.log(error)
+        alert('Ocorreu um erro ao implementar edição dos campos. Gentileza verificar o console.');
+        console.log(error);
       }
     }catch(error){
-      alert('Ocorreu um erro ao implementar a replicação da tabela. Gentileza verificar o console.')
-      console.log(error)
+      alert('Ocorreu um erro ao implementar a replicação da tabela. Gentileza verificar o console.');
+      console.log(error);
     }
   </script>
   
