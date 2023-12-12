@@ -72,20 +72,14 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     $(body).append(conteudos.conteudo_pagina_desligamento)
     // $(body).load('../assets/html/pagina-desligamento.html')
     
-    setTimeout(() => {
-      // $('[data-input="contato"]').mask('SSSSSSSSSSSSSSS ')
-      // $('[data-input="cliente"]').mask('SSSSSSSSSSSSSSS')
-    }, 0)
-    
     // Página ignora preventDefault() se não houver tiver o setTimeout()
-    setTimeout(() => {
+    window.addEventListener('DOMContentLoaded', () => {
       $('[data-action="form-laudo"]').submit((event) => {
         event.preventDefault()
         const saida = new Array();
         
         event.target.querySelectorAll('[data-input]').forEach(elemento => {
           if(['textarea', 'input'].includes(elemento.tagName.toLowerCase())){
-            console.log(elemento.dataset.input)
             switch(elemento.dataset.input){
               case 'CPF':
               case 'cpf':
@@ -95,8 +89,12 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
               saida.push(`${sanitizarString(elemento.dataset.input.toUpperCase(), ['-', ' '])}: ${sanitizarNumero(elemento.value)}`);
               break;
               
-              default:
+              case 'descricao':
               saida.push(`${sanitizarString(elemento.dataset.input.toUpperCase(), ['-', ' '])}: ${elemento.value}`);
+              break;
+
+              default:
+              saida.push(`${sanitizarString(elemento.dataset.input.toUpperCase(), ['-', ' '])}: ${elemento.value.toUpperCase()}`);
               break;
             }
           }
@@ -112,13 +110,12 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
       $('textarea').on('input', (evento) => {
         resizeTextArea(evento.target);
       })
-      
-    }, 10)
+    })
     
     try{
       document.querySelector('[data-form="desligamento-internalizado"] [data-form="conteudo-texto"]').value = `Prezados, bom dia! \n\nGentileza gerar formulários e dar andamento ao processo que está em desligamento.\n\nModalidade: \nEmpreendimento: \nUnidade: \nValor de contrato: \nValor de financiamento: \nValor de FGTS: \n\n[Observações]`;
     }catch(error){
-
+      
     }
     
     async function getCartorios(){
@@ -127,7 +124,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     }
     
     let cartorios = new Array();
-
+    
     const cartorios_imoveis = [
       "1º Oficio de Registro de Imoveis da Comarca de Belo Horizonte",
       "1º Tabelionato de Protesto de Titulos de Belo Horizonte",
@@ -165,7 +162,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     getCartorios().then((retorno) => {
       cartorios = retorno.concat(cartorios_imoveis)
       let cartorio;
-
+      
       for (cartorio of cartorios){
         if(cartorio.nome !== undefined){
           $('#lista-cartorios').append(`<option value='${cartorio.nome}'></option>`);
@@ -186,20 +183,20 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     atribuirLinks();
     atualizarDatas();
   });
-
+  
   document.addEventListener('DOMContentLoaded', () => {
     const id_pagina_atual = new String(Date.now() + Math.ceil(Math.random() * 5));
     let houve_edicao = true;
-
+    
     const intervalo_verificacao = (() => {
       if(houve_edicao){
         const els = Array.from($('[data-element="input"]'));
-
+        
         // Elementos de preenchimento que não estão vazios
         els.filter((el) => !isEmpty(el.value) && el.value !== 'R$ 0,00');
       }
     }, (1000 * 10))
-
+    
     const ids = [
       '1702214356904',
       '1702214249098',
@@ -208,15 +205,15 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
       '1702214378456',
       '1702214386370',
     ]
-
+    
     let id_mais_recente = null;
     const ids_apenas_numericos = ids.filter((id) => parseInt(id) && !isNaN(parseInt(id))).map((id) => parseInt(id));
-
+    
     if(!isEmpty(ids) && ids_apenas_numericos.length > 0){
       id_mais_recente = new Number(ids.toSorted((a, b) => b - a)[0]);
     }
-
-
+    
+    
     $('[data-content="secao-controlada"] .card-header').on('click', (evento) => {
       $('[data-content="secao-controlada"] .card-body').toggleClass('none');
       if($('[data-content="secao-controlada"] .card-body').css('display') !== 'none'){

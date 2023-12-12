@@ -1,5 +1,59 @@
 import { isEmpty } from "./utilitarios.js";
 
+// Array com opções de fácil seleção
+const selecoes = [
+  {
+    name: 'Tela solicitada',
+    id: 'tela-endividamento',
+    value: 'Tela de comprometimento solicitada. '
+  },
+  {
+    name: 'FGTS solicitado',
+    id: 'FGTS-solicitado',
+    value: 'Saldo FGTS e se tem bloqueio solicitado. '
+  },
+  {
+    name: 'Verificação FGTS',
+    id: 'verificacao-FGTS',
+    value: 'Verificação do saldo FGTS, possibilidade de uso e se tem bloqueio solicitado. '
+  },
+  {
+    name: 'Autorização FGTS',
+    id: 'autorizacao-FGTS',
+    value: 'Gentileza solicitar autorização para consulta à Caixa no APP do FGTS, para verificar o tempo de serviço. '
+  },
+  {
+    name: 'Aviso IRPF',
+    id: 'aviso-IRPF',
+    value: 'Importante fazer a declaração tendo em vista que ela só é aceita se os rendimentos forem superiores ao mínimo obrigatório para se declarar. '
+  },
+  {
+    name: 'Restrição Externa',
+    id: 'restricao-externa',
+    value: 'Proponente/grupo familiar possui restrição externa. Necessária regularização para nova avaliação da proposta. '
+  },
+  {
+    name: 'Prejuízo no SCR',
+    id: 'prejuizo-scr',
+    value: 'Proponente/Grupo Familiar possui dívidas baixadas como Prejuízo no SCR. '
+  },
+  {
+    name: 'Dívidas vencidas',
+    id: 'dividas-vencidas',
+    value: 'Proponente/Grupo Familiar possui dívidas vencidas no SCR. '
+  },
+  {
+    name: 'Pendência CEF',
+    id: 'pendencia-cef',
+    value: 'Proponente/grupo familiar possui pendência. Procurar Agência de vinculação para detalhes. '
+  },
+  {
+    name: '',
+    id: '',
+    value: ''
+  }
+]
+
 // Array com dados de links que serão usados no sistema
 const consultas = [
   {
@@ -197,6 +251,7 @@ const HTMLacompanharFID = (FID, link) => {
 const nav = `<nav class="navbar mt-5"><div class="container container-fluid d-flex justify-content-between"><div style="display: flex; align-items: center;"><span class="navbar-icon"></span><b class="navbar-brand"></b></div><div class="btn-group dropstart" role="group"><button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Ir para</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#" data-link="confirmacao"><i class="bi bi-file-earmark-break"></i> Confirmação CCA</a></li><li><a class="dropdown-item" href="#" data-link="consultas"><i class="bi bi-file-earmark-check"></i> Consultas</a></li><li><a class="dropdown-item" href="#" data-link="arquivos"><i class="bi bi-file-earmark-medical"></i> Arquivos</a></li><li><a class="dropdown-item" href="#" data-link="desligamento"><i class="bi bi-file-earmark-text"></i> Desligamento</a></li></ul></div></div></nav>`;
 
 export const conteudos = {
+  selecoes,  
   accordion_item,
   secao_rendas,
   consultas,

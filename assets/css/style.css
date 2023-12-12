@@ -221,7 +221,7 @@ textarea::-webkit-scrollbar{
 }
 
 [data-element="area-relatorio"]{
-
+  position: static;
 }
 
 @media screen and (width <= 445px) {

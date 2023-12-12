@@ -82,7 +82,7 @@ button i{
       outline: none;
     }
 
-    &:hover:not(.checked), &:focus:not(.checked){
+    &:hover:not(.checked), :focus:not(.checked){
       background-color: rgba(0, 123, 255, 1) !important;
       color: #FFF;
     }

@@ -364,61 +364,10 @@ const tratamentoCampos = (input) => {
     })
 
     // Funcionalidade de seleção de elementos de opção de fácil acesso
-    const selecoes = [
-      {
-        name: 'Tela solicitada',
-        id: 'tela-endividamento',
-        value: 'Tela de comprometimento solicitada. '
-      },
-      {
-        name: 'FGTS solicitado',
-        id: 'FGTS-solicitado',
-        value: 'Saldo FGTS e se tem bloqueio solicitado. '
-      },
-      {
-        name: 'Verificação FGTS',
-        id: 'verificacao-FGTS',
-        value: 'Verificação do saldo FGTS, possibilidade de uso e se tem bloqueio solicitado. '
-      },
-      {
-        name: 'Autorização FGTS',
-        id: 'autorizacao-FGTS',
-        value: 'Gentileza solicitar autorização para consulta à Caixa no APP do FGTS, para verificar o tempo de serviço. '
-      },
-      {
-        name: 'Aviso IRPF',
-        id: 'aviso-IRPF',
-        value: 'Importante fazer a declaração tendo em vista que ela só é aceita se os rendimentos forem superiores ao mínimo obrigatório para se declarar. '
-      },
-      {
-        name: 'Restrição Externa',
-        id: 'restricao-externa',
-        value: 'Proponente/grupo familiar possui restrição externa. Necessária regularização para nova avaliação da proposta. '
-      },
-      {
-        name: 'Prejuízo no SCR',
-        id: 'prejuizo-scr',
-        value: 'Proponente/Grupo Familiar possui dívidas baixadas como Prejuízo no SCR. '
-      },
-      {
-        name: 'Dívidas vencidas',
-        id: 'dividas-vencidas',
-        value: 'Proponente/Grupo Familiar possui dívidas vencidas no SCR. '
-      },
-      {
-        name: 'Pendência CEF',
-        id: 'pendencia-cef',
-        value: 'Proponente/grupo familiar possui pendência. Procurar Agência de vinculação para detalhes. '
-      },
-      {
-        name: '',
-        id: '',
-        value: ''
-      }
-    ]
+    const selecoes = Object.freeze(conteudos.selecoes);
 
     if(!isEmpty(document.querySelector('.selecao-multiplas-opcoes'))){
-      selecoes.sort((a, b) => a.name.localeCompare(b.name)).filter((e) => !isEmpty(e.name)).forEach((selecao) => {
+      selecoes.toSorted((a, b) => a.name.localeCompare(b.name)).filter((e) => !isEmpty(e.name)).forEach((selecao) => {
         const formGroup = document.createElement('div');
         formGroup.classList.add('form-group');
   
@@ -446,9 +395,20 @@ const tratamentoCampos = (input) => {
       document.querySelectorAll('.selecao-multiplas-opcoes input').forEach((input) => {
         input.addEventListener('input', atualizarBtn);
         // input.addEventListener('change', atualizarBtn);
-  
+        
+        // Estilizar o label quando o input está sob foco
+        input.addEventListener('focus', (evento) => {
+          evento.target.parentElement.querySelector('label').classList.remove('btn-outline-primary');
+          evento.target.parentElement.querySelector('label').classList.add('btn-primary');
+        })
+
+        // Estilizar o label quando o input perde o foco
+        input.addEventListener('blur', (evento) => {
+          evento.target.parentElement.querySelector('label').classList.remove('btn-primary');
+          evento.target.parentElement.querySelector('label').classList.add('btn-outline-primary');
+        })
+
         function atualizarBtn(){
-          // console.log(input.checked)
           const btn = input.closest('div.form-group').querySelector('label.btn');
           if(input.checked){
             btn.classList.add('checked');
