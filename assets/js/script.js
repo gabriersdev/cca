@@ -247,7 +247,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
       }, 1000)
     })
   })
-  
+
 })();
 
 let text_areas_foram_editados = false;
@@ -263,6 +263,7 @@ export function text_areas_editados(condicao){
     text_areas_foram_editados = condicao;
     return condicao;
   }
+
 };
 
 const datetime = moment();

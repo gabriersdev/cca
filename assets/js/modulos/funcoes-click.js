@@ -205,21 +205,21 @@ const acaoClickCopiar = (btn) => {
       case 'baixar-acompanhar-fid':
       try{
         const link = new URL(elemento.parentElement.querySelector('input[type=url]').value);
-        const split = link.search.split('&');
-        
+        const split = link.search.split('codigo=');
+
         const valido = [
           link.origin.toLowerCase() == 'https://portalsafi.direcional.com.br', 
           link.pathname.toLowerCase() == '/fluxo', 
+          link.search.includes("codigo"),
           split.length == 2, 
-          split[0].search('codigo') > 0,
-          typeof(parseInt(split[0].split('=')[1])) == 'number',
+          typeof (parseInt(split[1]) === "number") && !isNaN(parseInt(split[1])),
         ];
         
-        const FID = split[0].split('=')[1];
+        const FID = split[1];
         
         if(valido.every(e => e == true)){
           reportar(true);
-          criarEBaixarHTMLAcompanhamento(FID, link.href, `Acompanhe o FID ${FID}`);
+          criarEBaixarHTMLAcompanhamento(FID, `Acompanhe o FID ${FID}`);
         }else{
           reportar(false, 'O link informado para o FID não é válido');
         }
@@ -280,8 +280,8 @@ const acaoClickCopiar = (btn) => {
     saveAs(blob, `${nome.toUpperCase()}.json`);
   }
   
-  const criarEBaixarHTMLAcompanhamento = (FID, link, nome) => {
-    let blob = new Blob([`${conteudos.HTMLacompanharFID(FID, link)}`], {type: "text/plain;charset=utf-8"});
+  const criarEBaixarHTMLAcompanhamento = (FID, nome) => {
+    let blob = new Blob([`${conteudos.HTMLacompanharFID(FID, `https://portalsafi.direcional.com.br/Fluxo?codigo=${FID}`)}`], {type: "text/plain;charset=utf-8"});
     saveAs(blob, `${nome.trim()}.html`);
   }
   
