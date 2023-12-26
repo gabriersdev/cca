@@ -156,17 +156,17 @@ const acaoClickCopiar = (btn) => {
       }
       
       copiar(e).then(retorno => {
-        feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success', html_retorno: html_retorno});});
+        feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success', html_retorno: html_retorno});});
       })
     }catch(error){
-      feedback({html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-outline-danger'});
+      feedback({html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-danger'});
     }
     
     function feedback({html, classe, html_retorno}){
       // const html_botao = btn.innerHTML;
       const html_botao = `<i class="bi bi-clipboard"></i>`;
-      const class_botao = !isEmpty(btn.classList.value) ? btn.classList.value == 'btn btn-outline-success' ? '' : btn.classList.value : '';
-      // const class_botao = `btn btn-outline-primary`;
+      const class_botao = !isEmpty(btn.classList.value) ? btn.classList.value == 'btn btn-success' ? '' : btn.classList.value : '';
+      // const class_botao = `btn btn-primary`;
       
       btn.innerHTML = html;
       btn.classList.value = classe;
@@ -539,11 +539,11 @@ const acaoClickCopiar = (btn) => {
             }
           })
           
-          feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success'}, botao)
+          feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success'}, botao)
           
           function feedback({html, classe}, btn){
             const html_botao = `<i class="bi bi-arrow-clockwise"></i>`;
-            const class_botao = 'btn btn-outline-info';
+            const class_botao = 'btn btn-info';
             
             btn.innerHTML = html;
             btn.classList.value = classe;
