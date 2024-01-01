@@ -206,20 +206,20 @@ const acaoClickCopiar = (btn) => {
       try{
         const link = new URL(elemento.parentElement.querySelector('input[type=url]').value);
         const split = link.search.split('codigo=');
+        const FID = split[1].split("=")[0].split("&")[0];
 
         const valido = [
           link.origin.toLowerCase() == 'https://portalsafi.direcional.com.br', 
           link.pathname.toLowerCase() == '/fluxo', 
           link.search.includes("codigo"),
           split.length == 2, 
-          typeof (parseInt(split[1]) === "number") && !isNaN(parseInt(split[1])),
+          !isEmpty(FID),
+          typeof (parseInt(FID) === "number") && !isNaN(parseInt(split[1])),
         ];
-        
-        const FID = split[1];
         
         if(valido.every(e => e == true)){
           reportar(true);
-          criarEBaixarHTMLAcompanhamento(FID, `Acompanhe o FID ${FID}`);
+          criarEBaixarHTMLAcompanhamento(parseInt(FID), `Acompanhe o FID ${parseInt(FID)}`);
         }else{
           reportar(false, 'O link informado para o FID não é válido');
         }
@@ -237,11 +237,6 @@ const acaoClickCopiar = (btn) => {
           retorno.setAttribute('class', '');
           retorno.innerText = '';
         }
-        
-        setTimeout(() => {
-          // retorno.setAttribute('class', '');
-          // retorno.innerText = '';
-        }, 2000);
       }
       
       break;
