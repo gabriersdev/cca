@@ -1,6 +1,6 @@
 import { conteudos } from './conteudos.js';
 import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome, resizeTextArea, capitalize, cumprimentoHorario } from './utilitarios.js';
-import { renderPendencias, renderResumo } from './funcoes-render.js';
+import { renderPendencias, renderResumo, renderTooltips } from './funcoes-render.js';
 import { atualizar, escutaEventoInput, verificarInputsRecarregamento } from './funcoes-base.js';
 import { atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
 
@@ -43,9 +43,10 @@ const clickIncluirRenda = (botao) => {
   escutaEventoInput();
   clickRemoverRenda(div);
   renderPendencias();
+  renderTooltips();
 }
 
-window.clickIncluirRenda = clickIncluirRenda
+window.clickIncluirRenda = clickIncluirRenda;
 
 const clickRemoverRenda = (elemento) => {
   if(!isEmpty(elemento)){
