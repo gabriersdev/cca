@@ -21,6 +21,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
   const pagina = new URL(window.location).pathname.trim().replace('/', '');
   const body = document.querySelector('body');
   
+  // TODO: Separar os blocos grandes em funções em outros arquivos
   if(pagina == 'index.html' || pagina == 'cca/' || pagina == 'cca/index.html' || isEmpty(pagina)){
     body.innerHTML += conteudos.conteudo_pagina_confirmacao;
     const accordion_item = document.createElement('div');
@@ -118,6 +119,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
       
     }
     
+    // TODO: Separar responsabilidades e scripts carregados por página
     async function getCartorios(){
       const response = await fetch('https://apicartorioshmlg.registrocivil.org.br/api/cartorios/geolocalizacao?estado=MG&apikey=SECRET')
       return response.json();
@@ -213,7 +215,6 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
       id_mais_recente = new Number(ids.toSorted((a, b) => b - a)[0]);
     }
     
-    
     $('[data-content="secao-controlada"] .card-header').on('click', (evento) => {
       $('[data-content="secao-controlada"] .card-body').toggleClass('none');
       if($('[data-content="secao-controlada"] .card-body').css('display') !== 'none'){
@@ -263,7 +264,6 @@ export function text_areas_editados(condicao){
     text_areas_foram_editados = condicao;
     return condicao;
   }
-
 };
 
 const datetime = moment();
