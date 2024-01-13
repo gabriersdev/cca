@@ -85,6 +85,20 @@ textarea::-webkit-scrollbar{
   display: none;
 }
 
+.btn-transparent{
+  border: 1px solid rgb(0, 0, 0, 0.4);
+  color: #000;
+  
+  &:hover{
+    border: 1px solid rgb(0, 0, 0, 0.5);
+    color: #000;
+  }
+}
+
+[data-content="secao-controlada"] .card-header{
+  padding: 1.25rem 1rem;
+}
+
 @media screen and (max-width: 450px) {
   .hgroup{
     flex-direction: column;

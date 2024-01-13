@@ -1,7 +1,7 @@
 "use strict";
 
 import { conteudos } from './modulos/conteudos.js';
-import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarNumero, sanitizarString, criarEBaixarArquivo, resizeTextArea } from './modulos/utilitarios.js';
+import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarNumero, sanitizarString, criarEBaixarArquivo, resizeTextArea, splitArray } from './modulos/utilitarios.js';
 import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
 import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/funcoes-de-conteudo.js';
@@ -101,7 +101,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
           }
         })
         
-        criarEBaixarArquivo(JSON.stringify(saida.join('\n')), `LAUDO ${event.target.querySelector('[data-input="matricula"]').value}`, 'txt')
+        criarEBaixarArquivo(JSON.stringify('SOLICITAÇÃO DE LAUDO\n\n' + splitArray(saida, [0, 4]).join('\n') + '\n\n' + splitArray(saida, [5, 6]).join('\n') + '\n\n' +  splitArray(saida, [7, 10]).join('\n')), `LAUDO ${event.target.querySelector('[data-input="matricula"]').value}`, 'txt')
       })
       
       $('textarea').each((index, elemento) => {

@@ -340,6 +340,10 @@ const criarEBaixarArquivo = (conteudo, nome_arquivo, ext) => {
   }
 }
 
+const splitArray = (array, [initial, final]) => {
+  return array.filter((item, index) => index >= initial && index <= final);
+}
+
 export{
   isEmpty,
   capitalize,
@@ -359,5 +363,6 @@ export{
   limparEFocar,
   cumprimentoHorario,
   sanitizarNumero,
-  criarEBaixarArquivo
+  criarEBaixarArquivo,
+  splitArray
 }
