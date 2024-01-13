@@ -285,7 +285,7 @@ const criarEBaixarJSON = (conteudo, nome) => {
 }
 
 const criarEBaixarHTMLAcompanhamento = (FID, nome) => {
-  let blob = new Blob([`${conteudos.HTMLacompanharFID(FID, `https://portalsafi.direcional.com.br/Fluxo?codigo=${FID}`)}`], {type: "text/plain;charset=utf-8"});
+  let blob = new Blob([`${conteudos.HTMLacompanharFID(String(FID), `https://portalsafi.direcional.com.br/Fluxo?codigo=${FID}`)}`], {type: "text/plain;charset=utf-8"});
   saveAs(blob, `${nome.trim()}.html`);
 }
 
