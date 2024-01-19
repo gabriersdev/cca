@@ -283,7 +283,7 @@ const tratamentoCampos = (input) => {
       ].forEach(conteudo => {
         const link = conteudo.link
         try{
-          $('.links-faceis-confirmacao').append(`<a class="card" href="${link.includes('https') ? link : `https://drive.google.com/uc?export=download&id=${(id_arquivos.conteudos.find(e => e.conteudo == link)).attr}`}" target="_blank" data-item="card-link-facil" rel="noreferrer noopener" data-toggle="tooltip" data-placement="top" title="Clique para abrir ->"><div class="card-header">${conteudo.sistema}<i class="bi bi-arrow-up-right-square" data-icon="icone"></i></div><div class="card-body"><b>${conteudo.titulo}</b></div></a>`);
+          $('.links-faceis-confirmacao [data-element="area-content"]').append(`<a class="card" href="${link.includes('https') ? link : `https://drive.google.com/uc?export=download&id=${(id_arquivos.conteudos.find(e => e.conteudo == link)).attr}`}" target="_blank" data-item="card-link-facil" rel="noreferrer noopener" data-toggle="tooltip" data-placement="top" title="Clique para abrir ->"><div class="card-header">${conteudo.sistema}<i class="bi bi-arrow-up-right-square" data-icon="icone"></i></div><div class="card-body"><b>${conteudo.titulo}</b></div></a>`);
         }catch(error){
           '#'
         }

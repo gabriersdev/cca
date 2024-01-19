@@ -1,17 +1,17 @@
-.links-faceis-confirmacao{
+.links-faceis-confirmacao [data-element="area-content"]{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(calc(33% - 1rem), 1fr));
   grid-gap: 1rem;
 }
 
 @media screen and (width <= 768px) {
-  .links-faceis-confirmacao{
+  .links-faceis-confirmacao [data-element="area-content"]{
     grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1rem), 3fr));
   }
 }
 
 @media screen and (width <= 450px) {
-  .links-faceis-confirmacao{
+  .links-faceis-confirmacao [data-element="area-content"]{
     grid-template-columns: repeat(auto-fill, 100%);
   }
 }
