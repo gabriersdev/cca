@@ -1,5 +1,5 @@
 import { conteudos } from './conteudos.js';
-import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome, resizeTextArea, capitalize, cumprimentoHorario } from './utilitarios.js';
+import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome, resizeTextArea, capitalize, cumprimentoHorario, verificarSeFIDvalido } from './utilitarios.js';
 import { renderPendencias, renderResumo, renderTooltips } from './funcoes-render.js';
 import { atualizar, escutaEventoInput, verificarInputsRecarregamento } from './funcoes-base.js';
 import { atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
@@ -216,17 +216,16 @@ const clickDownload = (elemento, evento) => {
       const link = new URL(elemento.parentElement.querySelector('input[type=url]').value);
       const split = link.search.split('codigo=');
       const FID = split[1].split("=")[0].split("&")[0];
-      
+
       const valido = [
         link.origin.toLowerCase() == 'https://portalsafi.direcional.com.br', 
         link.pathname.toLowerCase() == '/fluxo', 
         link.search.includes("codigo"),
         split.length == 2, 
-        !isEmpty(FID),
-        typeof (parseInt(FID) === "number") && !isNaN(parseInt(split[1])),
-      ];
-      
-      if(valido.every(e => e == true)){
+        typeof (parseInt(FID) === "number") && !isNaN(parseInt(split[1]))
+      ]
+
+      if(verificarSeFIDvalido(FID) && valido.every(e => e == true)){
         reportar(true);
         criarEBaixarHTMLAcompanhamento(parseInt(FID), `Acompanhe o FID ${parseInt(FID)}`);
       }else{

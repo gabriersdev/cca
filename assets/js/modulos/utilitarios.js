@@ -344,6 +344,14 @@ const splitArray = (array, [initial, final]) => {
   return array.filter((item, index) => index >= initial && index <= final);
 }
 
+const verificarSeFIDvalido = (FID) => {
+  const valido = [
+    !isEmpty(FID),
+    typeof parseInt(FID) === "number" && !isNaN(parseInt(FID)),
+  ];
+  return valido.every(e => e == true);  
+}
+
 export{
   isEmpty,
   capitalize,
@@ -364,5 +372,6 @@ export{
   cumprimentoHorario,
   sanitizarNumero,
   criarEBaixarArquivo,
-  splitArray
+  splitArray,
+  verificarSeFIDvalido
 }

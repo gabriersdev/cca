@@ -3,12 +3,12 @@ import { conteudos } from './conteudos.js';
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias, submitInformarRestricoes, clickAcionarModal, clickLimparTudoSecao, clickEnviarDados, acaoClickIncluirProponente, clickDownload, acionarDevolucaoFID, acionarModalAddInformacoes } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
-import { isEmpty, resizeTextArea } from './utilitarios.js';
+import { isEmpty, resizeTextArea, verificarSeFIDvalido } from './utilitarios.js';
 import { id_arquivos } from './confirmacao.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = (funcao) => {
-  if(true){
+  if(false){
     if(isEmpty(funcao)){
       if(document.title.trim() == 'Confirmação de dados - CCA' && true){
         window.onbeforeunload = async (evento) => {
@@ -28,10 +28,11 @@ const verificarInputsRecarregamento = (funcao) => {
 }
 
 const escutaEventoInput = () => {
-  const inputs = document.querySelectorAll('[data-element="input"]');
+  const inputs = Array.from(document.querySelectorAll('[data-element="input"]'));
   inputs.forEach(elemento => {
+
     tratamentoCampos(elemento);
-    // removeEventListener('input', elemento);
+
     if(elemento.dataset.input == "nome"){
       edicaoInputNome();
     }
@@ -58,6 +59,31 @@ const escutaEventoInput = () => {
     }
     else if(elemento.dataset.content == 'text-restricoes'){
       edicaoTextAreaRestricoes(elemento);
+    }
+    else if(elemento.dataset.input == 'id-fid'){
+      elemento.addEventListener('input', (evento) => {
+        if(verificarSeFIDvalido(elemento.value)){
+          // Exibir botão para ir até o link de acompanhamento
+          $('[data-action="ir-para-link-FID-gerado"]').attr('disabled', false);
+          
+          // Limpar link de acompanhamento
+          $('#input-URL-acompanhar-FID').val(`https://portalsafi.direcional.com.br/Fluxo?codigo=${elemento.value}`);
+        }else{
+          // Ocultar botão para ir até o link de acompanhamento
+          $('[data-action="ir-para-link-FID-gerado"]').attr('disabled', true);
+          
+          // Limpar link de acompanhamento
+          $('#input-URL-acompanhar-FID').val('');
+        }
+      })
+
+      $('[data-action="ir-para-link-FID-gerado"]').on('click', (evento) => {	
+        evento.preventDefault();
+        if(evento.target.disabled === false){
+          $('#modal-informacoes-adicionais').modal('hide');
+          window.scrollTo({top: document.querySelector('#area-acompanhamento-fid').offsetTop, behavior: 'smooth'});
+        }
+      })
     }
     if(elemento.tagName.toLowerCase() !== 'textarea'){
       elemento.addEventListener('input', () => { renderPendencias(); });
