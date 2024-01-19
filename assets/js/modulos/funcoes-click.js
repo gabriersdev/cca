@@ -190,7 +190,6 @@ window.acaoClickCopiar = acaoClickCopiar;
 
 // TODO - Definir origin para ação de download de acompanhamento de FID
 const clickDownload = (elemento, evento) => {
-  console.log(elemento.dataset.download);
   evento.preventDefault();
   const saida = new Array();
   const proponentes = document.querySelectorAll('.accordion-item');
