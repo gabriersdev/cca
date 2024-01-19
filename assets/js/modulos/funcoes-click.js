@@ -188,7 +188,9 @@ const acaoClickCopiar = (btn) => {
 }
 window.acaoClickCopiar = acaoClickCopiar;
 
+// TODO - Definir origin para ação de download de acompanhamento de FID
 const clickDownload = (elemento, evento) => {
+  console.log(elemento.dataset.download);
   evento.preventDefault();
   const saida = new Array();
   const proponentes = document.querySelectorAll('.accordion-item');
@@ -213,7 +215,7 @@ const clickDownload = (elemento, evento) => {
     
     case 'baixar-acompanhar-fid':
     try{
-      const link = new URL(elemento.parentElement.querySelector('input[type=url]').value);
+      const link = new URL(document.querySelector('#input-URL-acompanhar-FID').value);
       const split = link.search.split('codigo=');
       const FID = split[1].split("=")[0].split("&")[0];
 

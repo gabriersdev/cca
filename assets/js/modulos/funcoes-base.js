@@ -61,22 +61,29 @@ const escutaEventoInput = () => {
       edicaoTextAreaRestricoes(elemento);
     }
     else if(elemento.dataset.input == 'id-fid'){
+      let linkGerado
+
       elemento.addEventListener('input', (evento) => {
         if(verificarSeFIDvalido(elemento.value)){
           // Exibir botão para ir até o link de acompanhamento
-          $('[data-action="ir-para-link-FID-gerado"]').attr('disabled', false);
+          $('[data-element="btn-ref-link-FID"]').attr('disabled', false);
           
+          linkGerado = `https://portalsafi.direcional.com.br/Fluxo?codigo=${elemento.value}`;
+
           // Limpar link de acompanhamento
-          $('#input-URL-acompanhar-FID').val(`https://portalsafi.direcional.com.br/Fluxo?codigo=${elemento.value}`);
+          $('#input-URL-acompanhar-FID').val(linkGerado);
         }else{
           // Ocultar botão para ir até o link de acompanhamento
-          $('[data-action="ir-para-link-FID-gerado"]').attr('disabled', true);
+          $('[data-element="btn-ref-link-FID"]').attr('disabled', true);
           
+          linkGerado = '';
+
           // Limpar link de acompanhamento
           $('#input-URL-acompanhar-FID').val('');
         }
       })
 
+      // TODO - Separar em outro arquivo
       $('[data-action="ir-para-link-FID-gerado"]').on('click', (evento) => {	
         evento.preventDefault();
         if(evento.target.disabled === false){
@@ -84,7 +91,27 @@ const escutaEventoInput = () => {
           window.scrollTo({top: document.querySelector('#area-acompanhamento-fid').offsetTop, behavior: 'smooth'});
         }
       })
+
+      $('[data-action="baixar-acompanhamento-FID"]').on('click', (evento) => {
+        evento.preventDefault();
+        if(evento.target.disabled === false){
+          if(!isEmpty(linkGerado)){
+            clickDownload({dataset: {download: 'baixar-acompanhar-fid'}}, evento);
+          }
+        }
+      })
+
+      $('[data-action="abrir-link-FID"]').on('click', (evento) => {
+        evento.preventDefault();
+        if(evento.target.disabled === false){;
+          if(!isEmpty(linkGerado)){
+            window.open(linkGerado, '_blank', 'noopener,noreferrer');
+          }
+        }
+      
+      })
     }
+
     if(elemento.tagName.toLowerCase() !== 'textarea'){
       elemento.addEventListener('input', () => { renderPendencias(); });
     }
