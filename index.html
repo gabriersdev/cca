@@ -75,9 +75,9 @@
               <label for="id-fid" class="mb-1">FID</label>
               <div class="input-group">
                 <input type="text" class="form-control" id="id-fid" name="id-fid" data-element="input" data-input="id-fid" autocomplete="off">
-                <button type="button" class="btn btn-outline-secondary" disabled data-element="btn-ref-link-FID" data-action="ir-para-link-FID-gerado" data-toggle="tooltip" title="Link para o FID">Link</button>
-                <button type="button" class="btn btn-outline-secondary" disabled data-element="btn-ref-link-FID" data-action="baixar-acompanhamento-FID" data-toggle="tooltip" title="Baixar link para acompanhamento"><i class="bi bi-file-earmark-arrow-down"></i></button>
-                <button type="button" class="btn btn-outline-secondary" disabled data-element="btn-ref-link-FID" data-action="abrir-link-FID" data-toggle="tooltip" title="Abrir o FID"><i class="bi bi-arrow-up-right"></i></button>
+                <button type="button" tabindex="-1" class="btn btn-outline-secondary" disabled data-element="btn-ref-link-FID" data-action="ir-para-link-FID-gerado" data-toggle="tooltip" title="Link para o FID">Link</button>
+                <button type="button" tabindex="0" class="btn btn-outline-secondary" disabled data-element="btn-ref-link-FID" data-action="baixar-acompanhamento-FID" data-toggle="tooltip" title="Baixar link para acompanhamento"><i class="bi bi-file-earmark-arrow-down"></i></button>
+                <button type="button" tabindex="-1" class="btn btn-outline-secondary" disabled data-element="btn-ref-link-FID" data-action="abrir-link-FID" data-toggle="tooltip" title="Abrir o FID"><i class="bi bi-arrow-up-right"></i></button>
               </div>
             </div>
             <div class="form-group mt-3">
@@ -258,7 +258,7 @@
               <div class="col form-group mt-3">
                 <div class="d-flex justify-content-between align-items-center">
                   <label for="dev-pendencias" class="mb-1">Pendência(s)</label>
-                  <button class="btn btn-sm btn-light mb-2" data-toggle="tooltip" type="button" data-action="importar-pendencias" data-placement="bottom" title="Importar pendências"><i class="bi bi-arrow-up"></i></button>
+                  <button class="btn btn-sm btn-light mb-2" tabindex="-1" data-toggle="tooltip" type="button" data-action="importar-pendencias" data-placement="bottom" title="Importar pendências"><i class="bi bi-arrow-up"></i></button>
                 </div>
                 <textarea type="text" class="form-control" id="dev-pendencias" name="dev-pendencias" data-element="input" autocomplete="off" spellcheck="true"></textarea>
               </div>
@@ -274,7 +274,7 @@
               <div class="col form-group mt-3">
                 <div class="d-flex justify-content-between align-items-center">
                   <label for="dev-restricoes" class="mb-1">Restrição(s)</label>
-                  <button class="btn btn-sm btn-light mb-2" data-toggle="tooltip" type="button" data-bs-target="#modal-informar-restricoes" data-bs-toggle="modal" data-action="acionar-modal" data-placement="bottom" title="Informar restrições"><i class="bi bi-currency-dollar"></i></button>
+                  <button class="btn btn-sm btn-light mb-2" tabindex="0" data-toggle="tooltip" type="button" data-bs-target="#modal-informar-restricoes" data-bs-toggle="modal" data-action="acionar-modal" data-placement="bottom" title="Informar restrições"><i class="bi bi-currency-dollar"></i></button>
                 </div>
                 <textarea type="text" class="form-control" id="dev-restricoes" name="dev-restricoes" data-element="input" autocomplete="off" spellcheck="true"></textarea>
               </div>
