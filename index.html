@@ -112,7 +112,7 @@
   </div>
 
   <div class="modal fade" id="modal-calcular-percentual" aria-hidden="true" aria-labelledby="modal-calcular-percentual-Label" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="modal-calcular-percentual-Label">Calcular percentual</h1>
@@ -126,36 +126,63 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" data-bs-toggle="tab" data-bs-target="#nav-percent-financiamento" role="tab">Percent. financiamento</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" data-bs-toggle="tab" data-bs-target="#nav-renda-necessaria" role="tab">Renda necessária</a>
+            </li>
           </ul>
 
           <div class="tab-content" id="nav-tabContent">
             <div data-tab="percent-parcela" class="tab-pane fade active show" id="nav-percent-parcela" role="tabpanel">
               <form action="">
                 <div class="form-group">
-                  <label for="id-fid" class="mb-1">Renda bruta total</label>
+                  <label for="renda-bruta-total" class="mb-1">Renda bruta total</label>
                   <input type="text" class="form-control" id="renda-bruta-total" name="renda-bruta-total" data-element="input" data-input="renda-bruta-total" data-maskc="money" autocomplete="off" required>
                 </div>
                 <div class="form-group mt-3">
-                  <label for="id-empreendimento" class="mb-1">Parcela liberada</label>
+                  <label for="parcela-liberada" class="mb-1">Parcela liberada</label>
                   <input type="text" class="form-control" id="parcela-liberada" name="parcela-liberada" data-element="input" data-input="parcela-liberada" data-maskc="money" required>
                 </div>
-                <button type="submit" class="btn btn-primary mt-4 mb-2" style="width: 100%;">Calcular</button>
+                <div class="mt-4 mb-2" style="display: grid; grid-template-columns: repeat(auto-fill, calc(50% - 0.5rem)); gap: 1rem;">
+                  <button type="submit" class="btn btn-primary">Calcular</button>
+                  <button type="reset" class="btn btn-secondary">Limpar</button>
+                </div>
               </form>
-              <div class="percent-retorno">
-              </div>
             </div>
   
             <div data-tab="percent-financiamento" class="tab-pane fade" id="nav-percent-financiamento" role="tabpanel">
               <form action="">
                 <div class="form-group">
-                  <label for="id-fid" class="mb-1">Valor de compra e venda</label>
+                  <label for="valor-de-compra-e-venda" class="mb-1">Valor de compra e venda</label>
                   <input type="text" class="form-control" id="valor-de-compra-e-venda" name="valor-de-compra-e-venda" data-element="input" data-input="valor-de-compra-e-venda" data-maskc="money" autocomplete="off" required>
                 </div>
                 <div class="form-group mt-3">
-                  <label for="id-empreendimento" class="mb-1">Valor financiado</label>
+                  <label for="valor-financiado" class="mb-1">Valor financiado</label>
                   <input type="text" class="form-control" id="valor-financiado" name="valor-financiado" data-element="input" data-input="valor-financiado" data-maskc="money" required>
                 </div>
-                <button type="submit" class="btn btn-primary mt-4 mb-2" style="width: 100%;">Calcular</button>
+                <div class="mt-4 mb-2" style="display: grid; grid-template-columns: repeat(auto-fill, calc(50% - 0.5rem)); gap: 1rem;">
+                  <button type="submit" class="btn btn-primary">Calcular</button>
+                  <button type="reset" class="btn btn-secondary">Limpar</button>
+                </div>
+              </form>
+              <div class="percent-retorno">
+              </div>
+            </div>
+
+            <div data-tab="renda-necessaria" class="tab-pane fade" id="nav-renda-necessaria"" role="tabpanel">
+              <form action="">
+                <div class="form-group">
+                  <label for="percentual-condicionamento" class="mb-1">Percentual de condicionamento</label>
+                  <span class="text-muted">(Apenas números)</span>
+                  <input type="number" step="0.001" class="form-control" id="percentual-condicionamento" name="percentual-condicionamento" placeholder="0.000" data-element="input" data-input="percentual-condicionamento" autocomplete="off" required>
+                </div>
+                <div class="form-group mt-3">
+                  <label for="parcela-necessaria" class="mb-1">Parcela necessária</label>
+                  <input type="text" class="form-control" id="parcela-necessaria" name="parcela-necessaria" data-element="input" data-input="parcela-necessaria" data-maskc="money" required>
+                </div>
+                <div class="mt-4 mb-2" style="display: grid; grid-template-columns: repeat(auto-fill, calc(50% - 0.5rem)); gap: 1rem;">
+                  <button type="submit" class="btn btn-primary">Calcular</button>
+                  <button type="reset" class="btn btn-secondary">Limpar</button>
+                </div>
               </form>
               <div class="percent-retorno">
               </div>

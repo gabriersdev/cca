@@ -515,33 +515,36 @@ function clickLimparTudoSecao(){
       const elementos_nomes = [
         'modal-informacoes-adicionais',
         'modal-devolucao-fid',
-        'modal-informar-restricoes'
+        'modal-informar-restricoes',
+        'modal-calcular-percentual'
       ]
       
       try{
         elementos_nomes.forEach(elemento => {
-          const formulario = document.querySelector(`#${elemento} form`);
+          const formulario = document.querySelectorAll(`#${elemento} form`);
           
-          const [inputs, textareas, inputs_checks] = [formulario.querySelectorAll(`input`), formulario.querySelectorAll(`textarea`), formulario.querySelectorAll(`.form-check-input`)]
+          formulario.forEach(form => {
+            const [inputs, textareas, inputs_checks] = [form.querySelectorAll(`input`), form.querySelectorAll(`textarea`), form.querySelectorAll(`.form-check-input`)]
           
-          if(!isEmpty(inputs)){
-            inputs.forEach(input => {
-              input.value = '';
-            })
-          }
-          
-          if(!isEmpty(textareas)){
-            textareas.forEach(textarea => {
-              textarea.value = '';
-            })
-          }
-          
-          if(!isEmpty(inputs_checks)){
-            inputs_checks.forEach(input => {
-              input.checked = false;
-            })
-          }
-        })
+            if(!isEmpty(inputs)){
+              inputs.forEach(input => {
+                input.value = '';
+              })
+            }
+            
+            if(!isEmpty(textareas)){
+              textareas.forEach(textarea => {
+                textarea.value = '';
+              })
+            }
+            
+            if(!isEmpty(inputs_checks)){
+              inputs_checks.forEach(input => {
+                input.checked = false;
+              })
+            }
+          });
+        });
         
         feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success'}, botao)
         

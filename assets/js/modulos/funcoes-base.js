@@ -184,21 +184,6 @@ const tratamentoCampos = (input) => {
         })
         
         input.removeAttribute('maxlength');
-        
-        // input.addEventListener('input', (evento) => {
-        //   const value = evento.target.value;
-        
-        //   const split = value.trim().split(' ').filter(e => e !== ' ');
-        //   const convertido = (split.map(e => parseInt(e)));
-        //   let valor = (convertido.find(e => !isNaN(e))).toString();
-        //   valor = '' + valor;
-        //   // console.log(valor.substring(0, valor.lenght - 2) + valor.susbtring(valor.lenght - 2, valor.lenght));
-        
-        //   // console.log(valor);
-        
-        //   // console.log(SimpleMaskMoney.formatToCurrency(), { prefix: 'R$' }));
-        //   // evento.target.value = 
-        // })
       }
       
     });
@@ -333,33 +318,46 @@ const tratamentoCampos = (input) => {
       }
     })
 
-    $('[data-action="calcular-percentual"]').on('click', (evento) => {
+    $('[data-action="calcular-percentual"], #modal-calcular-percentual .nav-item a.nav-link').on('click', (evento) => {
       evento.preventDefault();
 
       const percentuais = {
         parcela: document.querySelector('[data-bs-toggle="tab"][data-bs-target="#nav-percent-parcela"]').classList.contains('active'),
         financiamento: document.querySelector('[data-bs-toggle="tab"][data-bs-target="#nav-percent-financiamento"]').classList.contains('active'),
+        rendaNecessaria: document.querySelector('[data-bs-toggle="tab"][data-bs-target="#nav-renda-necessaria"]').classList.contains('active'),
       }
 
       setTimeout(() => {
-        document.querySelector(`#modal-calcular-percentual [data-tab=${percentuais.parcela ? "percent-parcela" : "percent-financiamento"}]`).querySelectorAll('input')[0].focus();
+        if(percentuais.parcela){
+          // console.log("Percentual de parcela");
+          $('#modal-calcular-percentual input[name=renda-bruta-total]').focus();
+        }else if(percentuais.financiamento){
+          // console.log("Percentual de financiamento");
+          $('#modal-calcular-percentual input[name=valor-de-compra-e-venda]').focus();
+        }else if(percentuais.rendaNecessaria){
+          // console.log("Percentual de condicionamento");
+          $('#modal-calcular-percentual input[name=percentual-condicionamento]').focus();
+        }
       }, 500)
     });
     
     $('#modal-calcular-percentual form').on('submit', (evento) => {
       evento.preventDefault(); 
       let saida = new Object;
+      let identificador;
       
       const percentuais = {
         parcela: document.querySelector('[data-bs-toggle="tab"][data-bs-target="#nav-percent-parcela"]').classList.contains('active'),
         financiamento: document.querySelector('[data-bs-toggle="tab"][data-bs-target="#nav-percent-financiamento"]').classList.contains('active'),
+        rendaNecessaria: document.querySelector('[data-bs-toggle="tab"][data-bs-target="#nav-renda-necessaria"]').classList.contains('active'),
       }
-      
+
       function BRLToFLoat(value) {
         return parseFloat(value.replace("R$ ", "").replaceAll(".", "").replace(",", "."));
       }
 
       if(percentuais.parcela){
+        identificador = 'percent-parcela';
         const renda = evento.target.querySelector('input[name=renda-bruta-total]').value;
         const parcela = evento.target.querySelector('input[name=parcela-liberada]').value;
         
@@ -384,7 +382,8 @@ const tratamentoCampos = (input) => {
             saida.type = 'danger';
           }
         }
-      }else{
+      }else if(percentuais.financiamento){
+        identificador = 'percent-financiamento';
         const valorImovel = evento.target.querySelector('input[name=valor-de-compra-e-venda]').value;
         const valorFinanciado = evento.target.querySelector('input[name=valor-financiado]').value;
 
@@ -409,11 +408,34 @@ const tratamentoCampos = (input) => {
             saida.type = 'danger';
           }
         }
-      }
-      
-      $(`#modal-calcular-percentual [data-tab=${percentuais.parcela ? "percent-parcela" : "percent-financiamento"}] div.percent-retorno`).html(`<div class="alert mt-2 mb-0 alert-${saida.type} none">${saida.message.toString()}</div>`);
+      }else if(percentuais.rendaNecessaria){
+        identificador = 'renda-necessaria';
+        const percentualCondicionamento = parseFloat(evento.target.querySelector('input[name="percentual-condicionamento"]').value.replaceAll(',', '.'));
+        const parcelaNecessaria = BRLToFLoat(evento.target.querySelector('input[name="parcela-necessaria"]').value);
 
-      $(`#modal-calcular-percentual [data-tab=${percentuais.parcela ? "percent-parcela" : "percent-financiamento"}] div.percent-retorno div.alert`).fadeIn(500);
+        if(percentualCondicionamento > 0 && percentualCondicionamento < 30 && parcelaNecessaria > 0 && isFinite(percentualCondicionamento) && isFinite(parcelaNecessaria) && !isNaN(percentualCondicionamento) && !isNaN(parcelaNecessaria)){
+          saida.message = `Necessário uma renda de ${((parcelaNecessaria * 100) / (percentualCondicionamento)).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} para atingir a parcela necessária de acordo com o percentual de condicionamento informado.`;
+          saida.type = 'primary';
+        }else{
+          if(percentualCondicionamento <= 0){
+            saida.message = "Percentual de condicionamento informado é igual a zero. Verifique os valores informados.";
+            saida.type = 'warning';
+          }else if(percentualCondicionamento > 30){
+            saida.message = "Percentual de condicionamento informado é maior que 30%. Verifique os valores informados.";
+            saida.type = 'warning';
+          }else if(parcelaNecessaria <= 0){
+            saida.message = "Parcela necessária informada é igual a zero. Verifique os valores informados.";
+            saida.type = 'warning';
+          }else{
+            saida.message = "Verifique os valores informados.";
+            saida.type = 'danger';
+          }
+        }
+      }
+
+      $(`#modal-calcular-percentual [data-tab="${identificador}"] div.percent-retorno`).html(`<div class="alert mt-2 mb-0 alert-${saida.type} none">${saida.message.toString()}</div>`);
+
+      $(`#modal-calcular-percentual [data-tab="${identificador}"] div.percent-retorno div.alert`).fadeIn(500);
     })
 
     // Funcionalidade de seleção de elementos de opção de fácil acesso
