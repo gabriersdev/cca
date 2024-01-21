@@ -352,6 +352,36 @@ const verificarSeFIDvalido = (FID) => {
   return valido.every(e => e == true);  
 }
 
+function feedbackInfo({html, classe}, btn){
+  const html_botao = `<i class="bi bi-arrow-clockwise"></i>`;
+  const class_botao = 'btn btn-info';
+  
+  btn.innerHTML = html;
+  btn.classList.value = classe;
+  
+  setTimeout(() => {
+    btn.innerHTML = html_botao;
+    btn.classList.value = class_botao;
+  }, 1500);
+}
+
+function feedbackButton(btn, {html, classe, html_retorno}){
+  // btn: botão a ser alterado, html: conteúdo do botão, classe: classes para substituir, html_retorno: conteúdo do botão durante o feedback
+
+  const html_botao = `<i class="bi bi-clipboard"></i>`;
+  const class_botao = !isEmpty(btn.classList.value) ? ['btn btn-success', 'btn btn-outline-success'].includes(btn.classList.value) ? '' : btn.classList.value : '';
+  btn.disabled = true;
+  
+  btn.innerHTML = html;
+  btn.classList.value = classe;
+  
+  setTimeout(() => {
+    btn.innerHTML = isEmpty(html_retorno) ? html_botao : html_retorno;
+    btn.classList.value = class_botao;
+    btn.disabled = false;
+  }, 1500);
+}
+
 export{
   isEmpty,
   capitalize,
@@ -373,5 +403,7 @@ export{
   sanitizarNumero,
   criarEBaixarArquivo,
   splitArray,
-  verificarSeFIDvalido
+  verificarSeFIDvalido,
+  feedbackInfo,
+  feedbackButton
 }

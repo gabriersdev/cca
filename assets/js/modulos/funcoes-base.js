@@ -3,7 +3,7 @@ import { conteudos } from './conteudos.js';
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias, submitInformarRestricoes, clickAcionarModal, clickLimparTudoSecao, clickEnviarDados, acaoClickIncluirProponente, clickDownload, acionarDevolucaoFID, acionarModalAddInformacoes } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
-import { isEmpty, resizeTextArea, verificarSeFIDvalido } from './utilitarios.js';
+import { feedbackButton, isEmpty, resizeTextArea, verificarSeFIDvalido } from './utilitarios.js';
 import { id_arquivos } from './confirmacao.js';
 
 /* Verificar funcionamento desta função */
@@ -287,13 +287,17 @@ const tratamentoCampos = (input) => {
     
     const btnCarregarPendencias = document.querySelector('[data-action="carregar-pendencias"]');
     !isEmpty(btnCarregarPendencias) ? btnCarregarPendencias.onclick = carregarPendencias : '';
-    
+
     function carregarPendencias(evento){
       evento.preventDefault();
       $(evento.target).tooltip('hide');
       
       text_areas_editados(false);
-      renderPendencias();
+      if(renderPendencias()){
+        feedbackButton(btnCarregarPendencias, {html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success', html_retorno: btnCarregarPendencias.innerHTML});
+      }else{
+        feedbackButton(btnCarregarPendencias, {html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-danger', html_retorno: btnCarregarPendencias.innerHTML});
+      }
     }
     
     const modal = document.querySelector('#modal-devolucao-fid');

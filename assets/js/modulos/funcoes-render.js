@@ -90,89 +90,94 @@ const renderFeedbacks = (proponente) => {
 }
 
 const renderPendencias = () => {
-  if(!text_areas_editados()){
-    const txt = document.querySelector('[data-content="pendencias"]');
-    if(!isEmpty(txt)){
-      txt.value = '';
-      const pendencias = new Array();
-      
-      const proponentes = document.querySelectorAll('.accordion-item');
-      if(!isEmpty(proponentes) && proponentes.length > 0){
-        proponentes.forEach((proponente, index) => {
-          const inputs = proponente.querySelectorAll('[data-element="input"]');
-          
-          const elementos = {
-            valores: {
-              nome : get('nome'),
-              cpf : get('cpf'),
-              data_nascimento : get('data_nascimento'),
-              email : get('email'),
-              telefone : get('telefone'),
-              // endereco : get('endereco'),
-              // tipo_endereco : get('tipo_endereco'),
-              // endereco_valido: get('endereco_valido'),
-              // renda : get('renda'),
-              // renda_valida: get('renda_valida'),
-              // tipo_renda : get('tipo_renda'),
-              // comprovante_estado_civil : get('comprovante_estado_civil'),
-              // fgts : get('fgts'),
-            },
-            some(parametro){
-              const retorno = new Array();
-              for (const [key, value] of Object.entries(this.valores)){
-                if(value == parametro){retorno.push(key);}
-              }
-              return retorno.length > 0 ? true : false;
-            },
-            search(parametro){
-              const retorno = new Array();
-              for (const [key, value] of Object.entries(this.valores)){
-                if(Array.isArray(value)){
-                  value.forEach((v, index) => {
-                    if(v == parametro && !retorno.includes(key)){
-                      if(key !== 'fgts'){
-                        retorno.push(key)
-                      };
-                    }
-                  })
-                }else{
-                  if(value == parametro){key !== 'fgts' ? retorno.push(key) : '';}
-                }
-              }
-              return retorno;
-            }
-          }
-          
-          if(elementos.some('')){
-            pendencias.push({proponente: `PROPONENTE ${index + 1} - ${!isEmpty(elementos.valores.nome[0]) ? elementos.valores.nome[0].toUpperCase() + ':' : ''}`, pendente: elementos.search('').join().replaceAll('_', ' ').toUpperCase().replaceAll(',', '\n')});
-          }
-          
-          function get(id){
-            const saida = new Array();
-            inputs.forEach(input => {
-              if(input.type == 'checkbox' && input.dataset.input == `${id}`){
-                input.checked ? saida.push(true) : saida.push('');
-              }else{
-                input.dataset.input == `${id}` ? saida.push(input.value) : '';
-              }
-            })
-            return saida;
-          }
-          
-          renderFeedbacks(proponente);
-        })
-        
+  try{
+    if(!text_areas_editados()){
+      const txt = document.querySelector('[data-content="pendencias"]');
+      if(!isEmpty(txt)){
         txt.value = '';
-        pendencias.forEach((pendencia, index) => {
-          // console.log(pendencia);
-          index !== 0? txt.value += '\n\n' : 'a';
-          // console.log('atualizado');
-          txt.value += `${pendencia.proponente}\n${pendencia.pendente}`
-        })
-        resizeTextArea(txt);
-        // txt.textContent = `${pendencias.forEach(pendencia => {return pendencia.pendente})}`;
+        const pendencias = new Array();
+        
+        const proponentes = document.querySelectorAll('.accordion-item');
+        if(!isEmpty(proponentes) && proponentes.length > 0){
+          proponentes.forEach((proponente, index) => {
+            const inputs = proponente.querySelectorAll('[data-element="input"]');
+            
+            const elementos = {
+              valores: {
+                nome : get('nome'),
+                cpf : get('cpf'),
+                data_nascimento : get('data_nascimento'),
+                email : get('email'),
+                telefone : get('telefone'),
+                // endereco : get('endereco'),
+                // tipo_endereco : get('tipo_endereco'),
+                // endereco_valido: get('endereco_valido'),
+                // renda : get('renda'),
+                // renda_valida: get('renda_valida'),
+                // tipo_renda : get('tipo_renda'),
+                // comprovante_estado_civil : get('comprovante_estado_civil'),
+                // fgts : get('fgts'),
+              },
+              some(parametro){
+                const retorno = new Array();
+                for (const [key, value] of Object.entries(this.valores)){
+                  if(value == parametro){retorno.push(key);}
+                }
+                return retorno.length > 0 ? true : false;
+              },
+              search(parametro){
+                const retorno = new Array();
+                for (const [key, value] of Object.entries(this.valores)){
+                  if(Array.isArray(value)){
+                    value.forEach((v, index) => {
+                      if(v == parametro && !retorno.includes(key)){
+                        if(key !== 'fgts'){
+                          retorno.push(key)
+                        };
+                      }
+                    })
+                  }else{
+                    if(value == parametro){key !== 'fgts' ? retorno.push(key) : '';}
+                  }
+                }
+                return retorno;
+              }
+            }
+            
+            if(elementos.some('')){
+              pendencias.push({proponente: `PROPONENTE ${index + 1} - ${!isEmpty(elementos.valores.nome[0]) ? elementos.valores.nome[0].toUpperCase() + ':' : ''}`, pendente: elementos.search('').join().replaceAll('_', ' ').toUpperCase().replaceAll(',', '\n')});
+            }
+            
+            function get(id){
+              const saida = new Array();
+              inputs.forEach(input => {
+                if(input.type == 'checkbox' && input.dataset.input == `${id}`){
+                  input.checked ? saida.push(true) : saida.push('');
+                }else{
+                  input.dataset.input == `${id}` ? saida.push(input.value) : '';
+                }
+              })
+              return saida;
+            }
+            
+            renderFeedbacks(proponente);
+          })
+          
+          txt.value = '';
+          pendencias.forEach((pendencia, index) => {
+            // console.log(pendencia);
+            index !== 0? txt.value += '\n\n' : 'a';
+            // console.log('atualizado');
+            txt.value += `${pendencia.proponente}\n${pendencia.pendente}`
+          })
+          resizeTextArea(txt);
+          // txt.textContent = `${pendencias.forEach(pendencia => {return pendencia.pendente})}`;
+        }
       }
     }
+    return true;
+  }catch(error){
+    throw new Error('Ocorreu um erro ao tentar renderizar as pendências.');
   }
 }
 

@@ -1,5 +1,5 @@
 import { conteudos } from './conteudos.js';
-import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome, resizeTextArea, capitalize, cumprimentoHorario, verificarSeFIDvalido } from './utilitarios.js';
+import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome, resizeTextArea, capitalize, cumprimentoHorario, verificarSeFIDvalido, feedbackInfo, feedbackButton } from './utilitarios.js';
 import { renderPendencias, renderResumo, renderTooltips } from './funcoes-render.js';
 import { atualizar, escutaEventoInput, verificarInputsRecarregamento } from './funcoes-base.js';
 import { atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
@@ -158,32 +158,18 @@ const acaoClickCopiar = (btn) => {
       
       copiar(e).then(() => {
         if(btn.getAttribute('onclick')){
-          feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success', html_retorno: html_retorno});
+          feedbackButton(btn, {html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success', html_retorno: html_retorno});
         }else{
-          feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success', html_retorno: html_retorno});
+          feedbackButton(btn, {html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success', html_retorno: html_retorno});
         }
       });
     })
   }catch(error){
     if(btn.getAttribute('onclick')){
-      feedback({html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-outline-danger'});
+      feedbackButton(btn, {html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-outline-danger'});
     }else{
-      feedback({html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-danger', html_retorno: html_retorno});
+      feedbackButton(btn, {html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-danger', html_retorno: html_retorno});
     }
-  }
-  
-  function feedback({html, classe, html_retorno}){
-    const html_botao = `<i class="bi bi-clipboard"></i>`;
-    const class_botao = !isEmpty(btn.classList.value) ? ['btn btn-success', 'btn btn-outline-success'].includes(btn.classList.value) ? '' : btn.classList.value : '';
-    // const class_botao = `btn btn-primary`;
-    
-    btn.innerHTML = html;
-    btn.classList.value = classe;
-    
-    setTimeout(() => {
-      btn.innerHTML = isEmpty(html_retorno) ? html_botao : html_retorno;
-      btn.classList.value = class_botao;
-    }, 1500);
   }
 }
 window.acaoClickCopiar = acaoClickCopiar;
@@ -546,20 +532,7 @@ function clickLimparTudoSecao(){
           });
         });
         
-        feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success'}, botao)
-        
-        function feedback({html, classe}, btn){
-          const html_botao = `<i class="bi bi-arrow-clockwise"></i>`;
-          const class_botao = 'btn btn-info';
-          
-          btn.innerHTML = html;
-          btn.classList.value = classe;
-          
-          setTimeout(() => {
-            btn.innerHTML = html_botao;
-            btn.classList.value = class_botao;
-          }, 1500);
-        }
+        feedbackInfo({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success'}, botao)
       }catch(error){
         console.log('Ocorreu um erro ao tentar limpar os elementos. Erro: %s', error);
       }
