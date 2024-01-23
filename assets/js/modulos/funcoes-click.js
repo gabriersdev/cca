@@ -531,7 +531,18 @@ function clickLimparTudoSecao(){
             }
           });
         });
-        
+
+        // Desmarcar todos os checkboxes da seleção múltipla de opções
+        $('.selecao-multiplas-opcoes').find('.form-group').each((index, grupo) => {
+          $(grupo).find('input[type=checkbox]').each((index, input) => {
+            $(input).prop('checked', false);
+          });
+
+          $(grupo).find('label').each((index, label) => {
+            $(label).removeClass('checked');
+          });
+        })
+
         feedbackInfo({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success'}, botao)
       }catch(error){
         console.log('Ocorreu um erro ao tentar limpar os elementos. Erro: %s', error);
