@@ -36,7 +36,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
   ];
   
   // Carregando dados do arquivo de manifest.json
-  fetch('../../../manifest.json')
+  fetch('manifest.json')
   .then((response) => {
     return response.json();
   })
