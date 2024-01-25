@@ -96,7 +96,10 @@ const escutaEventoInput = () => {
         evento.preventDefault();
         if(evento.target.disabled === false){
           if(!isEmpty(linkGerado)){
-            clickDownload({dataset: {download: 'baixar-acompanhar-fid'}}, evento);
+            // Atraso para evitar que o navegador baixe multiplos arquivos - 1 segundo
+            setTimeout(() => {
+              clickDownload({dataset: {download: 'baixar-acompanhar-fid'}}, evento);
+            }, 1000);
           }
         }
       })
