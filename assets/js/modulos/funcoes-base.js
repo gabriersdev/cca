@@ -6,23 +6,15 @@ import { renderTooltips, renderPopover, renderPendencias, renderResumo } from '.
 import { feedbackButton, isEmpty, resizeTextArea, verificarSeFIDvalido } from './utilitarios.js';
 import { id_arquivos } from './confirmacao.js';
 
-/* Verificar funcionamento desta função */
-const verificarInputsRecarregamento = (funcao) => {
+const verificarInputsRecarregamento = () => {
   if(true){
-    if(isEmpty(funcao)){
-      if(document.title.trim() == 'Confirmação de dados - CCA' && true){
-        window.onbeforeunload = async (evento) => {
-          evento.preventDefault();
-          await document.querySelectorAll('[data-element="input"]').forEach(elemento => {
-            if(!isEmpty(elemento.value)){
-              return 'Tem certeza que deseja sair?';
-            }
-          })
-        }
+    window.onbeforeunload = (evento) => {
+      // Tem coisa pra salvar
+      if(Array.from($('input, textarea')).filter(e => e.checked === undefined ? e.value !== "R$ 0,00" && e.value.trim().length > 0 : '').length > 0){
+        evento.preventDefault();
+      }else{
+        // Não tem coisa pra salvar
       }
-    }else{
-      // console.log('aqui');
-      window.onbeforeunload = '';
     }
   }
 }

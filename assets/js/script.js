@@ -36,7 +36,18 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
   ];
   
   // Carregando dados do arquivo de manifest.json
-  fetch('manifest.json')
+  let path = 'manifest.json';
+  switch (document.title) {
+    case "Confirmação de dados - CCA":
+    path = 'manifest.json';
+    break;
+    
+    default:
+    path = '../manifest.json';
+    break;
+  }
+  
+  fetch(path)
   .then((response) => {
     return response.json();
   })
