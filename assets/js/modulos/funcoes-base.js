@@ -61,7 +61,7 @@ const escutaEventoInput = () => {
       edicaoTextAreaRestricoes(elemento);
     }
     else if(elemento.dataset.input == 'id-fid'){
-      let linkGerado
+      let linkGerado;
 
       elemento.addEventListener('input', (evento) => {
         if(verificarSeFIDvalido(elemento.value)){
@@ -96,9 +96,11 @@ const escutaEventoInput = () => {
         evento.preventDefault();
         if(evento.target.disabled === false){
           if(!isEmpty(linkGerado)){
+            evento.target.disabled = true;
             // Atraso para evitar que o navegador baixe multiplos arquivos - 1 segundo
             setTimeout(() => {
               clickDownload({dataset: {download: 'baixar-acompanhar-fid'}}, evento);
+              evento.target.disabled = false;
             }, 1000);
           }
         }
