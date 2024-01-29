@@ -150,7 +150,7 @@ const acaoClickCopiar = (btn) => {
       }else{
         e = new Array();
         document.querySelectorAll('[data-input="nome"]').forEach(nome => {
-          !isEmpty(nome.value) ? e.push(nome.value.toUpperCase()) : '';
+          !isEmpty(nome.value) ? e.push(nome.value.trim().toUpperCase()) : '';
         })
         e = e.join(', ');
         html_retorno = 'N_'
