@@ -5,6 +5,7 @@ import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInp
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
 import { feedbackButton, isEmpty, resizeTextArea, verificarSeFIDvalido } from './utilitarios.js';
 import { id_arquivos } from './confirmacao.js';
+import { outrosProjetosExibicao } from './dados.js';
 
 const verificarInputsRecarregamento = () => {
   if(true){
@@ -216,6 +217,16 @@ const tratamentoCampos = (input) => {
     
     $('[data-action=fechar-modal-dialog]').on('click', (evento) => {
       evento.target.closest('dialog').close();
+    })
+
+    $('[data-action="carregar-outros-projetos"]').ready(() => {
+      if(outrosProjetosExibicao.length > 0){
+        outrosProjetosExibicao.toSorted((a, b) => a.nome.localeCompare(b.nome)).toSpliced(4).forEach((projeto) => {
+          $('[data-action="carregar-outros-projetos"]').append(`<li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="${projeto.link}">${projeto.nome}</a></li>`)
+        })
+      }else{
+        $('[data-action="carregar-outros-projetos"]').append(`<li>Acesse o <a data-link="github-dev">GitHub</a> e conheça outros projetos do desenvolvedor.</li>`)
+      }
     })
     
     let click113 = false;
