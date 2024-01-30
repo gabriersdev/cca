@@ -5,7 +5,6 @@
 
 @import url(./normalize.css);
 @import url(./reset.css);
-@import url(./cores.css);
 @import url(./variaveis.css);
 
 @import url(./elementos/loader.css);
@@ -25,8 +24,10 @@ html{
   font-size: 16px;
 }
 
-body{
-  background-color: #F6F6F6;
+html:not([data-bs-theme="dark"]){
+  .body{
+    background-color: var(--bckg-default);
+  }
 }
 
 *, body{
@@ -57,7 +58,7 @@ main{
 [data-hgroup="confirmacao-cca"]{
   margin-bottom: 2rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid #D3D3D3;
+  border-bottom: 1px solid var(--bb-color-hgroup-confirmacao-cca);
 }
 
 .hgroup .hgroup-titulo{
@@ -70,7 +71,6 @@ main{
 }
 
 .hgroup .hgroup-acoes button{
-  /* border: 1px solid #808080; */
   position: static;
 }
 
@@ -87,12 +87,12 @@ textarea::-webkit-scrollbar{
 }
 
 .btn-transparent{
-  border: 1px solid rgb(0, 0, 0, 0.4);
-  color: #000;
+  border: 1px solid var(--cor-borda-btn-transparent);
+  color: var(--cor-txt-btn-transparent);
   
   &:hover{
-    border: 1px solid rgb(0, 0, 0, 0.5);
-    color: #000;
+    border: 1px solid var(--cor-borda-btn-transparent-hover);
+    color: var(--cor-txt-btn-transparent-hover);
   }
 }
 
@@ -129,8 +129,8 @@ textarea::-webkit-scrollbar{
     margin: 0.75rem;
     right: 0;
     padding: 0.5rem;
-    background-color: #D3D3D3;
-    border-color: #808080;
+    background-color: var(--cor-bckg-btn-copia-flutuante);
+    border-color: var(--cor-borda-btn-copia-flutuante);
     border-radius: 0.25rem;
   }
 }
@@ -148,7 +148,7 @@ textarea::-webkit-scrollbar{
   
   border-left-width: 5px;
   border-left-style: solid;
-  border-left-color: rgb(0, 0, 0, 0.25);
+  border-left-color: var(--cor-borda-alert-info);
 }
 
 .nav-tabs .nav-link,
@@ -163,14 +163,14 @@ textarea::-webkit-scrollbar{
 }
 
 .container.container-fluid{
-  background-color: rgba(0, 0, 0, 0.01);
+  background-color: var(--cor-bckg-container-fluid);
   padding: 0.5rem 1rem;
   padding-right: 0.5rem;
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--cor-borda-container-fluid);
 
   .navbar-icon{
-    background-color: #0D6EFD; 
+    background-color: var(--cor-bckg-navbar); 
     width: 1rem; 
     height: 1rem; 
     display: inline-block; 
@@ -179,7 +179,7 @@ textarea::-webkit-scrollbar{
   }
 
   .navbar-brand{
-    color: #0D6EFD;
+    color: var(--cor-bckg-navbar-brand);
     font-size: 1.5rem;
     font-weight: 900;
   }

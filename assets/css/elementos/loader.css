@@ -17,8 +17,8 @@
   height: 40px;
   border-radius: 50%;
   border: 6.4px solid;
-  border-color: rgba(0, 0, 0, 0.15);
-  border-right-color: #2631FF;
+  border-color: var(--cor-borda-spinner);
+  border-right-color: var(--cor-borda-spinner-right);
   animation: spinner 1.2s infinite linear;
 }
 

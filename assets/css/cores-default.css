@@ -1,0 +1,51 @@
+:root{
+  --cor-background-loader: #F6F6F6;
+  --cor-loader: #3049FF;
+
+  --bckg-default: #F6F6F6;
+  --bb-color-hgroup-confirmacao-cca: #D3D3D3;
+
+  --bckg-card-link-facil-hover: rgb(0, 0, 0, 0.05);
+
+  /* Botão transparente */
+  --cor-txt-btn-transparent: #000;
+  --cor-txt-btn-transparent-hover: #000;
+  --cor-borda-btn-transparent: rgb(0, 0, 0, 0.4);
+  --cor-borda-btn-transparent-hover: rgb(0, 0, 0, 0.5);
+
+  /* Botão cópia flutuante */
+  --cor-borda-btn-copia-flutuante: #808080;
+  --cor-bckg-btn-copia-flutuante: #D3D3D3;
+
+  /* Alert info */
+  --cor-borda-alert-info: rgb(0, 0, 0, 0.25);
+
+  /* Container fluid */
+  --cor-borda-container-fluid: rgba(0, 0, 0, 0.1);
+  --cor-bckg-container-fluid: rgba(0, 0, 0, 0.01);
+
+  /* Navbar */
+  --cor-bckg-navbar: #0D6EFD;
+  --cor-bckg-navbar-brand: #0D6EFD;
+
+  /* Seção controlada */
+  --cor-bckg-header-secao-controlada: rgba(0, 0, 0, 0.05);
+
+  /* Banner */
+  --bckg-color-banner: #ECF885;
+  --bckg-icon-banner-desc: #EFF77C;
+  --cor-borda-banner-desc: rgba(0, 0, 0, 0.5);
+
+  /* Form */
+  /* TODO - separar cores do formulário */
+
+  /* Loader */
+  --cor-borda-spinner: rgba(0, 0, 0, 0.15);
+  --cor-borda-spinner-right: #2631FF;
+
+  /* No script */
+  /* TODO - separar cores do noscript */
+
+  /* Modal informações página */
+  /* TODO - separar cores do modal */
+}
