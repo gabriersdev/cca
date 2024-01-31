@@ -17,11 +17,11 @@
 }
 
 .form-floating button.btn-outline-success{
-  color: #008000 !important; 
+  color: var(--cor-btn-outline-success) !important; 
 }
 
 .form-floating button.btn-outline-danger{
-  color: #FF0000 !important;
+  color: var(--cor-btn-outline-danger) !important;
 }
 
 [data-input="nome"]{
@@ -36,14 +36,14 @@ button i{
 [data-input]:invalid,
 .invalido input{
   position: static;
-  border: 1px solid rgb(255, 0, 0, 0.15) !important;
+  border: 1px solid var(--cor-borda-invalid-input) !important;
 }
 
 [data-input]:invalid:is(:hover, :focus),
 .invalido input:is(:hover, :focus){
-  box-shadow:  0px 0px 0px 3.5px rgb(255, 142, 142, 0.4) !important;
-  -webkit-box-shadow: 0px 0px 0px 3.5px rgb(255, 142, 142, 0.4) !important;
-  -moz-box-shadow: 0px 0px 0px 3.5px rgb(255, 142, 142, 0.4) !important;
+  box-shadow:  0px 0px 0px 3.5px var(--cor-box-shadow-invalid-input) !important;
+  -webkit-box-shadow: 0px 0px 0px 3.5px var(--cor-box-shadow-invalid-input) !important;
+  -moz-box-shadow: 0px 0px 0px 3.5px var(--cor-box-shadow-invalid-input) !important;
 }
 
 .feedback_dado{
@@ -51,13 +51,13 @@ button i{
 }
 
 .invalido .feedback_dado{
-  color: rgb(255, 0, 0, 1) !important;
+  color: var(--cor-invalido-feedback-dado) !important;
   display: initial;
 }
 
 [data-form="pesquisa"] button{
-  border-color: #CED1DD;
-  background-color: #DEE2E6;
+  border-color: var(--cor-border-button-form-pesquisa);
+  background-color: var(--cor-bckg-button-form-pesquisa);
 }
 
 .selecao-multiplas-opcoes{
@@ -76,15 +76,15 @@ button i{
     outline: none;
 
     &:hover, &:focus, &:active, &.checked{
-      background-color: #007BFF;
-      color: #fff;
+      background-color: var(--bckg-color-btn-selec-mult);
+      color: var(--color-btn-selec-mult);
       box-shadow: unset !important;
       outline: none;
     }
 
     &:hover:not(.checked), :focus:not(.checked){
-      background-color: rgba(0, 123, 255, 1) !important;
-      color: #FFF;
+      background-color: var(--bckg-color-btn-selec-mult-hover) !important;
+      color: var(--color-btn-selec-mult-hover);
     }
 
     &::before{
@@ -114,4 +114,3 @@ button i{
     }
   }
 }
-

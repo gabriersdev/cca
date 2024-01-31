@@ -38,6 +38,21 @@
 
   /* Form */
   /* TODO - separar cores do formulário */
+  --cor-btn-outline-success: #008000;
+  --cor-btn-outline-danger: #FF0000;
+  --cor-borda-invalid-input: rgb(255, 0, 0, 0.15);
+  --cor-box-shadow-invalid-input: rgb(255, 142, 142, 0.4);
+  --cor-invalido-feedback-dado: rgb(255, 0, 0, 1);
+
+  /* Form Pesquisa */
+  --cor-border-button-form-pesquisa: #CED1DD;
+  --cor-bckg-button-form-pesquisa: #DEE2E6;
+
+  /* Seleção múltiplas opções */
+  --bckg-color-btn-selec-mult: #007BFF;
+  --bckg-color-btn-selec-mult-hover: #006ADC;
+  --color-btn-selec-mult: #FFF;
+  --color-btn-selec-mult-hover: #FFF;
 
   /* Loader */
   --cor-borda-spinner: rgba(0, 0, 0, 0.15);
