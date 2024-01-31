@@ -8,7 +8,7 @@ import { id_arquivos } from './confirmacao.js';
 import { outrosProjetosExibicao } from './dados.js';
 
 const verificarInputsRecarregamento = () => {
-  if(true){
+  if(false){
     window.onbeforeunload = (evento) => {
       // Tem coisa pra salvar
       if(Array.from($('input, textarea')).filter(e => e.checked === undefined ? e.value !== "R$ 0,00" && e.value.trim().length > 0 : '').length > 0){
@@ -229,40 +229,71 @@ const tratamentoCampos = (input) => {
       }
     })
     
-    let click113 = false;
-    
-    document.addEventListener('keyup', (evento) => {
-      const code = evento.keyCode;
-      // evento.preventDefault();
-      if(!isEmpty(code)){
-        // console.log(code)
-        if(code == 45){
-          acaoClickIncluirProponente()
-        }else if(code == 113){
-          click113 = true;
-          
-          setTimeout(() => {
-            click113 = false;
-          }, 1000)
-        }else if(code == 68 && click113){
-          // Baixar arquivo de dados
-          clickDownload({dataset: {download: 'baixar-dados'}}, evento);
-        }else if(code == 70 && click113){
-          // Ir para Acompanhar FID
-          $('[data-element="input-URL-acompanhar-FID"]').focus();
-        }else if(code == 80 && click113){
-          // Baixar arquivo de pendências
-          clickDownload({dataset: {download: 'baixar-pendencias'}}, evento);
-        }else if(code == 82 && click113){
-          // Baixar arquivo de relatório
-          clickDownload({dataset: {download: 'baixar-relatorio'}}, evento);
-        }else if(code == 86 && click113){
-          acionarDevolucaoFID();
-        }else if(code == 73 && click113){
-          acionarModalAddInformacoes();
+    if(document.title === 'Confirmação de dados - CCA'){
+      let click113 = false;
+      let click66 = false;
+
+      document.addEventListener('keyup', (evento) => {
+        const code = evento.keyCode;
+        // evento.preventDefault();
+        if(!isEmpty(code)){
+          if(code == 45){
+            acaoClickIncluirProponente()
+          }else if(code == 113){
+            click113 = true;
+            
+            setTimeout(() => {
+              click113 = false;
+            }, 1000)
+          }else if(code == 68 && click113){
+            // Baixar arquivo de dados
+            clickDownload({dataset: {download: 'baixar-dados'}}, evento);
+          }else if(code == 70 && click113){
+            // Ir para Acompanhar FID
+            $('[data-element="input-URL-acompanhar-FID"]').focus();
+          }else if(code == 80 && click113){
+            // Baixar arquivo de pendências
+            clickDownload({dataset: {download: 'baixar-pendencias'}}, evento);
+          }else if(code == 82 && click113){
+            // Baixar arquivo de relatório
+            clickDownload({dataset: {download: 'baixar-relatorio'}}, evento);
+          }else if(code == 86 && click113){
+            acionarDevolucaoFID();
+          }else if(code == 73 && click113){
+            acionarModalAddInformacoes();
+          }else if(code == 66){
+            click66 = true;
+            
+            setTimeout(() => {
+              click66 = false;
+            }, 1000)
+          }else if(code == 17 && click66){
+            // TODO - Salvar conteúdos em localStorage
+
+            const data = {
+              "relatório": $('[data-content="relatorio"]').val(),
+              "pendências": $('[data-content="pendencias"]').val()
+            };
+
+            const toast = $('#toast-feedback');
+            let retorno = 'Ocorreu um erro';
+
+            if(true){
+              retorno = 'Dados salvos com sucesso';
+            }else{
+              retorno = 'Não foi possível salvar os dados';
+            }
+
+            if(toast){
+              console.log('Ação!');
+              const body = $(toast).find('.toast-body');
+              $(body).text(retorno);
+              $('#toast-feedback').toast('show');
+            }
+          }
         }
-      }
-    })
+      })
+    }
     
     const linksFaceis = $('.links-faceis-confirmacao');
     if(!isEmpty(linksFaceis)){

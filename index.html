@@ -32,7 +32,7 @@
   
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/cores-default.css">
-
+  
   <link rel="manifest" href="./manifest.json">
   <link rel="shortcut icon" href="./assets/img/favicon.svg" type="image/x-icon">
   
@@ -356,6 +356,14 @@
     <p class="mt-1"><kbd>F2</kbd> + <kbd>V</kbd> para acionar devolução de FID</p>
     <p class="mt-3 text-muted">Para fechar esse popup <kbd>ESC</kbd> <button class="link-visivel" data-action="fechar-modal-dialog">ou clique aqui</button></p>
   </dialog>
+  
+  <div class="toast" id="toast-feedback" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Aviso</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body"></div>
+  </div>
   
 </body>
 </html>
