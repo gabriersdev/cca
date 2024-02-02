@@ -95,6 +95,14 @@ const acaoClickIncluirProponente = () => {
   div.innerHTML = `${conteudos.accordion_item(document.querySelectorAll('.accordion-item').length + 1)}`;
   document.querySelector('.accordion').appendChild(div);
   
+  if(Array.from($('.accordion-item')).length > 1){
+    $(div).find('.accordion-button').click();
+  }
+  
+  setTimeout(() => {
+    $(div).find('[data-input="nome"]').focus();
+  }, 100);
+  
   renderResumo();
   renderPendencias();
   clickRemoverRenda();
