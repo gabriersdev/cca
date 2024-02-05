@@ -3,18 +3,19 @@ import { conteudos } from './conteudos.js';
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias, submitInformarRestricoes, clickAcionarModal, clickLimparTudoSecao, clickEnviarDados, acaoClickIncluirProponente, clickDownload, acionarDevolucaoFID, acionarModalAddInformacoes } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
-import { feedbackButton, isEmpty, resizeTextArea, verificarSeFIDvalido } from './utilitarios.js';
+import { SwalAlert, feedbackButton, isEmpty, isEquivalent, resizeTextArea, verificarSeFIDvalido } from './utilitarios.js';
 import { id_arquivos } from './confirmacao.js';
 import { outrosProjetosExibicao } from './dados.js';
 
 const verificarInputsRecarregamento = () => {
   if(false){
     window.onbeforeunload = (evento) => {
-      // Tem coisa pra salvar
+      // Há o que preservar
+      // TODO - Adicionar monitoramento de campos editados que são inicializados com conteúdo (pendências, análise internalizada, etc.)
       if(Array.from($('input, textarea')).filter(e => e.checked === undefined ? e.value !== "R$ 0,00" && e.value.trim().length > 0 : '').length > 0){
         evento.preventDefault();
       }else{
-        // Não tem coisa pra salvar
+        // Não há o que preservar
       }
     }
   }
@@ -228,6 +229,50 @@ function funcoesBase(){
   })
   
   if(document.title === 'Confirmação de dados - CCA'){
+    const btnRecuperarDados = $('[data-action="recuperar-dados"]');
+    const toast = $('#toast-feedback');
+    let retorno = 'Ocorreu um erro';
+
+    if(btnRecuperarDados){
+      let icon = 'error';
+      let text = 'Ocorreu um erro.'
+
+      $(btnRecuperarDados).click((evento) => {
+        evento.preventDefault();
+        let local = localStorage.getItem('cca');
+
+        try{
+          local = JSON.parse(local);
+
+          if(!isEmpty(local)){
+            if(local["data-campos-storage"]["relatório"]){
+              $('[data-content="relatorio"]').val(local["data-campos-storage"]["relatório"]);
+            }
+
+            if(local["data-campos-storage"]["pendências"]){
+              $('[data-content="pendencias"]').val(local["data-campos-storage"]["pendências"]);
+            }
+
+            icon = 'success';
+            retorno = 'Dados recuperados!';
+            text = 'O campo de relatório e/ou pendência foi atualizado conforme o que foi salvo da última vez';
+          }else{
+            icon = 'warning';
+            retorno = 'Não há dados salvos';
+            text = 'Não há registros salvos do campo de relatório ou o do campo de pendência';
+          }
+        }catch(error){
+          icon = 'error';
+          retorno = 'Não foi possível recuperar os dados. Consulte o console';
+          text = 'Os campos de relatório e pendências não foram alterados';
+          console.log('Não foi possível recuperar os dados', error.message);
+        }
+
+        // Feedback ao usuário
+        SwalAlert('aviso', icon, retorno, text);
+      });
+    }
+    
     let click113 = false;
     let click66 = false;
     
@@ -269,21 +314,45 @@ function funcoesBase(){
           // TODO - Salvar conteúdos em localStorage
           
           const data = {
-            "relatório": $('[data-content="relatorio"]').val(),
-            "pendências": $('[data-content="pendencias"]').val()
+            "relatório": $('[data-content="relatorio"]').val().trim(),
+            "pendências": $('[data-content="pendencias"]').val().trim()
           };
           
-          const toast = $('#toast-feedback');
-          let retorno = 'Ocorreu um erro';
-          
-          if(true){
-            retorno = 'Dados salvos com sucesso';
+          if(isEmpty(data["relatório"]) && isEmpty(data["pendências"])){
+            retorno = 'Campos vazios! Preencha-os primeiro';
           }else{
-            retorno = 'Não foi possível salvar os dados';
+            try{
+              let local = localStorage.getItem('cca');
+              
+              try{
+                // Parse do localStorage OK
+                local = JSON.parse(local);
+                local["data-campos-storage"] = data;
+                localStorage.setItem('cca', JSON.stringify(local));
+  
+                if(JSON.stringify(local) === localStorage.getItem('cca')){
+                  retorno = 'Dados salvos com sucesso';
+                }else{
+                  retorno = 'Dados parcialmente salvos. Consulte o console';
+                  console.log('Os dados armazenados localmente não são iguais aos dados capturados. Verifique.');
+                }
+              }catch(error){
+                // Não foi possível fazer o parse do localStorage, tentando alterar a variável
+                localStorage.setItem('cca', JSON.stringify({"data-campos-storage": data}));
+                
+                if(JSON.stringify({"data-campos-storage": data}) === localStorage.getItem('cca')){
+                  retorno = 'Dados salvos com sucesso';
+                }else{
+                  throw new Error('Tentativa de salvar no localStorage falhou.')
+                }
+              }
+            }catch(error){
+              retorno = 'Não foi possível salvar os dados. Consulte o console';
+              console.log('Não foi possível salvar os dados', error.message);
+            }
           }
           
           if(toast){
-            console.log('Ação!');
             const body = $(toast).find('.toast-body');
             $(body).text(retorno);
             $('#toast-feedback').toast('show');
