@@ -8,7 +8,7 @@ import { id_arquivos } from './confirmacao.js';
 import { outrosProjetosExibicao } from './dados.js';
 
 const verificarInputsRecarregamento = () => {
-  if(false){
+  if(true){
     window.onbeforeunload = (evento) => {
       // Há o que preservar
       // TODO - Adicionar monitoramento de campos editados que são inicializados com conteúdo (pendências, análise internalizada, etc.)
