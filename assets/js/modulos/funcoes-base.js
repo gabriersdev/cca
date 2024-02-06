@@ -95,7 +95,11 @@ const escutaEventoInput = () => {
             setTimeout(() => {
               clickDownload({dataset: {download: 'baixar-acompanhar-fid'}}, evento);
               evento.target.disabled = false;
-            }, 1000);
+              // Focando no campo de empreendimento para continuar o preenchimento
+              setTimeout(() => {
+                $('#id-empreendimento').focus();
+              }, 500);
+            }, 500);
           }
         }
       })
