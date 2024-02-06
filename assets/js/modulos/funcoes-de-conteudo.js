@@ -132,7 +132,7 @@ function renderConteudosPagina(area_elementos, elementos, objeto, caso){
     }
   })
   
-  tags.forEach(tag => {
+  tags.sort((a, b) => a.localeCompare(b)) .forEach(tag => {
     conteudos_tag.push(elementos.filter(e => e.tag == tag))
   })
   
@@ -161,7 +161,7 @@ function renderConteudosPagina(area_elementos, elementos, objeto, caso){
       a.setAttribute('href', `${elemento.link}`)
       a.setAttribute('target', '_blank');
       a.setAttribute('rel', 'noreferrer noopener')
-      a.innerHTML = `<span class="content-tag">${capitalize(elemento.tag)}</span><div class="content-principal"><h5>${elemento.titulo}</h5><span>${elemento.sistema}</span></div>`;
+      a.innerHTML = `<span class="content-tag">${capitalize(elemento.tag)}</span><div class="content-principal"><h5>${elemento.titulo}</h5>${elemento.subtitulo ? '<span class="text-muted">' + elemento.subtitulo + '</span><br>' : ''}<span>${elemento.sistema}</span></div>`;
       div_elemento[(div_elemento.length - 1)].appendChild(a);
     })
   })

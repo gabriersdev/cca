@@ -169,6 +169,36 @@ const consultas = [
     "titulo": "Municípios RMBH",
     "sistema": "Agência RMBH",
     "link": "http://www.agenciarmbh.mg.gov.br/mapa-conheca-os-municipios/"
+  },
+  {
+    "tag": "útil",
+    "titulo": "Calculadora Salário Liquido",
+    "sistema": "iDinheiro",
+    "link": "https://www.idinheiro.com.br/calculadoras/calculadora-de-salario-liquido/"
+  },
+  {
+    "tag": "verificação",
+    "titulo": "Transparência Colaboradores do estado de MG",
+    "sistema": "Transparência MG",
+    "link": "https://www.transparencia.mg.gov.br/estado-pessoal"
+  },
+  {
+    "tag": "verificação",
+    "titulo": "Transparência Colaboradores de Sabará",
+    "sistema": "Supernova",
+    "link": "https://sabara.supernova.com.br:8090/contaspublicas/"
+  },
+  {
+    "tag": "verificação",
+    "titulo": "Transparência Colaboradores de Belo Horizonte",
+    "sistema": "PBH",
+    "link": "https://prefeitura.pbh.gov.br/transparencia/sevidores/remuneracao"
+  },
+  {
+    "tag": "verificação",
+    "titulo": "Portal da Transparência do Município de Contagem",
+    "sistema": "Contagem",
+    "link": "https://portal.contagem.mg.gov.br/portal/transparencia"
   }
 ];
 
@@ -185,6 +215,7 @@ const arquivos = [
   {
     "tag": "cadastro",
     "titulo": "Tabela de Apuração",
+    "subtitulo": "Padrão",
     "sistema": "Excel",
     "link": "Tabela de Apuração"
   },

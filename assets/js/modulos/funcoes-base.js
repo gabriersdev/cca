@@ -255,7 +255,7 @@ function funcoesBase(){
 
             icon = 'success';
             retorno = 'Dados recuperados!';
-            text = 'O campo de relatório e/ou pendência foi atualizado conforme o que foi salvo da última vez';
+            text = 'O campo de relatório e-ou pendência foi atualizado conforme o que foi salvo da última vez';
           }else{
             icon = 'warning';
             retorno = 'Não há dados salvos';
