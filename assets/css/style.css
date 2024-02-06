@@ -96,10 +96,6 @@ textarea::-webkit-scrollbar{
   }
 }
 
-[data-content="secao-controlada"] .card-header{
-  padding: 1.25rem 1rem;
-}
-
 @media screen and (max-width: 450px) {
   .hgroup{
     flex-direction: column;

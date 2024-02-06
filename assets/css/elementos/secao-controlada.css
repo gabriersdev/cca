@@ -2,7 +2,8 @@
   >.card-header{
     cursor: pointer;
     border-bottom: unset;
-
+    padding: 1.25rem 1rem;
+    
     .span{
       display: none;
     }
