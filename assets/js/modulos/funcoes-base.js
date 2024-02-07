@@ -192,7 +192,7 @@ const tratamentoCampos = (input) => {
 const getURLPlanilhaPerMonth = (month) => {
   // const path: `/assets/docs/planilhas/apuracao-mes-${month}.xlsx`,
   const planilhas = conteudos.planilhas;
-  const monthTrated = parseInt(month);
+  const monthTrated = parseInt(month, 10);
   const codePlanilhaDefault = '0';
 
   if (![null, undefined].includes(planilhas.find(planilha => planilha.month === monthTrated).code) && ![null, undefined].includes(monthTrated)) {
@@ -204,13 +204,18 @@ const getURLPlanilhaPerMonth = (month) => {
 
 const updateLinkPlanilha = () => {
   // const month = moment().now().get('month');
-  let month = ('0' + new Date().getMonth());
-  month = month.slice(month.length > 2? 1 : 0, month.length > 2? 3 : 2);
+  let month = new Date().getMonth();
+  // let month = ('0' + new Date().getMonth());
+  // month = month.slice(month.length > 2? 1 : 0, month.length > 2? 3 : 2);
 
-  const regex = RegExp(/\d{2}/);
+  const regex = RegExp(/\d{1,2}/);
 
   if (regex.test(regex.exec(month))) {
-    return getURLPlanilhaPerMonth(regex.exec(month)[0]);
+    const ret = getURLPlanilhaPerMonth(regex.exec(month)[0]);
+    if(!ret){
+      console.log('Não foi possível recuperar o link da tabela de apuração para o mês atual. Parâmetro incorreto.');
+    }
+    return ret;
   } else {
     return null;
   }
