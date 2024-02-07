@@ -3,8 +3,7 @@ import { conteudos } from './conteudos.js';
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias, submitInformarRestricoes, clickAcionarModal, clickLimparTudoSecao, clickEnviarDados, acaoClickIncluirProponente, clickDownload, acionarDevolucaoFID, acionarModalAddInformacoes } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
-import { SwalAlert, feedbackButton, isEmpty, isEquivalent, resizeTextArea, verificarSeFIDvalido } from './utilitarios.js';
-import { id_arquivos } from './confirmacao.js';
+import { SwalAlert, feedbackButton, isEmpty, resizeTextArea, verificarSeFIDvalido } from './utilitarios.js';
 import { outrosProjetosExibicao } from './dados.js';
 
 const verificarInputsRecarregamento = () => {
@@ -188,6 +187,33 @@ const tratamentoCampos = (input) => {
       input.removeAttribute('maxlength');
     }     
   });
+}
+
+const getURLPlanilhaPerMonth = (month) => {
+  // const path: `/assets/docs/planilhas/apuracao-mes-${month}.xlsx`,
+  const planilhas = conteudos.planilhas;
+  const monthTrated = parseInt(month);
+  const codePlanilhaDefault = '0';
+
+  if (![null, undefined].includes(planilhas.find(planilha => planilha.month === monthTrated).code) && ![null, undefined].includes(monthTrated)) {
+    return `https://drive.google.com/uc?export=download&id=${planilhas.find(planilha => planilha.month === monthTrated).code || codePlanilhaDefault}`;
+  } else {
+    return null;
+  }
+}
+
+const updateLinkPlanilha = () => {
+  // const month = moment().now().get('month');
+  let month = ('0' + new Date().getMonth());
+  month = month.slice(month.length > 2? 1 : 0, month.length > 2? 3 : 2);
+
+  const regex = RegExp(/\d{2}/);
+
+  if (regex.test(regex.exec(month))) {
+    return getURLPlanilhaPerMonth(regex.exec(month)[0]);
+  } else {
+    return null;
+  }
 }
 
 function funcoesBase(){
@@ -378,7 +404,7 @@ function funcoesBase(){
     ].forEach(conteudo => {
       const link = conteudo.link
       try{
-        $('.links-faceis-confirmacao [data-element="area-content"]').append(`<a class="card" href="${link.includes('https') ? link : `https://drive.google.com/uc?export=download&id=${(id_arquivos.conteudos.find(e => e.conteudo == link)).attr}`}" target="_blank" data-item="card-link-facil" rel="noreferrer noopener" data-toggle="tooltip" data-placement="top" title="Clique para abrir ->"><div class="card-header">${conteudo.sistema}<i class="bi bi-arrow-up-right-square" data-icon="icone"></i></div><div class="card-body"><b>${conteudo.titulo}</b></div></a>`);
+        $('.links-faceis-confirmacao [data-element="area-content"]').append(`<a class="card" href="${link.includes('https') ? link : updateLinkPlanilha()}" target="_blank" data-item="card-link-facil" rel="noreferrer noopener" data-toggle="tooltip" data-placement="top" title="Clique para abrir ->"><div class="card-header">${conteudo.sistema}<i class="bi bi-arrow-up-right-square" data-icon="icone"></i></div><div class="card-body"><b>${conteudo.titulo}</b></div></a>`);
       }catch(error){
         '#'
       }
@@ -606,8 +632,7 @@ function funcoesBase(){
         }
       }
     });
-  }
-  
+  } 
 }
 
 function atualizar(){
