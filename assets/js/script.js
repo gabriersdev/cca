@@ -5,6 +5,7 @@ import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, s
 import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
 import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/funcoes-de-conteudo.js';
+import { cartoriosImoveis } from './modulos/dados.js';
 
 (() => {  
   
@@ -182,6 +183,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     }
     
     // TODO: Separar responsabilidades e scripts carregados por página
+    // Carregando cartórios de imóveis usando a API do Registro Civil
     async function getCartorios(){
       const response = await fetch('https://apicartorioshmlg.registrocivil.org.br/api/cartorios/geolocalizacao?estado=MG&apikey=SECRET')
       return response.json();
@@ -189,42 +191,9 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     
     let cartorios = new Array();
     
-    const cartorios_imoveis = [
-      "1º Oficio de Registro de Imoveis da Comarca de Belo Horizonte",
-      "1º Tabelionato de Protesto de Titulos de Belo Horizonte",
-      "2 Ofício de Registro de Títulos e Documentos",
-      "2O Ofício de Registro de Imóveis de Belo Horizonte",
-      "2º Tabelionato de Protesto de Títulos de Belo Horizonte",
-      "3º Ofício de Registro de Imóveis de Belo Horizonte",
-      "3º Tabelionato de Protesto de Títulos de Belo Horizonte",
-      "4º Ofício de Notas de Belo Horizonte",
-      "6O. Ofício de Registro de Imóveis de Bh",
-      "Belo Horizonte Cartorio de Paz e Registro Civil 1 Subd Mg",
-      "Belo Horizonte Cartório do 3º Ofício de Notas",
-      "Cartório 2º Oficio de Notas de Belo Horizonte",
-      "Cartório 9º Oficio de Notas de Belo Horizonte",
-      "Cartorio do 10º Oficio de Notas de Belo Horizonte",
-      "Cartório do 1° Ofício de Notas de Bh",
-      "Cartório do 4º Ofício de Registro de Imóveis de Belo Horizonte",
-      "Cartório do 5º Ofício de Registro de Imóveis de Belo Horizonte",
-      "Cartório do 7° Ofício de Notas",
-      "Cartorio do 7º Oficio do Reg. Imoveis",
-      "Cartorio do Quinto Oficio de Notas",
-      "Cartório do Registro Civil e Notas do Distrito do Barreiro",
-      "Cartorio Registro Civil 3ºSubdistrito de Belo Horizonte",
-      "Oficio do 4º Tabelionato de Protestos de Belo Horizonte/mg",
-      "Ofício do 6º Tabelionato de Notas",
-      "Oficio do Registro de Distribuição de Protesto de Títulos",
-      "Primeiro Ofício de Registro de Titulos e Documentos de Belo Horizonte",
-      "Registro Civil das Pessoas Jurídicas",
-      "Registro Civil do Quarto Subdistrito",
-      "Segundo Subdistrito de Registro Civil das Pessoas Naturais de Belo Horizonte - Mg",
-      "Serviço de Registro Civil das Pessoas Naturais do Distrito de Venda Nova",
-      "Serviço Notarial do 8º Ofício de Belo Horizonte"
-    ]
-    
     getCartorios().then((retorno) => {
-      cartorios = retorno.concat(cartorios_imoveis)
+      // Concatenando o que foi obtido da API com os cartórios de imóveis de Belo Horizonte
+      cartorios = retorno.concat(cartoriosImoveis)
       let cartorio;
       
       for (cartorio of cartorios){
@@ -261,6 +230,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
       }
     }, (1000 * 10))
     
+    // TODO - Lembrar o que é isso
     const ids = [
       '1702214356904',
       '1702214249098',
@@ -274,8 +244,9 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     const ids_apenas_numericos = ids.filter((id) => parseInt(id) && !isNaN(parseInt(id))).map((id) => parseInt(id));
     
     if(!isEmpty(ids) && ids_apenas_numericos.length > 0){
-      id_mais_recente = new Number(ids.toSorted((a, b) => b - a)[0]);
+      id_mais_recente = Number(ids.toSorted((a, b) => b - a)[0]);
     }
+    // Fim do TODO
     
     $('[data-content="secao-controlada"] .card-header').on('click', (evento) => {
       $('[data-content="secao-controlada"] .card-body').toggleClass('none');
@@ -327,6 +298,3 @@ export function text_areas_editados(condicao){
     return condicao;
   }
 };
-
-const datetime = moment();
-const codigo = `${datetime.get('year')}${datetime.get('month')}${datetime.get('date')}${datetime.get('hour')}${datetime.get('minutes')}${datetime.get('seconds')}`;

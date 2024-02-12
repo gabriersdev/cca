@@ -345,9 +345,7 @@ function funcoesBase(){
           setTimeout(() => {
             click66 = false;
           }, 1000)
-        }else if(code == 17 && click66){
-          // TODO - Salvar conteúdos em localStorage
-          
+        }else if(code == 17 && click66){          
           const data = {
             "relatório": $('[data-content="relatorio"]').val().trim(),
             "pendências": $('[data-content="pendencias"]').val().trim()
@@ -397,15 +395,15 @@ function funcoesBase(){
     })
   }
   
-  const linksFaceis = $('.links-faceis-confirmacao');
+  const linksFaceis = document.querySelector('.links-faceis-confirmacao');
   if(!isEmpty(linksFaceis)){
     [
-      conteudos.consultas.find(e => e.titulo == 'CIWEB'), 
-      conteudos.consultas.find(e => e.titulo == 'CADMUT'), 
-      conteudos.consultas.find(e => e.titulo == 'Consulta CNPJ'), 
-      conteudos.consultas.find(e => e.titulo == 'Situação Cadastral'), 
-      conteudos.arquivos.find(e => e.titulo == 'Tabela de Apuração'),
-      conteudos.consultas.find(e => e.titulo == 'Tempo de Serviço'), 
+      conteudos.consultas.find(e => e.titulo == 'CIWEB') || 0, 
+      conteudos.consultas.find(e => e.titulo == 'CADMUT') || 0, 
+      conteudos.consultas.find(e => e.titulo == 'Consulta CNPJ') || 0, 
+      conteudos.consultas.find(e => e.titulo == 'Situação Cadastral') || 0, 
+      conteudos.arquivos.find(e => e.titulo == 'Tabela de Apuração') || 0,
+      conteudos.consultas.find(e => e.titulo == 'Tempo de Serviço') || 0, 
     ].forEach(conteudo => {
       const link = conteudo.link
       try{
