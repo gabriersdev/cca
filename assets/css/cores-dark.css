@@ -1,5 +1,141 @@
 :root{
   --cor-background-loader: #F6F6F6;
   --cor-loader: #3049FF;
-  --bckg-card-link-facil-hover: rgb(0, 0, 0, 0.05);
+  --cor: #FFF;
+  
+  --bckg-default: var(--bs-bg-secondary);
+  --bb-color-hgroup-confirmacao-cca: var(--bs-border-color-translucent);
+  
+  --bckg-card-link-facil-hover: #FFFFFF07;
+  
+  /* Botão transparente */
+  --cor-txt-btn-transparent: #000;
+  --cor-txt-btn-transparent-hover: #000;
+  --cor-borda-btn-transparent: #00000066;
+  --cor-borda-btn-transparent-hover: #00000080;
+  
+  /* Botão cópia flutuante */
+  --cor-borda-btn-copia-flutuante: #FFFFFF75;
+  --cor-bckg-btn-copia-flutuante: #FFFFFF50;
+  
+  /* Alert info */
+  --cor-borda-alert-info: #FFFFFF40;
+  
+  /* Container fluid */
+  --cor-borda-container-fluid: var(--bs-border-color-translucent);
+  --cor-bckg-container-fluid: #FFFFFF03;
+  
+  /* Navbar */
+  --cor-bckg-navbar: #0D6EFD;
+  --cor-bckg-navbar-brand: #0D6EFD;
+  
+  /* Seção controlada */
+  --cor-bckg-header-secao-controlada: intherit;
+  
+  /* Banner */
+  --bckg-color-banner: #ECF885;
+  --bckg-icon-banner-desc: #EFF77C;
+  --cor-banner: #000;
+  --cor-borda-banner-desc: #00000080;
+  
+  /* Form */
+  /* TODO - separar cores do formulário */
+  --cor-btn-outline-success: #2FDF84;
+  --cor-btn-outline-danger: #FF0000;
+  --cor-borda-invalid-input: #FF000070;
+  --cor-box-shadow-invalid-input: #FF000040;
+  --cor-invalido-feedback-dado: #FF0000;
+  
+  /* Form Pesquisa */
+  --cor-border-button-form-pesquisa: var(--bs-border-color);
+  --cor-bckg-button-form-pesquisa: var(--bs-bg-secondary);
+  --cor-button-form-pesquisa: #FFF;
+  
+  /* Seleção múltiplas opções */
+  --bckg-color-btn-selec-mult: #0D6EFD;
+  --bckg-color-btn-selec-mult-hover: #0D6EFD;
+  --color-btn-selec-mult: #FFF;
+  --color-btn-selec-mult-hover: #FFF;
+  
+  /* Loader */
+  --cor-borda-spinner: #00000026;
+  --cor-borda-spinner-right: #2631FF;
+  
+  /* No script */
+  --bckg-color-box-no-script: #FFF;
+  --border-color-box-no-script: #000;
+  --border-color-btn-principal-no-script: #CCC;
+  --bckg-color-btn-principal-no-script-hover: #DDD;
+  --border-color-btn-principal-no-script-hover: #BBB;
+  --border-color-texto-pagina-centralizado: #000;
+  
+  /* Modal informações página */
+  /* TODO - finalizar separaração de cores do modal */
+  --cor-borda-modal-informacoes-pagina: #00000033;
+  --cor-modal-informacoes-pagina: #000;
+  --cor-modal-informacoes-pagina-backdrop: #0000008C;
+  --cor-bckg-kbd: #D2D2D2;
+  --cor-bckg-x: #F7F7F7;
+  --cor-borda-x: #CCC;
+  --cor-txt-x: #333;
+  --cor-txt-shadow-x: #FFF;
+  --box-shadow-x: 0 1px 0 #00000033, 0 0 0 2px #FFF inset;
+  
+  /* Consulta Arquivos Links */
+  /* TODO - Adicionar */
+  --bb-color-card-links: #0000001A;
+  --bckg-color-card-links: rgba(var(--bs-body-color-rgb), 0.03);
+  --border-color-card-links: var(--bs-border-color);
+  --bckg-color-content-card-links: #F2F2F210;
+  --border-color-content-card-links: var(--bs-secondary-color);
+  --color-content-tag-card-links:var(--bs-secondary-color);
+  --color-content-principal-card-links: #00000099;
+  --color-content-principal-h5-card-links: #000;
+  --color-content-principal-span-card-links: #000;
+  --color-span-card-links: var(--bs-secondary-color);
+}
+
+.btn-outline-primary{
+  --bs-btn-color: #FFF;
+}
+
+.btn-outline-secondary{
+  --bs-btn-color: #F7F7F7;
+  --bs-btn-disabled-color: #D2D2D2;
+}
+
+footer{
+  .link-secondary{
+    color: var(--bs-secondary-color) !important;
+    
+    &:hover{
+      color: #D2D2D2 !important;
+    }
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  font-family: 'Inter', sans-serif !important;
+  -webkit-text-fill-color: #FFF !important;
+  -webkit-box-shadow: 0 0 0 30px var(--bs-bg-secondary) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+[data-content="form-laudo"] .btn-light{
+  background-color: transparent;
+  color: inherit;
+}
+
+.btn-light:hover{
+  color: initial;
+  background-color: var(--bs-btn-active-bg);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
 }

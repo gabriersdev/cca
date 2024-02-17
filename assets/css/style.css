@@ -35,6 +35,10 @@ html:not([data-bs-theme="dark"]){
   font-size: 16px;
 }
 
+body, [data-input], textarea{
+  color: var(--cor) !important;
+}
+
 .swal2-html-container{
   font-size: 1rem !important;
 }

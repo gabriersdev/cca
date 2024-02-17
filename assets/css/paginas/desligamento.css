@@ -11,18 +11,6 @@
   }
 }
 
-a{
-  .seta{
-    transition: margin ease-in-out 0.3s;
-  }
-  
-  &:hover{
-    .seta{
-      margin-left: 0.25rem;
-    }
-  }
-}
-
 @media screen and (width <= 575px) {
   [data-content="form-laudo"]{
     grid-template-columns: repeat(1, minmax(calc(100% - 0.5rem), 1fr));

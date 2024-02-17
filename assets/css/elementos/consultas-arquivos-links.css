@@ -20,18 +20,15 @@
 
 .consultas:not(:last-child),
 .arquivos:not(:last-child){
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--bb-color-card-links);
   padding-bottom: 1.25rem;
 }
 
 .content{
   border-radius: 5px;
-}
-
-.content{
-  background-color: #F6F6F6;
+  background-color: var(--bckg-color-card-links);
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color-card-links);
   padding: 1rem;
   min-height: 200px;
   display: flex;
@@ -41,12 +38,12 @@
 }
 
 .content:is(:focus, :hover){
-  border-color: rgba(0, 0, 0, 0.5);
-  background-color: #F2F2F2;
+  border-color: var(--border-color-content-card-links);
+  background-color: var(--bckg-color-content-card-links);
 }
 
 .content .content-tag{
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--color-content-tag-card-links);
 }
 
 .content .content-principal h5{
@@ -59,7 +56,7 @@
 }
 
 .content .content-principal span{
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--color-span-card-links);
 }
 
 @media screen and (max-width: 767px) {

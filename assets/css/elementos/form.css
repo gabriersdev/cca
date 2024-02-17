@@ -58,6 +58,7 @@ button i{
 [data-form="pesquisa"] button{
   border-color: var(--cor-border-button-form-pesquisa);
   background-color: var(--cor-bckg-button-form-pesquisa);
+  color: var(--cor-button-form-pesquisa);
 }
 
 .selecao-multiplas-opcoes{

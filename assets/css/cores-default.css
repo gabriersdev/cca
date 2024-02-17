@@ -1,6 +1,7 @@
 :root{
   --cor-background-loader: #F6F6F6;
   --cor-loader: #3049FF;
+  --cor: #000;
 
   --bckg-default: #F6F6F6;
   --bb-color-hgroup-confirmacao-cca: #D3D3D3;
@@ -34,6 +35,7 @@
   /* Banner */
   --bckg-color-banner: #ECF885;
   --bckg-icon-banner-desc: #EFF77C;
+  --cor-banner: initial;
   --cor-borda-banner-desc: #00000080;
 
   /* Form */
@@ -47,6 +49,7 @@
   /* Form Pesquisa */
   --cor-border-button-form-pesquisa: #CED1DD;
   --cor-bckg-button-form-pesquisa: #DEE2E6;
+  --cor-button-form-pesquisa: initial;
 
   /* Seleção múltiplas opções */
   --bckg-color-btn-selec-mult: #007BFF;
@@ -77,4 +80,17 @@
   --cor-txt-x: #333;
   --cor-txt-shadow-x: #FFF;
   --box-shadow-x: 0 1px 0 #00000033, 0 0 0 2px #FFF inset;
+
+  /* Consulta Arquivos Links */
+  /* TODO - Adicionar */
+  --bb-color-card-links: #0000001A;
+  --bckg-color-card-links: #F6F6F6;
+  --border-color-card-links: #0000000D;
+  --bckg-color-content-card-links: #F2F2F2;
+  --border-color-content-card-links: #00000080;
+  --color-content-tag-card-links: #00000080;
+  --color-content-principal-card-links: #00000099;
+  --color-content-principal-h5-card-links: #000;
+  --color-content-principal-span-card-links: #000;
+  --color-span-card-links: #00000099;
 }

@@ -1,6 +1,7 @@
 .banner{
   /* background: url(../../img/banner-post.svg) center / cover no-repeat; */
   background: var(--bckg-color-banner);
+  color: var(--cor-banner);
   padding: 2.5rem 1rem;
   display: flex;
   flex-direction: row;
@@ -14,6 +15,15 @@
     position: relative;
     margin-left: 0.125rem;
     margin-right: 0.5rem;
+    color: var(--cor-banner);
+
+    *{
+      color: var(--cor-banner);
+    }
+
+    .text-muted{
+      color: var(--bs-secondary) !important;
+    }
 
     &::before{
       position: absolute;

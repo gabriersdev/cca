@@ -367,7 +367,7 @@ function feedbackInfo({html, classe}, btn){
 
 function feedbackButton(btn, {html, classe, html_retorno}){
   // btn: botão a ser alterado, html: conteúdo do botão, classe: classes para substituir, html_retorno: conteúdo do botão durante o feedback
-
+  
   const html_botao = `<i class="bi bi-clipboard"></i>`;
   const class_botao = !isEmpty(btn.classList.value) ? ['btn btn-success', 'btn btn-outline-success'].includes(btn.classList.value) ? '' : btn.classList.value : '';
   btn.disabled = true;

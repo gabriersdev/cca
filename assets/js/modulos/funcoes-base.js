@@ -7,7 +7,7 @@ import { SwalAlert, feedbackButton, isEmpty, resizeTextArea, verificarSeFIDvalid
 import { outrosProjetosExibicao } from './dados.js';
 
 const verificarInputsRecarregamento = () => {
-  if(true){
+  if(false){
     window.onbeforeunload = (evento) => {
       // Há o que preservar
       // TODO - Adicionar monitoramento de campos editados que são inicializados com conteúdo (pendências, análise internalizada, etc.)

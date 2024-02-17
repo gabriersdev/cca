@@ -9,6 +9,15 @@ import { cartoriosImoveis } from './modulos/dados.js';
 
 (() => {  
   
+  // Alterando página apenas para implementar tema escuro
+  if(false){
+    $('html').attr('data-bs-theme', 'dark');
+    $('link[rel="stylesheet"]').each((i, link) => {
+      // A porta 5501 pode mudar
+      if (link.href.includes('/assets/css/cores-default.css')) link.href = 'http://127.0.0.1:5501/assets/css/cores-dark.css'; 
+    })
+  }
+
   const apresentarDadosProjeto = (dados_do_projeto, novas_funcionalidades) => {
     // Exibindo dados
     console.groupCollapsed(`${dados_do_projeto['Project name'] ?? 'Projeto'}, Version ${dados_do_projeto.Version ?? '-'}`);
@@ -260,8 +269,9 @@ import { cartoriosImoveis } from './modulos/dados.js';
     
     $('.btn-copy-float').on('click', (evento) => {
       evento.preventDefault();
-      const btn = document.querySelector('.btn-copy-float')
-      const [html_inicial, cor_inicial, display_inicial] = ['<i class="bi bi-clipboard2"></i>', '#D3D3D3', 'none'];
+      const btn = document.querySelector('.btn-copy-float');
+
+      const [html_inicial, cor_inicial, display_inicial] = ['<i class="bi bi-clipboard2"></i>', btn.closest('html').getAttribute('data-bs-theme') === 'dark' ? '#FFFFFF50' : '#D3D3D3', 'none'];
       try{
         navigator.clipboard.writeText(document.querySelector('[data-form="conteudo-texto"]').innerText.trim() || document.querySelector('[data-form="conteudo-texto"]').value.trim()).then(() => {
         })
