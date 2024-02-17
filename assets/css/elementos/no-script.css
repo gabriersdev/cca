@@ -12,8 +12,8 @@
 }
 
 .box-no-script{
-  background-color: #FFF;
-  color: #000;
+  background-color: var(--bckg-color-box-no-script);
+  color: var(--border-color-box-no-script);
 }
 
 .btn-principal-no-script{
@@ -21,14 +21,14 @@
   outline: none;
   padding: 0.5rem 0.75rem;
   outline: none !important;
-  border: 1px solid #CCC;
+  border: 1px solid var(--border-color-btn-principal-no-script);
   border-radius: 5px;
   transition: background ease-in-out 0.3s;
 }
 
 .btn-principal-no-script:hover{
-  background-color: #DDD;
-  border-color: #BBB;
+  background-color: var(--bckg-color-btn-principal-no-script-hover);
+  border-color: var(--border-color-btn-principal-no-script-hover);
 }
 
 div.box-obrigado-contribuicao{
@@ -39,8 +39,8 @@ div.texto-pagina-centralizado-alt{
   margin-top: 30px;
   max-width: 40ch;
   padding: 40px 0;
-  border-top: 1px dashed #000000;
-  border-bottom: 1px dashed #000000;
+  border-top: 1px dashed var(--border-color-texto-pagina-centralizado);
+  border-bottom: 1px dashed var(--border-color-texto-pagina-centralizado);
 }
 
 button.btn-principal-no-script{

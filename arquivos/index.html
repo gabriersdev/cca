@@ -69,25 +69,27 @@
     <div class="spinner-first-load"></div>
   </div>
   
-  <div class="modal fade" id="modal-confirmar-senha" aria-hidden="true" aria-labelledby="modal-confirmar-senha-Label" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modal-confirmar-senha-Label">Informe a senha</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="">
-            <div class="form-group">
-              <label for="senha-arquivo" class="mb-1">Senha</label>
-              <div class="input-group">
-                <input type="password" id="senha-arquivo" class="form-control" placeholder="A senha vai aqui" maxlength="8" minlength="6" autocomplete="off" required>
-                <button type="button" class="btn btn-outline-secondary" data-action="btn-visibilidade-senha"><i class="bi bi-eye-fill"></i></button>
+  <div id="modais">
+    <div class="modal fade" id="modal-confirmar-senha" aria-hidden="true" aria-labelledby="modal-confirmar-senha-Label" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modal-confirmar-senha-Label">Informe a senha</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="">
+              <div class="form-group">
+                <label for="senha-arquivo" class="mb-1">Senha</label>
+                <div class="input-group">
+                  <input type="password" id="senha-arquivo" class="form-control" placeholder="A senha vai aqui" maxlength="8" minlength="6" autocomplete="off" required>
+                  <button type="button" class="btn btn-outline-secondary" data-action="btn-visibilidade-senha"><i class="bi bi-eye-fill"></i></button>
+                </div>
               </div>
-            </div>
-            <a href="" data-element="link-referencia" rel="noreferrer noopener"></a>
-            <button type="submit" class="btn btn-outline-primary mt-3" style="width: 100%;" onclick="clickEnviarConfirmacaoSenha(event, this)">Enviar</button>
-          </form>
+              <a href="" data-element="link-referencia" rel="noreferrer noopener"></a>
+              <button type="submit" class="btn btn-outline-primary mt-3" style="width: 100%;" onclick="clickEnviarConfirmacaoSenha(event, this)">Enviar</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

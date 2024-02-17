@@ -5,44 +5,44 @@
   --bckg-default: #F6F6F6;
   --bb-color-hgroup-confirmacao-cca: #D3D3D3;
 
-  --bckg-card-link-facil-hover: rgb(0, 0, 0, 0.05);
+  --bckg-card-link-facil-hover: #0000000D;
 
   /* Botão transparente */
   --cor-txt-btn-transparent: #000;
   --cor-txt-btn-transparent-hover: #000;
-  --cor-borda-btn-transparent: rgb(0, 0, 0, 0.4);
-  --cor-borda-btn-transparent-hover: rgb(0, 0, 0, 0.5);
+  --cor-borda-btn-transparent: #00000066;
+  --cor-borda-btn-transparent-hover: #00000080;
 
   /* Botão cópia flutuante */
   --cor-borda-btn-copia-flutuante: #808080;
   --cor-bckg-btn-copia-flutuante: #D3D3D3;
 
   /* Alert info */
-  --cor-borda-alert-info: rgb(0, 0, 0, 0.25);
+  --cor-borda-alert-info: #00000040;
 
   /* Container fluid */
-  --cor-borda-container-fluid: rgba(0, 0, 0, 0.1);
-  --cor-bckg-container-fluid: rgba(0, 0, 0, 0.01);
+  --cor-borda-container-fluid: #0000001A;
+  --cor-bckg-container-fluid: #00000003;
 
   /* Navbar */
   --cor-bckg-navbar: #0D6EFD;
   --cor-bckg-navbar-brand: #0D6EFD;
 
   /* Seção controlada */
-  --cor-bckg-header-secao-controlada: rgba(0, 0, 0, 0.05);
+  --cor-bckg-header-secao-controlada: #0000000D;
 
   /* Banner */
   --bckg-color-banner: #ECF885;
   --bckg-icon-banner-desc: #EFF77C;
-  --cor-borda-banner-desc: rgba(0, 0, 0, 0.5);
+  --cor-borda-banner-desc: #00000080;
 
   /* Form */
   /* TODO - separar cores do formulário */
   --cor-btn-outline-success: #008000;
   --cor-btn-outline-danger: #FF0000;
-  --cor-borda-invalid-input: rgb(255, 0, 0, 0.15);
-  --cor-box-shadow-invalid-input: rgb(255, 142, 142, 0.4);
-  --cor-invalido-feedback-dado: rgb(255, 0, 0, 1);
+  --cor-borda-invalid-input: #FF000026;
+  --cor-box-shadow-invalid-input: #FF8E8E66;
+  --cor-invalido-feedback-dado: #FF0000;
 
   /* Form Pesquisa */
   --cor-border-button-form-pesquisa: #CED1DD;
@@ -55,12 +55,26 @@
   --color-btn-selec-mult-hover: #FFF;
 
   /* Loader */
-  --cor-borda-spinner: rgba(0, 0, 0, 0.15);
+  --cor-borda-spinner: #00000026;
   --cor-borda-spinner-right: #2631FF;
 
   /* No script */
-  /* TODO - separar cores do noscript */
+  --bckg-color-box-no-script: #FFF;
+  --border-color-box-no-script: #000;
+  --border-color-btn-principal-no-script: #CCC;
+  --bckg-color-btn-principal-no-script-hover: #DDD;
+  --border-color-btn-principal-no-script-hover: #BBB;
+  --border-color-texto-pagina-centralizado: #000;
 
   /* Modal informações página */
-  /* TODO - separar cores do modal */
+  /* TODO - finalizar separaração de cores do modal */
+  --cor-borda-modal-informacoes-pagina: #00000033;
+  --cor-modal-informacoes-pagina: #000;
+  --cor-modal-informacoes-pagina-backdrop: #0000008C;
+  --cor-bckg-kbd: #D2D2D2;
+  --cor-bckg-x: #F7F7F7;
+  --cor-borda-x: #CCC;
+  --cor-txt-x: #333;
+  --cor-txt-shadow-x: #FFF;
+  --box-shadow-x: 0 1px 0 #00000033, 0 0 0 2px #FFF inset;
 }
