@@ -167,6 +167,20 @@ function renderConteudosPagina(area_elementos, elementos, objeto, caso){
   })
 }
 
+const setTheme = (theme) => {
+  const origin = new URL(window.location).origin;
+  if (theme === 'dark' || theme === 'default') {
+    $('html').attr('data-bs-theme', theme);
+    $('link[rel="stylesheet"]').each((i, link) => {
+      if (link.href.match(/\/assets\/css\/cores-(default|dark).css/i)) {
+        link.setAttribute('href', `${origin}/assets/css/cores-${theme}.css`);
+      }
+    })
+  } else { 
+    $('html').attr('data-bs-theme', 'normal');
+  }
+}
+
 export {
   edicaoInputNome,
   atualizarNumerosProponentes,
@@ -177,5 +191,6 @@ export {
   edicaoTextAreaPendencias,
   edicaoTextAreaRestricoes,
   adicionarOpcoesAutoComplete,
-  renderConteudosPagina
+  renderConteudosPagina,
+  setTheme
 }

@@ -1,10 +1,11 @@
 import { text_areas_editados } from '../script.js';
 import { conteudos } from './conteudos.js';
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias, submitInformarRestricoes, clickAcionarModal, clickLimparTudoSecao, clickEnviarDados, acaoClickIncluirProponente, clickDownload, acionarDevolucaoFID, acionarModalAddInformacoes } from './funcoes-click.js'
-import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes } from './funcoes-de-conteudo.js';
+import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes, setTheme } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
 import { SwalAlert, feedbackButton, isEmpty, resizeTextArea, verificarSeFIDvalido } from './utilitarios.js';
 import { outrosProjetosExibicao } from './dados.js';
+import { Settings } from '../classes/Settings.js';
 
 const verificarInputsRecarregamento = () => {
   if(false){
@@ -263,6 +264,44 @@ function funcoesBase(){
     }
   })
   
+  $('[data-set-setting]').on('click', (evento) => {
+    const settings = new Settings();
+
+    evento.preventDefault();
+    const setting = evento.target.dataset.setSetting;
+    switch (setting) {
+      case 'alterar-analista':
+        const actualAnalyst = settings.getOption('analyst') || '';
+        const resp = prompt('Alterar analista para:', actualAnalyst);
+
+        if (resp) {
+          if (resp.length > 0 && (resp !== actualAnalyst)) {
+            settings.setOption('analyst', resp);
+          }
+        }
+      break;
+
+      case 'alterar-id-analista':
+        const actualIDAnalyst = settings.getOption('id-analyst') || '';
+        const respID = prompt('Alterar ID do analista para:', actualIDAnalyst);
+
+        if (respID) {
+          if (respID.length > 0 && (respID !== actualIDAnalyst)) {
+            settings.setOption('id-analyst', respID);
+          }
+        }
+      break;
+
+      case 'alterar-tema':          
+        const actualTheme = settings.getOption('theme') || 'normal';
+        if (confirm(`Confirma alterar para o tema ${actualTheme === 'dark' ? 'normal' : 'escuro'}?`)) {
+          settings.setOption('theme', actualTheme === 'dark' ? 'default' : 'dark');
+          setTheme(settings.getOption('theme'));
+        }
+      break;
+    }      
+  });
+
   if(document.title === 'Confirmação de dados - CCA'){
     const btnRecuperarDados = $('[data-action="recuperar-dados"]');
     const toast = $('#toast-feedback');
@@ -392,7 +431,7 @@ function funcoesBase(){
           }
         }
       }
-    })
+    });
   }
   
   const linksFaceis = document.querySelector('.links-faceis-confirmacao');

@@ -1,5 +1,5 @@
 :root{
-  --cor-background-loader: #F6F6F6;
+  --cor-background-loader: #232323;
   --cor-loader: #3049FF;
   --cor: #FFF;
   
@@ -58,8 +58,8 @@
   --color-btn-selec-mult-hover: #FFF;
   
   /* Loader */
-  --cor-borda-spinner: #00000026;
-  --cor-borda-spinner-right: #2631FF;
+  --cor-borda-spinner: #FFFFFF35;
+  --cor-borda-spinner-right: #0D6EFD;
   
   /* No script */
   --bckg-color-box-no-script: #FFF;

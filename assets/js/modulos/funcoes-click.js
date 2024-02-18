@@ -3,6 +3,7 @@ import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome, resizeTextArea,
 import { renderPendencias, renderResumo, renderTooltips } from './funcoes-render.js';
 import { atualizar, escutaEventoInput, verificarInputsRecarregamento } from './funcoes-base.js';
 import { atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
+import { Settings } from '../classes/Settings.js';
 
 const clickAcionarModal = () => {
   document.querySelectorAll('[data-action="acionar-modal"]').forEach(botao => {
@@ -372,6 +373,7 @@ function acionarModalAddInformacoes(){
   $(modal).modal('show');
   setTimeout(() => {
     modal.querySelector('[data-input="id-fid"]').focus();
+    modal.querySelector('#id-analista').value = new Settings().getOption('analyst') || '';
   }, 500)
 }
 
@@ -403,6 +405,7 @@ function acionarDevolucaoFID(){
   
   setTimeout(() => {
     modal.querySelectorAll('input')[0].focus();
+    modal.querySelector('#dev-analista').value = `ANL. ${new Settings().getOption('id-analyst')}` || '';
   }, 500);
 }
 

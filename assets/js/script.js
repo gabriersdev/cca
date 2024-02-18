@@ -4,20 +4,12 @@ import { conteudos } from './modulos/conteudos.js';
 import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarNumero, sanitizarString, criarEBaixarArquivo, resizeTextArea, splitArray } from './modulos/utilitarios.js';
 import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
-import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/funcoes-de-conteudo.js';
+import { adicionarOpcoesAutoComplete, renderConteudosPagina, setTheme } from './modulos/funcoes-de-conteudo.js';
 import { cartoriosImoveis } from './modulos/dados.js';
+import { Settings } from './classes/Settings.js';
 
 (() => {  
   
-  // Alterando página apenas para implementar tema escuro
-  if(false){
-    $('html').attr('data-bs-theme', 'dark');
-    $('link[rel="stylesheet"]').each((i, link) => {
-      // A porta 5501 pode mudar
-      if (link.href.includes('/assets/css/cores-default.css')) link.href = 'http://127.0.0.1:5501/assets/css/cores-dark.css'; 
-    })
-  }
-
   const apresentarDadosProjeto = (dados_do_projeto, novas_funcionalidades) => {
     // Exibindo dados
     console.groupCollapsed(`${dados_do_projeto['Project name'] ?? 'Projeto'}, Version ${dados_do_projeto.Version ?? '-'}`);
@@ -219,6 +211,11 @@ import { cartoriosImoveis } from './modulos/dados.js';
   $(body).append(conteudos.rodape)
   
   window.addEventListener("load", function () {
+    // TODO: Separar responsabilidades e scripts carregados por página
+    // Carregando configurações do localStorage
+    const settings = new Settings();
+    settings.createSettingsObject(localStorage.getItem('cca-configs'))
+    setTheme(settings.getOption('theme'));
     $('.overlay').hide();
     
     funcoesBase();
