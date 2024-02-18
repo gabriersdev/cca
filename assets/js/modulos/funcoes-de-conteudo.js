@@ -181,6 +181,14 @@ const setTheme = (theme) => {
   }
 }
 
+const setAutocomplete = (autocomplete) => {
+  if (autocomplete === true) {
+    $('input, textarea').attr('autocomplete', 'on');
+  } else {
+    $('input, textarea').attr('autocomplete', 'off');
+  }
+}
+
 export {
   edicaoInputNome,
   atualizarNumerosProponentes,
@@ -192,5 +200,6 @@ export {
   edicaoTextAreaRestricoes,
   adicionarOpcoesAutoComplete,
   renderConteudosPagina,
-  setTheme
+  setTheme,
+  setAutocomplete
 }

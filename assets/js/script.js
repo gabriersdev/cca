@@ -4,7 +4,7 @@ import { conteudos } from './modulos/conteudos.js';
 import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarNumero, sanitizarString, criarEBaixarArquivo, resizeTextArea, splitArray } from './modulos/utilitarios.js';
 import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
-import { adicionarOpcoesAutoComplete, renderConteudosPagina, setTheme } from './modulos/funcoes-de-conteudo.js';
+import { adicionarOpcoesAutoComplete, renderConteudosPagina, setAutocomplete, setTheme } from './modulos/funcoes-de-conteudo.js';
 import { cartoriosImoveis } from './modulos/dados.js';
 import { Settings } from './classes/Settings.js';
 
@@ -216,6 +216,8 @@ import { Settings } from './classes/Settings.js';
     const settings = new Settings();
     settings.createSettingsObject(localStorage.getItem('cca-configs'))
     setTheme(settings.getOption('theme'));
+    setAutocomplete(settings.getOption('autocomplete'));
+
     $('.overlay').hide();
     
     funcoesBase();

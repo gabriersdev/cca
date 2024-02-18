@@ -341,6 +341,7 @@ const nav = `<nav class="navbar mt-5">
         <li><a class="dropdown-item" href="#" data-set-setting="alterar-analista"><i class="bi bi-person-fill"></i> Analista</a></li>
         <li><a class="dropdown-item" href="#" data-set-setting="alterar-id-analista"><i class="bi bi-person-badge-fill"></i> ID Analista</a></li>
         <li><a class="dropdown-item" href="#" data-set-setting="alterar-tema"><i class="bi bi-circle-half"></i> Tema</a></li>
+        <li><a class="dropdown-item" href="#" data-set-setting="alterar-autocomplete"><i class="bi bi-123"></i> Autocomplete</a></li>
       </ul>
     </div>
     <div class="btn-group dropstart" role="group">

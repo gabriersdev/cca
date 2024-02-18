@@ -1,7 +1,7 @@
 import { text_areas_editados } from '../script.js';
 import { conteudos } from './conteudos.js';
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias, submitInformarRestricoes, clickAcionarModal, clickLimparTudoSecao, clickEnviarDados, acaoClickIncluirProponente, clickDownload, acionarDevolucaoFID, acionarModalAddInformacoes } from './funcoes-click.js'
-import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes, setTheme } from './funcoes-de-conteudo.js';
+import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes, setTheme, setAutocomplete } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
 import { SwalAlert, feedbackButton, isEmpty, resizeTextArea, verificarSeFIDvalido } from './utilitarios.js';
 import { outrosProjetosExibicao } from './dados.js';
@@ -292,11 +292,19 @@ function funcoesBase(){
         }
       break;
 
-      case 'alterar-tema':          
+      case 'alterar-tema':     
         const actualTheme = settings.getOption('theme') || 'normal';
         if (confirm(`Confirma alterar para o tema ${actualTheme === 'dark' ? 'normal' : 'escuro'}?`)) {
           settings.setOption('theme', actualTheme === 'dark' ? 'default' : 'dark');
           setTheme(settings.getOption('theme'));
+        }
+      break;
+
+      case 'alterar-autocomplete':
+        const actualAutocomplete = settings.getOption('autocomplete');
+        if (confirm(`Confirma alterar para ${actualAutocomplete ? 'desativar' : 'ativar'} o autocomplete?`)) {
+          settings.setOption('autocomplete', !actualAutocomplete);
+          setAutocomplete(settings.getOption('autocomplete'));
         }
       break;
     }      

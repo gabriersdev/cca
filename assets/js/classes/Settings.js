@@ -24,7 +24,7 @@ class Settings{
       },
       "id-analyst": {
         "type": "string",
-        "default": "1",
+        "default": "#1",
         "propertie": "value"
       }
     }
@@ -85,7 +85,7 @@ class Settings{
         if(this.options[config_name]["type"] === "boolean" && [true, false].includes(config_value)){
           this.CRUDoption("update", config_name, config_value);
         }else if(this.options[config_name]["type"] === typeof config_value){
-          this.CRUDoption("update", config_name, config_value);
+          this.CRUDoption("update", config_name, config_value.trim());
         }else{
           throw new Error("O valor informado para alterar a configuração não é válido.");
         }
