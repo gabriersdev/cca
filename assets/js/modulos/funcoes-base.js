@@ -691,6 +691,7 @@ function atualizar(){
   renderPendencias();
   escutaEventoInput();
   atualizarNumerosProponentes();
+  setAutocomplete(new Settings().getOption('autocomplete'));
 }
 
 export {
