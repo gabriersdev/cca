@@ -629,6 +629,7 @@ const subirProponente = (element, event) => {
           $(accordion).append(item);
         }
       })
+      atualizarNumerosProponentes();
     }
   }
 }
