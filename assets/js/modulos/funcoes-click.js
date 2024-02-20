@@ -615,6 +615,26 @@ const clickEnviarDados = () => {
   })
 }
 
+const subirProponente = (element, event) => {
+  event.preventDefault();
+  const accordion = element.closest('.accordion');
+  const accordionItens = Array.from(accordion.querySelectorAll('.accordion-item'));
+  const accordionElement = accordionItens.find((item) => item === element.closest('.accordion-item'));
+
+  if (accordion && accordionItens.length > 0 && accordionElement) {
+    if (accordionItens.indexOf(accordionElement) > 0) {
+      accordionItens.forEach((item) => {
+        if (item !== accordionElement){
+          item.remove();
+          $(accordion).append(item);
+        }
+      })
+    }
+  }
+}
+
+window.subirProponente = subirProponente;
+
 // TODO: separar funções de click - há um excesso de funções e chamadas de funções
 export {
   clickAcionarModal,
