@@ -117,6 +117,7 @@ const clickRemoverProponente = () => {
   botao.forEach(botao => {
     removeEventListener('click', botao);
     botao.addEventListener('click', async (evento) => {
+      evento.preventDefault();
       SwalAlert('confirmacao', 'question', 'Tem certeza que deseja remover?', 'Esta ação não poderá ser desfeita').then((retorno) => {
         if(retorno.isConfirmed){
           botao.closest('.accordion-item').remove();
