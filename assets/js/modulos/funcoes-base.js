@@ -603,7 +603,7 @@ function funcoesBase(){
       const percentualCondicionamento = parseFloat(evento.target.querySelector('input[name="percentual-condicionamento"]').value.replaceAll(',', '.'));
       const parcelaNecessaria = BRLToFLoat(evento.target.querySelector('input[name="parcela-necessaria"]').value);
       
-      if(percentualCondicionamento > 0 && percentualCondicionamento < 30 && parcelaNecessaria > 0 && isFinite(percentualCondicionamento) && isFinite(parcelaNecessaria) && !isNaN(percentualCondicionamento) && !isNaN(parcelaNecessaria)){
+      if(percentualCondicionamento > 0 && percentualCondicionamento <= 30 && parcelaNecessaria > 0 && isFinite(percentualCondicionamento) && isFinite(parcelaNecessaria) && !isNaN(percentualCondicionamento) && !isNaN(parcelaNecessaria)){
         saida.message = `Necessário uma renda de ${((parcelaNecessaria * 100) / (percentualCondicionamento)).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} para atingir a parcela necessária de acordo com o percentual de condicionamento informado.`;
         saida.type = 'primary';
       }else{
