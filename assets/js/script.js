@@ -257,22 +257,25 @@ import { Settings } from './classes/Settings.js';
     // Fim do TODO
     
     $('[data-content="secao-controlada"] .card-header').on('click', (evento) => {
-      $('[data-content="secao-controlada"] .card-body').toggleClass('none');
-      if($('[data-content="secao-controlada"] .card-body').css('display') !== 'none'){
+      const secao = evento.target.closest('[data-content="secao-controlada"]');
+      $(secao).find('.card-body').toggleClass('none');
+      if($(secao).find('.card-body').css('display') !== 'none'){
         // $('[data-content="secao-controlada"] .card-header span').text('Clique para fechar');
-        $('[data-content="secao-controlada"] .card-header span').text('');
+        $(secao).find('.card-header span').text('');
       }else{
-        $('[data-content="secao-controlada"] .card-header span').text('Clique para abrir');
+        $(secao).find('.card-header span').text('Clique para abrir');
       }
     })
     
+    console.log($('.btn-copy-float'));
     $('.btn-copy-float').on('click', (evento) => {
       evento.preventDefault();
-      const btn = document.querySelector('.btn-copy-float');
+      const secao = evento.target.closest('[data-content="secao-controlada"]');
+      const btn = secao.querySelector('.btn-copy-float');
 
       const [html_inicial, cor_inicial, display_inicial] = ['<i class="bi bi-clipboard2"></i>', btn.closest('html').getAttribute('data-bs-theme') === 'dark' ? '#FFFFFF50' : '#D3D3D3', 'none'];
       try{
-        navigator.clipboard.writeText(document.querySelector('[data-form="conteudo-texto"]').innerText.trim() || document.querySelector('[data-form="conteudo-texto"]').value.trim()).then(() => {
+        navigator.clipboard.writeText(secao.querySelector('[data-form="conteudo-texto"]').innerText.trim() || secao.querySelector('[data-form="conteudo-texto"]').value.trim()).then(() => {
         })
         btn.style.backgroundColor = '#99CC99';
         btn.innerHTML = '<i class="bi bi-clipboard2-check"></i>';
