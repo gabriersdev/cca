@@ -197,7 +197,8 @@ const getURLPlanilhaPerMonth = (month) => {
   const codePlanilhaDefault = '0';
 
   if (![null, undefined].includes(planilhas.find(planilha => planilha.month === monthTrated).code) && ![null, undefined].includes(monthTrated)) {
-    return `https://drive.google.com/uc?export=download&id=${planilhas.find(planilha => planilha.month === monthTrated).code || codePlanilhaDefault}`;
+    // return `https://drive.google.com/uc?export=download&id=${planilhas.find(planilha => planilha.month === monthTrated).code || codePlanilhaDefault}`;
+    return `./assets/docs/MODELO ${monthTrated + 1} - APURACAO.xlsx`;
   } else {
     return null;
   }
