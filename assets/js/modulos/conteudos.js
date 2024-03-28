@@ -129,6 +129,12 @@ const consultas = [
     "link": "https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp"
   },
   {
+    "tag": "cadastro",
+    "titulo": "Descubra CNPJ",
+    "sistema": "Linkana",
+    "link": "https://cnpj.linkana.com"
+  },
+  {
     "tag": "dossiê",
     "titulo": "Consulta FGTS",
     "sistema": "SIOPI",
