@@ -141,9 +141,9 @@ textarea::-webkit-scrollbar{
 
 .alert.info{
   &::before{
-    content: "\F430";
+    /* content: "\F430"; */
     font-family: 'bootstrap-icons';
-    margin-right: 0.25rem;
+    /* margin-right: 0.25rem; */
   }
   
   border-left-width: 5px;

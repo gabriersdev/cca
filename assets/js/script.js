@@ -267,7 +267,6 @@ import { Settings } from './classes/Settings.js';
       }
     })
     
-    console.log($('.btn-copy-float'));
     $('.btn-copy-float').on('click', (evento) => {
       evento.preventDefault();
       const secao = evento.target.closest('[data-content="secao-controlada"]');
