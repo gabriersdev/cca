@@ -452,6 +452,7 @@ function funcoesBase(){
       conteudos.consultas.find(e => e.titulo == 'Situação Cadastral') || 0, 
       conteudos.arquivos.find(e => e.titulo == 'Tabela de Apuração') || 0,
       conteudos.consultas.find(e => e.titulo == 'Tempo de Serviço') || 0, 
+      {link: 'https://gist.github.com/gabrieszin/17a5f0b905d4faffbd2f0ae490d56cc7', sistema: 'GitHub Gist', titulo: 'Snippets para Análise de Crédito'} || 0,
     ].forEach(conteudo => {
       const link = conteudo.link
       try{
