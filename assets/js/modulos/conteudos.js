@@ -213,15 +213,27 @@ Object.seal(consultas);
 // Array com dados de arquivos que serão usados no sistema
 const arquivos = [
   {
-    "tag": "cadastro",
+    "tag": "dossiê",
+    "titulo": "Carta de Descontinuidade de Renda",
+    "sistema": "PDF",
+    "link": "Carta de Descontinuidade de Renda"
+  },
+  {
+    "tag": "análise",
+    "titulo": "Carta de Cancelamento",
+    "sistema": "PDF",
+    "link": "Carta de Cancelamento"
+  },
+  {
+    "tag": "análise",
     "titulo": "Relatório",
     "sistema": "Word",
     "link": "Relatório"
   },
   {
-    "tag": "cadastro",
+    "tag": "análise",
     "titulo": "Tabela de Apuração",
-    "subtitulo": "Padrão",
+    "subtitulo": "Modelo Padrão",
     "sistema": "Excel",
     "link": "Tabela de Apuração"
   },

@@ -12,6 +12,8 @@ const conteudos = [
   {conteudo: 'Ateste', attr: '1Khdf60TPOtAcqVOdXv4wd7z5lID7T-wO'},
   {conteudo: 'Validação de Pesquisa', attr: '1KXflnhCgrQ3BRFqC6mtyP94IbX51bMA-'},
   {conteudo: 'Checklist', attr: '1KcCOWhqkAiZQpAk60K02cpjS2RgSBOGS'},
+  {conteudo: 'Carta de Descontinuidade de Renda', link: { "target": "/assets/docs/Carta_de_Descontinuidade_de_Renda.pdf", "rel": "noopener noreferrer" }},
+  {conteudo: 'Carta de Cancelamento', link: { "target": "/assets/docs/Carta_de_Cancelamento.pdf", "rel": "noopener noreferrer" }},
 ]
 
 export const id_arquivos = {conteudos}
@@ -30,7 +32,7 @@ function verificacao(evento, elemento, referencia){
     let download_id = null;
     if(!isEmpty(attr)){
       download_id = attr.attr;
-    }
+    } 
 
     if(!isEmpty(visible) && typeof(visible) === 'string' && visible.length >= 6 && visible.length <= 8){
       if(visible.slice(0)[0] == '0' && visible.slice(0)[1] == '6' && visible.slice(0)[2] == '3' && visible.slice(0)[3] == '7' && visible.slice(0)[4] == '6' && visible.slice(0)[5] == '3' && visible.slice(0)[6] == '7'){
@@ -38,8 +40,12 @@ function verificacao(evento, elemento, referencia){
         setTimeout(() => {
           const modal = document.querySelector('#modal-confirmar-senha');
           $(modal).modal('hide');
-          modal.querySelector('[data-element="link-referencia"]').href = `https://drive.google.com/uc?export=download&id=${download_id}`;
-          modal.querySelector('[data-element="link-referencia"]').click();
+          console.log('Here!');
+          if (!isEmpty(download_id)) {
+            window.open(`https://drive.google.com/uc?export=download&id=${download_id}`, '_blank', 'noopener noreferrer nofollow');
+          } else if (conteudos.find(e => e.conteudo == referencia).link) {
+            window.open(`${window.location.origin + conteudos.find(e => e.conteudo == referencia).link.target}`, '_blank', 'noopener noreferrer nofollow');
+          }
         }, 450);
       }else{
         feedback(elemento, 'btn btn-danger mt-3', 'Oops... senha incorreta!');
