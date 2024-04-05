@@ -40,7 +40,6 @@ function verificacao(evento, elemento, referencia){
         setTimeout(() => {
           const modal = document.querySelector('#modal-confirmar-senha');
           $(modal).modal('hide');
-          console.log('Here!');
           if (!isEmpty(download_id)) {
             window.open(`https://drive.google.com/uc?export=download&id=${download_id}`, '_blank', 'noopener noreferrer nofollow');
           } else if (conteudos.find(e => e.conteudo == referencia).link) {
