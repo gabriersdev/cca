@@ -1,4 +1,4 @@
-import { text_areas_editados } from '../script.js';
+import { downloaded_txt_file, text_areas_editados } from '../script.js';
 import { conteudos } from './conteudos.js';
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias, submitInformarRestricoes, clickAcionarModal, clickLimparTudoSecao, clickEnviarDados, acaoClickIncluirProponente, clickDownload, acionarDevolucaoFID, acionarModalAddInformacoes } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes, setTheme, setAutocomplete } from './funcoes-de-conteudo.js';
@@ -14,6 +14,9 @@ const verificarInputsRecarregamento = () => {
       // TODO - Adicionar monitoramento de campos editados que são inicializados com conteúdo (pendências, análise internalizada, etc.)
       if(Array.from($('input, textarea')).filter(e => e.checked === undefined ? e.value !== "R$ 0,00" && e.value.trim().length > 0 : '').length > 0){
         evento.preventDefault();
+
+        // Verificas se os dados das pendências e relatório foram baixados e exibe o aviso Swal.Alert
+        if (!downloaded_txt_file()) SwalAlert('aviso', 'warning', 'Há campos preenchidos e os dados as pendências e relatório não foram baixados', 'Você tem certeza que deseja sair? Os dados preenchidos não foram salvos e serão perdidos pra sempre...');
       }else{
         // Não há o que preservar
       }

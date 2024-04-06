@@ -296,6 +296,7 @@ import { Settings } from './classes/Settings.js';
 })();
 
 let text_areas_foram_editados = false;
+let download_txt_file = false;
 
 export function text_areas_editados(condicao){
   if(isEmpty(condicao) && !typeof condicao !== 'boolean'){
@@ -306,6 +307,19 @@ export function text_areas_editados(condicao){
     }
   }else{
     text_areas_foram_editados = condicao;
+    return condicao;
+  }
+};
+
+export function downloaded_txt_file(condicao){
+  if(isEmpty(condicao) && !typeof condicao !== 'boolean'){
+    try{
+      return download_txt_file
+    }catch(error){
+      return false;
+    }
+  }else{
+    download_txt_file = condicao;
     return condicao;
   }
 };

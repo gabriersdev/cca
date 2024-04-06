@@ -4,6 +4,7 @@ import { renderPendencias, renderResumo, renderTooltips } from './funcoes-render
 import { atualizar, escutaEventoInput, verificarInputsRecarregamento } from './funcoes-base.js';
 import { atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
 import { Settings } from '../classes/Settings.js';
+import { downloaded_txt_file } from '../script.js';
 
 const clickAcionarModal = () => {
   document.querySelectorAll('[data-action="acionar-modal"]').forEach(botao => {
@@ -271,6 +272,9 @@ const baixarPendencias = (primeirosNomes) => {
 }
 
 const criarEBaixarTXT = (conteudo, nome) => {
+  // TODO - marcar que foi baixado
+  downloaded_txt_file(true);
+
   let blob = new Blob([`${JSON.parse(conteudo)}`], {type: "text/plain;charset=utf-8"});
   saveAs(blob, `${nome.toUpperCase()}.txt`);
 }
