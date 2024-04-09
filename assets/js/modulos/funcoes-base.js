@@ -16,7 +16,7 @@ const verificarInputsRecarregamento = () => {
         evento.preventDefault();
 
         // Verificas se os dados das pendências e relatório foram baixados e exibe o aviso Swal.Alert
-        if (!downloaded_txt_file()) SwalAlert('aviso', 'warning', 'Há campos preenchidos e os dados as pendências e relatório não foram baixados', 'Você tem certeza que deseja sair? Os dados preenchidos não foram salvos e serão perdidos pra sempre...');
+        if (!downloaded_txt_file()) SwalAlert('aviso', 'warning', 'Há campos preenchidos e as pendências ou relatório não foram baixados', 'Você tem certeza que deseja sair? Os dados preenchidos não foram salvos e serão perdidos pra sempre...');
       }else{
         // Não há o que preservar
       }

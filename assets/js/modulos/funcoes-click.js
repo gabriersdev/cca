@@ -262,18 +262,23 @@ const baixarDados = (proponentes, primeirosNomes, saida) => {
 const baixarRelatorio = (primeirosNomes) => {
   //Selecionar conteúdo no textarea de relatório
   const relatorio = document.querySelector('[data-content="relatorio"]').value;
-  criarEBaixarTXT(JSON.stringify(relatorio), `RELATORIO${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
+  criarEBaixarTXT(JSON.stringify(relatorio), `RELATORIO${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`, 'relatorio');
 }
 
 const baixarPendencias = (primeirosNomes) => {
   //Selecionar conteúdo no textarea de pendências
   const pendencias = document.querySelector('[data-content="pendencias"]').value;
-  criarEBaixarTXT(JSON.stringify(pendencias), `PENDENCIAS${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
+  criarEBaixarTXT(JSON.stringify(pendencias), `PENDENCIAS${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`, 'pendencias');
 }
 
-const criarEBaixarTXT = (conteudo, nome) => {
+const criarEBaixarTXT = (conteudo, nome, origin) => {
   // TODO - marcar que foi baixado
-  downloaded_txt_file(true);
+  if (origin) {
+    // Apenas os downloads do relatório e das pendências são marcados como baixados pela variável de controle
+    if (['relatorio', 'pendencias'].includes(origin)) {
+      downloaded_txt_file(true);
+    }
+  }
 
   let blob = new Blob([`${JSON.parse(conteudo)}`], {type: "text/plain;charset=utf-8"});
   saveAs(blob, `${nome.toUpperCase()}.txt`);
