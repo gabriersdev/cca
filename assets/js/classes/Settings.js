@@ -1,9 +1,7 @@
 import { isEmpty } from "../modulos/utilitarios.js"
 
 class Settings{
-  options = {
-
-  }
+  options = {}
 
   constructor(){
     this.options = {
@@ -24,7 +22,7 @@ class Settings{
       },
       "id-analyst": {
         "type": "string",
-        "default": "#1",
+        "default": "1",
         "propertie": "value"
       }
     }
