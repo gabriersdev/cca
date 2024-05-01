@@ -30,11 +30,10 @@ import { Settings } from './classes/Settings.js';
   };
   
   const novas_funcionalidades = [
-    'Reformulação do layout da página de desligamento.',
-    'Adição de novo cálculo e geração de link para FID',
-    'Melhoria na navegação com o teclado.',
-    'Reduzindo os campos no formulário de proponentes.',
-    'Corrigidos erros na criação do arquivo de acompanhamento'
+    'Funcionalidade de alteração de ordem de proponente implementada',
+    'Adicionado tema escuro',
+    'Opções de personalização e configurações aperfeiçoadas',
+    'Funcionalidade de download de planilha de apuração do mês implementada',
   ];
   
   // Carregando dados do arquivo de manifest.json
