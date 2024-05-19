@@ -609,7 +609,7 @@ const clickEnviarDados = () => {
       }
       
       if(!isEmpty(saida)){
-        window.open(`https://gabrieszin.github.io/capa-de-dossies?${saida.join('&')}`)
+        window.open(`https://gabriersdev.github.io/capa-de-dossies?${saida.join('&')}`)
       }else{
         SwalAlert('error', 'warning', 'Necessário preencher os dados básicos do(s) proponente(s)');
       }

@@ -173,7 +173,7 @@ const setTheme = (theme) => {
     $('html').attr('data-bs-theme', theme);
     $('link[rel="stylesheet"]').each((i, link) => {
       if (link.href.match(/\/assets\/css\/cores-(default|dark).css/i)) {
-        if (origin !== 'https://gabrieszin.github.io') {
+        if (origin !== 'https://gabriersdev.github.io') {
           link.setAttribute('href', `${origin}/assets/css/cores-${theme}.css`);
         } else {
           link.setAttribute('href', `${origin}/cca/assets/css/cores-${theme}.css`);
