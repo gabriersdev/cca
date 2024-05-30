@@ -138,7 +138,7 @@
               td.addEventListener('input', () => {
                 // Inserindo texto no campo da segunda tabela com base no texto inserido no campo da primeira tabela
                 document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText = td.innerText.trim();
-              })
+              });
               
               // Evento de blur (perdeu o foco) no campo da primeira tabela
               td.addEventListener('blur', () => {
@@ -146,7 +146,7 @@
                 const innerText = document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText.trim();
                 td.innerHTML = '';
                 td.innerText = innerText;
-              })
+              });
             }catch(error){
               alert('Ocorreu um erro ao tentar replicar o texto preenchido. Gentileza verificar o console.');
               console.log(error);
