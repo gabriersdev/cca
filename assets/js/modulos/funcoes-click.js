@@ -456,7 +456,47 @@ function submitAddDevolucaoFID(){
         restricoes: `${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '. ' : ''}`,
         analista: `${!isEmpty(analista) ? '## ' + analista.toUpperCase() : ''}`
       }
-      
+
+      // Tabela percentual FINANC
+      const maximo_financiamento_condicionamento = {
+        SBPE: {
+          finaciamento: {
+            PRICE: 0.8,
+            SAC: 0.9
+          },
+          comprometimento: {
+            PRICE: 0.25,
+            SAC: 0.3
+          }
+        },
+        NPMCMV: {
+          finaciamento: {
+            PRICE: 0.8,
+            SAC: 0.8
+          },
+          comprometimento: {
+            PRICE: 0.3,
+            SAC: 0.3
+          }
+        },
+        PROCOTISTA: {
+          finaciamento: {
+            PRICE: 0.8,
+            SAC: 0.8
+          },
+          comprometimento: {
+            PRICE: 0.25,
+            SAC: 0.3
+          }
+        }
+      }
+
+      // TODO - Usar a mesma lógica e código da funcionalidade de cálculo para o percentual de financiamento e comprometimento
+      const res = `- Percentual de Financiamento: ${'-'}%.\n- Percentual de Comprometimento: ${(parseFloat(dev.parcela.replaceAll(',', '.')) * 100 / parseFloat(dev.renda.replaceAll(',', '.'))).toFixed(2)}%.`;
+
+      console.log(res);
+      // #!
+
       let devolucao = dev.renda + dev.parcela + complemento.tela_endividamento + complemento.dividas_vencidas + complemento.pendencia_cef + complemento.prejuizo_scr + complemento.restricao_externa + dev.situacao + dev.modalidade + dev.prazo + dev.primeira + dev.subsidio + dev.finaciamento + dev.taxa + complemento.FGTS_solicitado + complemento.verificacao_FGTS + complemento.autorizacao_FGTS + dev.FGTS + dev.pendencias + complemento.aviso_IRPF + dev.restricoes + dev.analista;
       
       const textarea = document.querySelector('[data-content="relatorio"]');
