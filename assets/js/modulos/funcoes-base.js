@@ -163,6 +163,7 @@ const tratamentoCampos = (input) => {
       case 'money':
       mascararValores(input);
       input.setAttribute('maxlength', 20);
+      input.setAttribute('placeholder', 'R$ 0,00');
       break;
     }
     
