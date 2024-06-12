@@ -491,11 +491,19 @@ function submitAddDevolucaoFID(){
         }
       }
 
+      const BRLToFloat = (value) => {
+        const value_treated = value;
+        return parseFloat(value_treated.replace('R$', '').replaceAll('.', '').replace(',', '.'));
+      };
+      
       // TODO - Usar a mesma lógica e código da funcionalidade de cálculo para o percentual de financiamento e comprometimento
-      const res = `- Percentual de Financiamento: ${'-'}%.\n- Percentual de Comprometimento: ${(parseFloat(dev.parcela.replaceAll(',', '.')) * 100 / parseFloat(dev.renda.replaceAll(',', '.'))).toFixed(2)}%.`;
+      const res = `<b>- Percentual de Financiamento:</b> ${BRLToFloat(form.querySelector('#dev-valor-de-financiamento').value.trim()) > 0 ? (BRLToFloat(form.querySelector('#dev-valor-de-financiamento').value.trim()) * 100 / BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim())).toFixed(2) : '-'}%.<br><b>- Percentual de Comprometimento:</b> ${((BRLToFloat(form.querySelector('#dev-parcela').value.trim())) * 100 / BRLToFloat(form.querySelector('#dev-renda').value.trim())).toFixed(2)}%.`;
 
-      console.log(res);
-      // #!
+      Swal.fire({
+        title: 'Percentuais de Financiamento e Comprometimento',
+        html: res,
+        icon: 'info'
+      })
 
       let devolucao = dev.renda + dev.parcela + complemento.tela_endividamento + complemento.dividas_vencidas + complemento.pendencia_cef + complemento.prejuizo_scr + complemento.restricao_externa + dev.situacao + dev.modalidade + dev.prazo + dev.primeira + dev.subsidio + dev.finaciamento + dev.taxa + complemento.FGTS_solicitado + complemento.verificacao_FGTS + complemento.autorizacao_FGTS + dev.FGTS + dev.pendencias + complemento.aviso_IRPF + dev.restricoes + dev.analista;
       
