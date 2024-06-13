@@ -497,7 +497,9 @@ function submitAddDevolucaoFID(){
       };
       
       // TODO - Usar a mesma lógica e código da funcionalidade de cálculo para o percentual de financiamento e comprometimento
-      const res = `<b>- Percentual de Financiamento:</b> ${BRLToFloat(form.querySelector('#dev-valor-de-financiamento').value.trim()) > 0 ? (BRLToFloat(form.querySelector('#dev-valor-de-financiamento').value.trim()) * 100 / BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim())).toFixed(2) : '-'}%.<br><b>- Percentual de Comprometimento:</b> ${((BRLToFloat(form.querySelector('#dev-parcela').value.trim())) * 100 / BRLToFloat(form.querySelector('#dev-renda').value.trim())).toFixed(2)}%.`;
+      console.log(BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim()));
+
+      const res = `<b>- Percentual de Financiamento:</b> ${BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim()) > 0 ? (BRLToFloat(form.querySelector('#dev-valor-de-financiamento').value.trim()) * 100 / BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim())).toFixed(2) + '%.' : 'Não calculado.'}<br><b>- Percentual de Comprometimento:</b> ${BRLToFloat(form.querySelector('#dev-parcela').value.trim()) > 0 && BRLToFloat(form.querySelector('#dev-renda').value.trim()) > 0 ? ((BRLToFloat(form.querySelector('#dev-parcela').value.trim())) * 100 / BRLToFloat(form.querySelector('#dev-renda').value.trim())).toFixed(2) + '%.' : 'Não calculado.'}`;
 
       Swal.fire({
         title: 'Percentuais de Financiamento e Comprometimento',
