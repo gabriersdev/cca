@@ -5,17 +5,17 @@ const selecoes = [
   {
     "name": 'Tela solicitada',
     "id": 'tela-endividamento',
-    "value": 'Tela de comprometimento solicitada. '
+    "value": 'Tela de comprometimento solicitada junto a agência. '
   },
   {
     "name": 'FGTS solicitado',
     "id": 'FGTS-solicitado',
-    "value": 'Saldo FGTS e se tem bloqueio solicitado. '
+    "value": 'Saldo FGTS e se tem bloqueio solicitado junto a agência. '
   },
   {
     "name": 'Verificação FGTS',
     "id": 'verificacao-FGTS',
-    "value": 'Verificação do saldo FGTS, possibilidade de uso e se tem bloqueio solicitado. '
+    "value": 'Verificação do saldo FGTS, possibilidade de uso e se tem bloqueio solicitado junto a agência. '
   },
   {
     "name": 'Autorização FGTS',
@@ -48,9 +48,9 @@ const selecoes = [
     "value": 'Proponente/grupo familiar possui pendência. Procurar Agência de vinculação para detalhes. '
   },
   {
-    "name": '',
-    "id": '',
-    "value": ''
+    "name": 'Autorização Pesquisa',
+    "id": 'autorizacao-pesquisa',
+    "value": 'Enviar cadastro, formulário ou MO assinado pelo cliente, igual ao doc. de identificação para verificarmos se possui restrição'
   }
 ]
 

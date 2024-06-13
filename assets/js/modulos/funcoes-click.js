@@ -433,13 +433,15 @@ function submitAddDevolucaoFID(){
       
       const analista = form.querySelector('#dev-analista').value.trim();
       
-      const complemento = { tela_endividamento: '', FGTS_solicitado: '', verificacao_FGTS: '', autorizacao_FGTS: '', aviso_IRPF: '', restricao_externa: '', prejuizo_scr: '', dividas_vencidas: '', pendencia_cef: '' }
+      const complemento = { tela_endividamento: '', FGTS_solicitado: '', verificacao_FGTS: '', autorizacao_FGTS: '', aviso_IRPF: '', restricao_externa: '', prejuizo_scr: '', dividas_vencidas: '', pendencia_cef: '', autorizacao_pesquisa: '' }
       
       evento.target.querySelectorAll('.selecao-multiplas-opcoes input[type=checkbox]').forEach(input => {
         // console.log(input, input.dataset.valueFormComp, input.checked)
         complemento[input.getAttribute('id').replaceAll('-', '_')] = input.checked ? input.dataset.valueFormComp.toString() : '';
         // console.log(complemento[input.getAttribute('id').replaceAll('-', '_')])
       })
+
+      console.log(complemento);
       
       const dev = {
         renda: `Renda: ${form.querySelector('#dev-renda').value.trim()}. `,
@@ -453,7 +455,7 @@ function submitAddDevolucaoFID(){
         taxa: `Taxa de juros: ${form.querySelector('#dev-taxa-juros').value.substr(0, 4).trim()}% a.a. `,
         FGTS: `${FGTS_valido ? '## FGTS: ' + form.querySelector('#dev-FGTS').value.trim() + '. ' : ''}`,
         pendencias: `${!isEmpty(form.querySelector('#dev-pendencias').value.trim()) ? '## Pendência(s): ' + form.querySelector('#dev-pendencias').value.trim() + '. ' : ''}`,
-        restricoes: `${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '. ' : ''}`,
+        restricoes: `${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '. ' : complemento.autorizacao_pesquisa ? '## Restrição(s): ' + complemento.autorizacao_pesquisa + '. ' : ''}`,
         analista: `${!isEmpty(analista) ? '## ' + analista.toUpperCase() : ''}`
       }
 
@@ -497,8 +499,6 @@ function submitAddDevolucaoFID(){
       };
       
       // TODO - Usar a mesma lógica e código da funcionalidade de cálculo para o percentual de financiamento e comprometimento
-      console.log(BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim()));
-
       const res = `<b>- Percentual de Financiamento:</b> ${BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim()) > 0 ? (BRLToFloat(form.querySelector('#dev-valor-de-financiamento').value.trim()) * 100 / BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim())).toFixed(2) + '%.' : 'Não calculado.'}<br><b>- Percentual de Comprometimento:</b> ${BRLToFloat(form.querySelector('#dev-parcela').value.trim()) > 0 && BRLToFloat(form.querySelector('#dev-renda').value.trim()) > 0 ? ((BRLToFloat(form.querySelector('#dev-parcela').value.trim())) * 100 / BRLToFloat(form.querySelector('#dev-renda').value.trim())).toFixed(2) + '%.' : 'Não calculado.'}`;
 
       Swal.fire({
