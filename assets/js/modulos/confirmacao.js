@@ -14,6 +14,7 @@ const conteudos = [
   {conteudo: 'Checklist', attr: '1KcCOWhqkAiZQpAk60K02cpjS2RgSBOGS'},
   {conteudo: 'Carta de Descontinuidade de Renda', link: { "target": "/assets/docs/Carta_de_Descontinuidade_de_Renda.pdf", "rel": "noopener noreferrer" }},
   {conteudo: 'Carta de Cancelamento', link: { "target": "/assets/docs/Carta_de_Cancelamento.pdf", "rel": "noopener noreferrer" }},
+  {conteudo: 'Declaração de Estado Civil', link: { "target": "/assets/docs/Declaracao_de_Estado_Civil.pdf", "rel": "noopener noreferrer" }},
 ]
 
 export const id_arquivos = {conteudos}

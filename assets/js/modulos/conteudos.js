@@ -219,6 +219,12 @@ const arquivos = [
     "link": "Carta de Descontinuidade de Renda"
   },
   {
+    "tag": "dossiê",
+    "titulo": "Declaração de Estado Civil",
+    "sistema": "PDF",
+    "link": "Declaração de Estado Civil"
+  },
+  {
     "tag": "análise",
     "titulo": "Carta de Cancelamento",
     "sistema": "PDF",
