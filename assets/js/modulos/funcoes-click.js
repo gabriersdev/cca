@@ -441,7 +441,7 @@ function submitAddDevolucaoFID(){
         // console.log(complemento[input.getAttribute('id').replaceAll('-', '_')])
       })
 
-      console.log(complemento);
+      // console.log(complemento);
       
       const dev = {
         renda: `Renda: ${form.querySelector('#dev-renda').value.trim()}. `,
@@ -451,7 +451,7 @@ function submitAddDevolucaoFID(){
         prazo: `${form.querySelector('#dev-prazo').value} meses. `,
         primeira: `1ª parcela: ${form.querySelector('#dev-parcela-1').value} - Seguro ${capitalize(form.querySelector('#dev-seguro').value.trim())}. `,
         subsidio: `${subsidio_valido ? 'Subsídio: ' + form.querySelector('#dev-subsidio').value.trim() + '. ' : ''}`,
-        finaciamento: `Valor de financiamento: ${form.querySelector('#dev-valor-de-financiamento').value.trim()}. `,
+        financiamento: `Valor de financiamento: ${form.querySelector('#dev-valor-de-financiamento').value.trim()}. `,
         taxa: `Taxa de juros: ${form.querySelector('#dev-taxa-juros').value.substr(0, 4).trim()}% a.a. `,
         FGTS: `${FGTS_valido ? '## FGTS: ' + form.querySelector('#dev-FGTS').value.trim() + '. ' : ''}`,
         pendencias: `${!isEmpty(form.querySelector('#dev-pendencias').value.trim()) ? '## Pendência(s): ' + form.querySelector('#dev-pendencias').value.trim() + '. ' : ''}`,
@@ -462,7 +462,7 @@ function submitAddDevolucaoFID(){
       // Tabela percentual FINANC
       const maximo_financiamento_condicionamento = {
         SBPE: {
-          finaciamento: {
+          financiamento: {
             PRICE: 0.8,
             SAC: 0.9
           },
@@ -472,7 +472,7 @@ function submitAddDevolucaoFID(){
           }
         },
         NPMCMV: {
-          finaciamento: {
+          financiamento: {
             PRICE: 0.8,
             SAC: 0.8
           },
@@ -482,7 +482,7 @@ function submitAddDevolucaoFID(){
           }
         },
         "PRÓ-COTISTA": {
-          finaciamento: {
+          financiamento: {
             PRICE: 0.8,
             SAC: 0.8
           },
@@ -498,13 +498,12 @@ function submitAddDevolucaoFID(){
         return parseFloat(value_treated.replace('R$', '').replaceAll('.', '').replace(',', '.'));
       };
       
-      console.log(BRLToFloat(form.querySelector('#dev-parcela').value.trim()));
-      console.log(BRLToFloat(form.querySelector('#dev-renda').value.trim()));
-      console.log(maximo_financiamento_condicionamento[finac.toUpperCase()][form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC']);
-      
+      // console.log(BRLToFloat(form.querySelector('#dev-parcela').value.trim()));
+      // console.log(BRLToFloat(form.querySelector('#dev-renda').value.trim()));
+      // console.log(maximo_financiamento_condicionamento[finac.toUpperCase()][form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC']);
 
       // TODO - Usar a mesma lógica e código da funcionalidade de cálculo para o percentual de financiamento e comprometimento
-      const res = `<b>- Percentual de Financiamento:</b> ${BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim()) > 0 ? (BRLToFloat(form.querySelector('#dev-valor-de-financiamento').value.trim()) * 100 / BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim())).toFixed(2) + '%. | ' + maximo_financiamento_condicionamento[form.modalidade].finaciamento[form.situacao] : 'Não calculado.'}<br><b>- Percentual de Comprometimento:</b> ${BRLToFloat(form.querySelector('#dev-parcela').value.trim()) > 0 && BRLToFloat(form.querySelector('#dev-renda').value.trim()) > 0 ? ((BRLToFloat(form.querySelector('#dev-parcela').value.trim())) * 100 / BRLToFloat(form.querySelector('#dev-renda').value.trim())).toFixed(2) + '%.' : 'Não calculado.'}<br><b>- Condicionou: ${maximo_financiamento_condicionamento[finac.toUpperCase()]["comprometimento"][form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'] > (BRLToFloat(form.querySelector('#dev-parcela').value.trim())) / BRLToFloat(form.querySelector('#dev-renda').value.trim()) ? 'Sim' : 'Não'}</b>`;
+      const res = `<b>- Percentual de Financiamento:</b> ${BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim()) > 0 ? (BRLToFloat(form.querySelector('#dev-valor-de-financiamento').value.trim()) * 100 / BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim())).toFixed(2) + '%. | ' + maximo_financiamento_condicionamento[form.modalidade].financiamento[form.situacao] : 'Não calculado.'}<br><b>- Percentual de Comprometimento:</b> ${BRLToFloat(form.querySelector('#dev-parcela').value.trim()) > 0 && BRLToFloat(form.querySelector('#dev-renda').value.trim()) > 0 ? ((BRLToFloat(form.querySelector('#dev-parcela').value.trim())) * 100 / BRLToFloat(form.querySelector('#dev-renda').value.trim())).toFixed(2) + '%.' : 'Não calculado.'}<br><b>- Condicionou: ${maximo_financiamento_condicionamento[finac.toUpperCase()]["comprometimento"][form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'] > (BRLToFloat(form.querySelector('#dev-parcela').value.trim())) / BRLToFloat(form.querySelector('#dev-renda').value.trim()) ? 'Sim' : 'Não'}</b>`;
 
       Swal.fire({
         title: 'Percentuais de Financiamento e Comprometimento',
@@ -512,7 +511,7 @@ function submitAddDevolucaoFID(){
         icon: 'info'
       })
 
-      let devolucao = dev.renda + dev.parcela + complemento.tela_endividamento + complemento.dividas_vencidas + complemento.pendencia_cef + complemento.prejuizo_scr + complemento.restricao_externa + dev.situacao + dev.modalidade + dev.prazo + dev.primeira + dev.subsidio + dev.finaciamento + dev.taxa + complemento.FGTS_solicitado + complemento.verificacao_FGTS + complemento.autorizacao_FGTS + dev.FGTS + dev.pendencias + complemento.aviso_IRPF + dev.restricoes + dev.analista + `\n\n${res.replace(/<br>/g, '\n').replace(/<\/*b>/g, '')}`;
+      let devolucao = dev.renda + dev.parcela + complemento.tela_endividamento + complemento.dividas_vencidas + complemento.pendencia_cef + complemento.prejuizo_scr + complemento.restricao_externa + dev.situacao + dev.modalidade + dev.prazo + dev.primeira + dev.subsidio + dev.financiamento + dev.taxa + complemento.FGTS_solicitado + complemento.verificacao_FGTS + complemento.autorizacao_FGTS + dev.FGTS + dev.pendencias + complemento.aviso_IRPF + dev.restricoes + dev.analista + `\n\n${res.replace(/<br>/g, '\n').replace(/<\/*b>/g, '')}`;
       
       const textarea = document.querySelector('[data-content="relatorio"]');
       textarea.value += `Prezados, ${cumprimentoHorario()}! ${devolucao}`;
