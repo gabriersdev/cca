@@ -55,7 +55,12 @@ const selecoes = [
   {
     "name": 'Autorização Pesquisa',
     "id": 'autorizacao-pesquisa',
-    "value": 'Enviar cadastro, formulário ou MO assinado pelo cliente, igual ao doc. de identificação para verificarmos se possui restrição'
+    "value": 'Enviar MO assinado pelo cliente, igual ao doc. de identificação para verificarmos se possui restrição'
+  },
+  {
+    "name": 'Autorizações Pesquisas',
+    "id": 'autorizacoes-pesquisas',
+    "value": 'Enviar os MOs assinados pelos clientes, igual aos doc. de identificação para verificarmos se possuem restrições'
   }
 ]
 

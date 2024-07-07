@@ -433,7 +433,7 @@ function submitAddDevolucaoFID(){
       
       const analista = form.querySelector('#dev-analista').value.trim();
       
-      const complemento = { tela_endividamento: '', FGTS_solicitado: '', verificacao_FGTS: '', autorizacao_FGTS: '', aviso_IRPF: '', restricao_externa: '', prejuizo_scr: '', dividas_vencidas: '', pendencia_cef: '', autorizacao_pesquisa: '' }
+      const complemento = { tela_endividamento: '', FGTS_solicitado: '', verificacao_FGTS: '', autorizacao_FGTS: '', aviso_IRPF: '', restricao_externa: '', prejuizo_scr: '', dividas_vencidas: '', pendencia_cef: '', autorizacao_pesquisa: '', ciencia_DARF: '', autorizacoes_pesquisas: '' }
       
       evento.target.querySelectorAll('.selecao-multiplas-opcoes input[type=checkbox]').forEach(input => {
         // console.log(input, input.dataset.valueFormComp, input.checked)
@@ -455,7 +455,7 @@ function submitAddDevolucaoFID(){
         taxa: `Taxa de juros: ${form.querySelector('#dev-taxa-juros').value.substr(0, 4).trim()}% a.a. `,
         FGTS: `${FGTS_valido ? '## FGTS: ' + form.querySelector('#dev-FGTS').value.trim() + '. ' : ''}`,
         pendencias: `${!isEmpty(form.querySelector('#dev-pendencias').value.trim()) ? '## Pendência(s): ' + form.querySelector('#dev-pendencias').value.trim() + '. ' : ''}`,
-        restricoes: `${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '. ' : complemento.autorizacao_pesquisa ? '## Restrição(s): ' + complemento.autorizacao_pesquisa + '. ' : ''}`,
+        restricoes: `${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '. ' : complemento.autorizacao_pesquisa ? '## Restrição(s): ' + complemento.autorizacao_pesquisa + '. ' : complemento.autorizacoes_pesquisas ? '## Restrição(s): ' + complemento.autorizacoes_pesquisas : ''}`,
         analista: `${!isEmpty(analista) ? '## ' + analista.toUpperCase() : ''}`
       }
 
