@@ -3,6 +3,11 @@ import { isEmpty } from "./utilitarios.js";
 // Array com opções de fácil seleção
 const selecoes = [
   {
+    "name": 'Ciência DARF',
+    "id": 'ciencia-DARF',
+    "value": 'Deixar o cliente ciente que a gerente pode vir a solicitar o pagamento da DARF relativa ao pró-labore. '
+  },
+  {
     "name": 'Tela solicitada',
     "id": 'tela-endividamento',
     "value": 'Tela de comprometimento solicitada junto a agência. '
