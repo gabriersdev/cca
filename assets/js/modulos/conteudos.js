@@ -55,12 +55,12 @@ const selecoes = [
   {
     "name": 'Autorização Pesquisa',
     "id": 'autorizacao-pesquisa',
-    "value": 'Enviar MO assinado pelo cliente, igual ao doc. de identificação para verificarmos se possui restrição'
+    "value": 'Enviar MO 43112 assinado pelo cliente, igual ao doc. de identificação para verificarmos se possui restrição'
   },
   {
     "name": 'Autorizações Pesquisas',
     "id": 'autorizacoes-pesquisas',
-    "value": 'Enviar os MOs assinados pelos clientes, igual aos doc. de identificação para verificarmos se possuem restrições'
+    "value": 'Enviar os MOs 43112 assinados pelos clientes, igual aos doc. de identificação para verificarmos se possuem restrições'
   }
 ]
 
