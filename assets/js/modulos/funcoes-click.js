@@ -500,7 +500,7 @@ function submitAddDevolucaoFID(){
 
       // TODO - Usar a mesma lógica e código da funcionalidade de cálculo para o percentual de financiamento e comprometimento
       const res = `<b>- Percentual de Financiamento:</b> ${BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim()) > 0 ? (BRLToFloat(form.querySelector('#dev-valor-de-financiamento').value.trim()) * 100 / BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim())).toFixed(2) + '%. | ' + maximo_financiamento_condicionamento[finac.toUpperCase()]["financiamento"][form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'] : 'Não calculado.'}<br><b>- Percentual de Comprometimento:</b> ${BRLToFloat(form.querySelector('#dev-parcela').value.trim()) > 0 && BRLToFloat(form.querySelector('#dev-renda').value.trim()) > 0 ? ((BRLToFloat(form.querySelector('#dev-parcela').value.trim())) * 100 / BRLToFloat(form.querySelector('#dev-renda').value.trim())).toFixed(2) + '%.' : 'Não calculado.'}<br><b>- Condicionou: ${maximo_financiamento_condicionamento[finac.toUpperCase()]["comprometimento"][form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'] > (BRLToFloat(form.querySelector('#dev-parcela').value.trim())) / BRLToFloat(form.querySelector('#dev-renda').value.trim()) ? 'Sim' : 'Não'}</b>`;
-      // FIX: Erro de comparação de percentis
+      // TODO - Corrigir a lógica de cálculo se condicionou ou não
 
       Swal.fire({
         title: 'Percentuais de Financiamento e Comprometimento',
