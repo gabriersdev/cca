@@ -362,6 +362,62 @@
     </dialog>
   </div>
 
+      <!-- Modal -->
+      <div class="modal fade" id="modal-tutorial" aria-hidden="true" aria-labelledby="modal-tutorial-Label" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="modal-tutorial-Label">Tutorial</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="progress" role="progressbar" aria-label="" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 2px">
+                <div class="progress-bar" style="width: 25%"></div>
+              </div><br>              
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <strong>1. Inclua os proponentes do processo</strong>
+                </li>
+                <li class="list-group-item">
+                  <strong>2. Preencha os dados básicos deles</strong>
+                </li>
+                <li class="list-group-item">
+                  <strong>3. Use as ferramentas de análise de crédito</strong><br>
+                  <p class="text-secondary mt-2">Tabelas de apuração, formulários de relatório, calculadoras de renda necessária, de comprometimento e parcela liberada.</p>
+                </li>
+
+                <li class="list-group-item">
+                  <strong>4. Calcule o tempo de serviço</strong>
+                </li>
+                <li class="list-group-item">
+                  <strong>5. Verifique e valide as informações</strong>
+                </li>
+                <li class="list-group-item">
+                  <strong>6. Deixe o programa pensar por você</strong><br>
+                  <p class="text-secondary mt-2">As pendências são geradas automaticamente conforme os critérios definidos.</p>
+                </li>
+
+                <li class="list-group-item">
+                  <strong>7. Use os modelos de solicitação de serviços</strong><br>
+                  <p class="text-secondary mt-2">Para comitês e análise de crédito internalizada.</p>
+                </li>
+                <li class="list-group-item">
+                  <strong>8. Use os modelos de formulários</strong><br>
+                  <p class="text-secondary mt-2">Carta de cancelamento, de descontinuidade de renda e de estado civil, além de checklist de desligamento e manuais operacionais públicos.</p>
+                </li>                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <script>
+      setTimeout(() => {
+        $('#modal-tutorial').modal('show');
+      }, 1000);
+    </script>
+
   <div class="overlay">
     <div class="spinner-first-load"></div>
   </div>
