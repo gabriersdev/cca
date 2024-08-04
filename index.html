@@ -63,7 +63,7 @@
       </div>
     </div>
   </noscript>
-
+  
   <div id="modais">
     <div class="modal fade" id="modal-informacoes-adicionais" aria-hidden="true" aria-labelledby="modal-informacoes-adicionais-Label" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
@@ -361,74 +361,140 @@
       <p class="mt-3 text-muted">Para fechar esse popup <kbd>ESC</kbd> <button class="link-visivel" data-action="fechar-modal-dialog">ou clique aqui</button></p>
     </dialog>
   </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="modal-tutorial" aria-hidden="true" aria-labelledby="modal-tutorial-Label" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="modal-tutorial-Label">Tutorial</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="progress" role="progressbar" aria-label="" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 2px">
-                <div class="progress-bar" style="width: 25%"></div>
-              </div><br>              
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <strong>1. Inclua os proponentes do processo</strong>
-                </li>
-                <li class="list-group-item">
-                  <strong>2. Preencha os dados básicos deles</strong>
-                </li>
-                <li class="list-group-item">
-                  <strong>3. Use as ferramentas de análise de crédito</strong><br>
-                  <p class="text-secondary mt-2">Tabelas de apuração, formulários de relatório, calculadoras de renda necessária, de comprometimento e parcela liberada.</p>
-                </li>
-
-                <li class="list-group-item">
-                  <strong>4. Calcule o tempo de serviço</strong>
-                </li>
-                <li class="list-group-item">
-                  <strong>5. Verifique e valide as informações</strong>
-                </li>
-                <li class="list-group-item">
-                  <strong>6. Deixe o programa pensar por você</strong><br>
-                  <p class="text-secondary mt-2">As pendências são geradas automaticamente conforme os critérios definidos.</p>
-                </li>
-
-                <li class="list-group-item">
-                  <strong>7. Use os modelos de solicitação de serviços</strong><br>
-                  <p class="text-secondary mt-2">Para comitês e análise de crédito internalizada.</p>
-                </li>
-                <li class="list-group-item">
-                  <strong>8. Use os modelos de formulários</strong><br>
-                  <p class="text-secondary mt-2">Carta de cancelamento, de descontinuidade de renda e de estado civil, além de checklist de desligamento e manuais operacionais públicos.</p>
-                </li>                
-              </ul>
-            </div>
-          </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modal-tutorial" aria-hidden="true" aria-labelledby="modal-tutorial-Label" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-tutorial-Label">Tutorial</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="height: 2px">
+            <div class="progress-bar" style="width: 0%"></div>
+          </div><br>              
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>1. Inclua os proponentes do processo</strong>
+              <button class="elem-proj btn btn-primary" data-action="incluir-proponente">Incluir proponente</button>
+            </li>
+            <li class="list-group-item">
+              <strong>2. Preencha os dados básicos deles</strong>
+              <img src="/assets/img/tutorial-2.png" alt="Captura de tela do projeto com dados sendo preenchidos" title="Captura de tela do projeto com dados sendo preenchidos" class="img-fluid rounded">
+            </li>
+            <li class="list-group-item">
+              <strong>3. Use as ferramentas de análise de crédito</strong><br>
+              <p class="text-secondary mt-2">Tabelas de apuração, formulários de relatório, calculadoras de renda necessária, de comprometimento e parcela liberada.</p>
+              <img src="/assets/img/tutorial-3.png" alt="Captura de tela do projeto com o cursor sobre um link de Tabela de Apuração" title="Captura de tela do projeto com o cursor sobre um link de Tabela de Apuração" class="img-fluid rounded">
+            </li>                
+          </ul>
+          
+          <ul class="list-group none">
+            <li class="list-group-item">
+              <strong>4. Calcule o tempo de serviço</strong>
+              <img src="/assets/img/tutorial-4.png" alt="Tela da calculadora de tempo de serviço" title="Tela da calculadora de tempo de serviço" class="img-fluid rounded">
+            </li>
+            <li class="list-group-item">
+              <strong>5. Verifique e valide as informações</strong>
+              <img src="/assets/img/tutorial-5.png" alt="Captura de tela da página de consultas onde 'CADMUT' é pesquisado." title="Captura de tela da página de consultas onde 'CADMUT' é pesquisado" class="img-fluid rounded">
+            </li>
+            <li class="list-group-item">
+              <strong>6. Deixe o programa pensar por você</strong><br>
+              <p class="text-secondary mt-2">As pendências são geradas automaticamente conforme os critérios definidos.</p>
+              <img src="/assets/img/tutorial-6.png" alt="Captura de tela de pendências geradas pelo projeto a partir de dados inseridos pelo usuário" title="Captura de tela de pendências geradas pelo projeto a partir de dados inseridos pelo usuário" class="img-fluid rounded">
+            </li>
+          </ul>
+          
+          <ul class="list-group none">
+            <li class="list-group-item">
+              <strong>7. Use os modelos de solicitação de serviços</strong><br>
+              <p class="text-secondary mt-2">Para comitês e análise de crédito internalizada.</p>
+              <img src="/assets/img/tutorial-7.png" alt="Captura de tela do texto de rascunho para solicitar comitê de baixa" title="Captura de tela do texto de rascunho para solicitar comitê de baixa" class="img-fluid rounded">
+            </li>
+            <li class="list-group-item">
+              <strong>8. Use os modelos de formulários</strong><br>
+              <p class="text-secondary mt-2">Carta de cancelamento, de descontinuidade de renda e de estado civil, além de checklist de desligamento e manuais operacionais públicos.</p>
+              <img src="/assets/img/tutorial-3.png" alt="Captura de tela dos formulários disponibilizados no projeto. Na imagem se vê os links para os formulários de ateste, capa, carta de descontinuidade de renda, checklist e declaração de estado civil" title="Captura de tela dos formulários disponibilizados no projeto. Na imagem se vê os links para os formulários de ateste, capa, carta de descontinuidade de renda, checklist e declaração de estado civil" class="img-fluid rounded">
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-  
-    <script>
-      setTimeout(() => {
-        $('#modal-tutorial').modal('show');
-      }, 1000);
-    </script>
-
-  <div class="overlay">
-    <div class="spinner-first-load"></div>
   </div>
+</div>
 
-  <div class="toast" id="toast-feedback" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <strong class="me-auto">Aviso</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body"></div>
+<style>
+  #modal-tutorial .elem-proj{
+    pointer-events: none;
+    margin-top: 1rem;
+  }
+
+  #modal-tutorial .list-group-item{
+    padding: 1rem;
+  }
+
+  #modal-tutorial .list-group-item img{
+    margin-top: 1rem;
+  }
+</style>
+
+<script>
+  setTimeout(() => {
+    const modal = $('#modal-tutorial');
+    let intervaloAtualizacao = null
+    
+    $(modal).on('show.bs.modal', () => {
+      const listas = $(modal).find('.list-group');
+      const progress = $(modal).find('.progress');
+      
+      const adicaoTempo = 1;
+      let index = 0;
+      let value = 0;
+      
+      Array.from(listas).forEach((lista, i) => {
+        value = 0;
+        clearInterval(intervaloAtualizacao)
+        intervaloAtualizacao = setInterval(() => {
+          value += 2.5;
+          $(progress).attr('aria-valuenow', value)
+          $(progress).find('.progress-bar').attr('style', `width: ${value}%`)
+          if (progress.attr('aria-valuenow') === "100"){
+            setTimeout(() => {
+              value = -10;
+              if (Array.from(listas)[Array.from(listas).length - 1] === Array.from(listas)[index]){
+                clearInterval(intervaloAtualizacao);
+                $(modal).modal('hide');
+              }
+              index++
+              $(Array.from(listas)[index - 1]).hide()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+              $(Array.from(listas)[index]).show()
+            }, 100 * i);
+          }
+        }, 100 * i)
+      })
+    });
+    
+    $(modal).on('hide.bs.modal', () => {
+      clearInterval(intervaloAtualizacao);
+    })
+
+    // $(modal).modal('show');
+  }, 1000);
+</script>
+
+<div class="overlay">
+  <div class="spinner-first-load"></div>
+</div>
+
+<div class="toast" id="toast-feedback" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <strong class="me-auto">Aviso</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
-  
+  <div class="toast-body"></div>
+</div>
+
 </body>
 </html>

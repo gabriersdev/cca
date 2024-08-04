@@ -368,7 +368,7 @@ const nav = `<nav class="navbar mt-5">
 <div class="container container-fluid d-flex justify-content-between">
   <div style="display: flex; align-items: center;"><span class="navbar-icon"></span></div>
   <div>
-    <button class="btn btn-secondary" data-toggle="tooltip" data-placement="top" type="button" data-bs-custom-class="custom-tooltip" aria-label="Ver tutorial" data-bs-original-title="Ver tutorial"><i class="bi bi-stars"></i></button>
+    <button class="btn btn-secondary" data-bs-target="#modal-tutorial" data-bs-toggle="modal" data-toggle="tooltip" data-placement="top" type="button" data-bs-custom-class="custom-tooltip" aria-label="Ver tutorial" data-bs-original-title="Ver tutorial"><i class="bi bi-stars"></i></button>
     <div class="btn-group dropstart" role="group">
       <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-gear-fill"></i></button>
       <ul class="dropdown-menu">
