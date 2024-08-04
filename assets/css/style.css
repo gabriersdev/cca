@@ -274,3 +274,16 @@ textarea::-webkit-scrollbar{
   right: 1rem;
   bottom: 1rem;
 }
+
+#modal-tutorial .elem-proj{
+  pointer-events: none;
+  margin-top: 1rem;
+}
+
+#modal-tutorial .list-group-item{
+  padding: 1rem;
+}
+
+#modal-tutorial .list-group-item img{
+  margin-top: 1rem;
+}

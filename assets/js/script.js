@@ -176,11 +176,7 @@ import { Settings } from './classes/Settings.js';
       })
     })
     
-    try{
-      document.querySelector('[data-form="desligamento-internalizado"] [data-form="conteudo-texto"]').value = `Prezados, bom dia! \n\nGentileza gerar formulários e dar andamento ao processo que está em desligamento.\n\nModalidade: \nEmpreendimento: \nUnidade: \nValor de contrato: \nValor de financiamento: \nValor de FGTS: \n\n[Observações]`;
-    }catch(error){
-      
-    }
+    try{ document.querySelector('[data-form="desligamento-internalizado"] [data-form="conteudo-texto"]').value = `Prezados, bom dia! \n\nGentileza gerar formulários e dar andamento ao processo que está em desligamento.\n\nModalidade: \nEmpreendimento: \nUnidade: \nValor de contrato: \nValor de financiamento: \nValor de FGTS: \n\n[Observações]`; }catch(error){ }
     
     // TODO: Separar responsabilidades e scripts carregados por página
     // Carregando cartórios de imóveis usando a API do Registro Civil
@@ -217,6 +213,48 @@ import { Settings } from './classes/Settings.js';
     setTheme(settings.getOption('theme'));
     setAutocomplete(settings.getOption('autocomplete'));
 
+    const modal = $('#modal-tutorial');
+    let intervaloAtualizacao = null
+    
+    $(modal).on('show.bs.modal', () => {
+      const listas = $(modal).find('.list-group');
+      const progress = $(modal).find('.progress');
+      
+      const adicaoTempo = 1;
+      let index = 0;
+      let value = 0;
+
+      $(progress).attr('aria-valuenow', 0)
+      $(progress).find('.progress-bar').attr('style', `width: ${0}%`)
+      
+      Array.from(listas).forEach((lista, i) => {
+        value = 0;
+        clearInterval(intervaloAtualizacao)
+        intervaloAtualizacao = setInterval(() => {
+          value += 2.5;
+          $(progress).attr('aria-valuenow', value)
+          $(progress).find('.progress-bar').attr('style', `width: ${value}%`)
+          if (progress.attr('aria-valuenow') === "100"){
+            setTimeout(() => {
+              value = -10;
+              if (Array.from(listas)[Array.from(listas).length - 1] === Array.from(listas)[index]){
+                clearInterval(intervaloAtualizacao);
+                $(modal).modal('hide');
+              }
+              index++
+              $(Array.from(listas)[index - 1]).hide()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+              $(Array.from(listas)[index]).show()
+            }, 100 * i);
+          }
+        }, 100 * i)
+      })
+    });
+    
+    $(modal).on('hide.bs.modal', () => {
+      clearInterval(intervaloAtualizacao);
+    })
+
     $('.overlay').hide();
     
     funcoesBase();
@@ -236,24 +274,6 @@ import { Settings } from './classes/Settings.js';
         els.filter((el) => !isEmpty(el.value) && el.value !== 'R$ 0,00');
       }
     }, (1000 * 10))
-    
-    // TODO - Lembrar o que é isso
-    const ids = [
-      '1702214356904',
-      '1702214249098',
-      '1702214390871',
-      '1702214373348',
-      '1702214378456',
-      '1702214386370',
-    ]
-    
-    let id_mais_recente = null;
-    const ids_apenas_numericos = ids.filter((id) => parseInt(id) && !isNaN(parseInt(id))).map((id) => parseInt(id));
-    
-    if(!isEmpty(ids) && ids_apenas_numericos.length > 0){
-      id_mais_recente = Number(ids.toSorted((a, b) => b - a)[0]);
-    }
-    // Fim do TODO
     
     $('[data-content="secao-controlada"] .card-header').on('click', (evento) => {
       const secao = evento.target.closest('[data-content="secao-controlada"]');

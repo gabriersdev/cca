@@ -424,61 +424,9 @@
   </div>
 </div>
 
-<style>
-  #modal-tutorial .elem-proj{
-    pointer-events: none;
-    margin-top: 1rem;
-  }
-
-  #modal-tutorial .list-group-item{
-    padding: 1rem;
-  }
-
-  #modal-tutorial .list-group-item img{
-    margin-top: 1rem;
-  }
-</style>
-
 <script>
   setTimeout(() => {
-    const modal = $('#modal-tutorial');
-    let intervaloAtualizacao = null
-    
-    $(modal).on('show.bs.modal', () => {
-      const listas = $(modal).find('.list-group');
-      const progress = $(modal).find('.progress');
-      
-      const adicaoTempo = 1;
-      let index = 0;
-      let value = 0;
-      
-      Array.from(listas).forEach((lista, i) => {
-        value = 0;
-        clearInterval(intervaloAtualizacao)
-        intervaloAtualizacao = setInterval(() => {
-          value += 2.5;
-          $(progress).attr('aria-valuenow', value)
-          $(progress).find('.progress-bar').attr('style', `width: ${value}%`)
-          if (progress.attr('aria-valuenow') === "100"){
-            setTimeout(() => {
-              value = -10;
-              if (Array.from(listas)[Array.from(listas).length - 1] === Array.from(listas)[index]){
-                clearInterval(intervaloAtualizacao);
-                $(modal).modal('hide');
-              }
-              index++
-              $(Array.from(listas)[index - 1]).hide()
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-              $(Array.from(listas)[index]).show()
-            }, 100 * i);
-          }
-        }, 100 * i)
-      })
-    });
-    
-    $(modal).on('hide.bs.modal', () => {
-      clearInterval(intervaloAtualizacao);
-    })
+
 
     // $(modal).modal('show');
   }, 1000);
