@@ -2,6 +2,8 @@
 
 O projeto é uma ferramenta que visa ajudar Correspondentes Bancários em Processos de Empréstimo, focado em Financiamento Habitacionais. Você pode [acessar o projeto através desse link](https://gabriersdev.github.io/cca/)
 
+![Captura da tela de confirmação de dados do projeto.](https://raw.githubusercontent.com/gabriersdev/cca/main/assets/img/example.png)
+
 ## Como funciona?
 
 Na página de [confirmação de dados](https://gabriersdev.github.io/cca/), o CCA registra os dados recebidos do(s) proponentes, e conforme forem os dados, a ferramenta informa o que está ou não pendente e o que precisa ser apresentado ou avaliado sobre a utilização no processo.
