@@ -84,8 +84,10 @@ const clickRemoverRenda = (elemento) => {
 
 // BUG - Verificar falha no evento de escuta em clickIncluirProponente
 const clickIncluirProponente = () => {
-  document.querySelector('[data-action="incluir-proponente"]').onclick = () => {
-    console.log('click');
+  if (document.querySelector('[data-action="incluir-proponente"]')) {
+    document.querySelector('[data-action="incluir-proponente"]').onclick = () => {
+      console.log('click');
+    }
   }
 }
 
