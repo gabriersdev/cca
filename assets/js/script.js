@@ -227,6 +227,9 @@ import { Settings } from './classes/Settings.js';
       $(progress).attr('aria-valuenow', 0)
       $(progress).find('.progress-bar').attr('style', `width: ${0}%`)
 
+      // Inicializando a primeira lista
+      $(Array.from(listas)[0]).show()
+
       Array.from(listas).forEach((lista, i) => {
         value = 0;
         clearInterval(intervaloAtualizacao)
