@@ -82,10 +82,11 @@ const clickRemoverRenda = (elemento) => {
   }
 }
 
+// BUG - Verificar falha no evento de escuta em clickIncluirProponente
 const clickIncluirProponente = () => {
-  document.querySelector('[data-action="incluir-proponente"]').addEventListener('click', () => {
-    acaoClickIncluirProponente();
-  })
+  document.querySelector('[data-action="incluir-proponente"]').onclick = () => {
+    console.log('click');
+  }
 }
 
 const acaoClickIncluirProponente = () => {
@@ -111,7 +112,7 @@ const acaoClickIncluirProponente = () => {
   atualizar();
 }
 
-// FIX - Verificar falha no evento de escuta em clickIncluirProponente
+// BUG - Verificar falha no evento de escuta em clickIncluirProponente
 window.acaoClickIncluirProponente = acaoClickIncluirProponente;
 
 const clickRemoverProponente = () => {
