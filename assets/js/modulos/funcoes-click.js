@@ -10,14 +10,14 @@ const clickAcionarModal = () => {
   document.querySelectorAll('[data-action="acionar-modal"]').forEach(botao => {
     botao.addEventListener('click', (evento) => {
       const modal_nome = evento.target.getAttribute('data-bs-target') || evento.target.closest('button').getAttribute('data-bs-target');
-      if(!isEmpty(modal_nome)){
+      if (!isEmpty(modal_nome)) {
         setTimeout(() => {
           const inputs = document.querySelector(modal_nome).querySelectorAll('input')
           const texts_areas = document.querySelector(modal_nome).querySelectorAll('textarea');
-          
-          if(!isEmpty(inputs) && inputs.length > 0){
+
+          if (!isEmpty(inputs) && inputs.length > 0) {
             inputs[0].focus();
-          }else if(!isEmpty(texts_areas) && texts_areas.length > 0){
+          } else if (!isEmpty(texts_areas) && texts_areas.length > 0) {
             texts_areas[0].focus();
           }
         }, 500)
@@ -32,16 +32,16 @@ const clickIncluirRenda = (botao) => {
   div.classList.value = `input-group mt-2 mb-2`;
   div.dataset.element = "renda";
   let length = null;
-  try{length = proponente.querySelectorAll('[data-element="renda"]').length}catch(error){}
+  try { length = proponente.querySelectorAll('[data-element="renda"]').length } catch (error) { }
   div.innerHTML = `${conteudos.secao_rendas(!isEmpty(length) ? length + 1 : 1)}`;
   proponente.querySelector('[data-element="area_rendas"]').appendChild(div);
-  
-  try{
-    if(botao.closest('[data-element="secao_rendas"]').querySelector('[data-element="area_rendas"]').querySelector(`div.alert.alert-primary`) !== null){
+
+  try {
+    if (botao.closest('[data-element="secao_rendas"]').querySelector('[data-element="area_rendas"]').querySelector(`div.alert.alert-primary`) !== null) {
       botao.closest('[data-element="secao_rendas"]').querySelector('[data-element="area_rendas"]').querySelector(`div.alert.alert-primary`).remove();
     }
-  }catch(error){}
-  
+  } catch (error) { }
+
   escutaEventoInput();
   clickRemoverRenda(div);
   renderPendencias();
@@ -51,30 +51,30 @@ const clickIncluirRenda = (botao) => {
 window.clickIncluirRenda = clickIncluirRenda;
 
 const clickRemoverRenda = (elemento) => {
-  if(!isEmpty(elemento)){
+  if (!isEmpty(elemento)) {
     acao(elemento.querySelector('[data-action="remover-renda"]'));
-  }else{
+  } else {
     document.querySelectorAll('[data-action="remover-renda"]').forEach(botao => {
       acao(botao);
       renderPendencias();
     })
   }
-  
-  function acao(botao){
+
+  function acao(botao) {
     removeEventListener('click', botao);
     botao.addEventListener('click', (evento) => {
-      try{
-        if(elemento.closest('[data-element="area_rendas"]').querySelectorAll('[data-element="renda"]').length - 1 === 0){
+      try {
+        if (elemento.closest('[data-element="area_rendas"]').querySelectorAll('[data-element="renda"]').length - 1 === 0) {
           $(elemento.closest('[data-element="area_rendas"]')).html(`<div class="alert alert-primary mt-2 mb-2">Proponente sem renda</div>`);
         }
-      }catch(error){
-        try{
-          if(evento.target.closest('[data-element="area_rendas"]').querySelectorAll('[data-element="renda"]').length - 1 === 0){
+      } catch (error) {
+        try {
+          if (evento.target.closest('[data-element="area_rendas"]').querySelectorAll('[data-element="renda"]').length - 1 === 0) {
             $(evento.target.closest('[data-element="area_rendas"]')).html(`<div class="alert alert-primary mt-2 mb-2">Proponente sem renda</div>`);
           }
-        }catch(error){}
+        } catch (error) { }
       }
-      
+
       evento.preventDefault();
       $(botao).tooltip('dispose')
       botao.closest('[data-element="renda"]').remove();
@@ -83,28 +83,26 @@ const clickRemoverRenda = (elemento) => {
 }
 
 const clickIncluirProponente = () => {
-  const botao = document.querySelector('[data-action="incluir-proponente"]');
-  if(!isEmpty(botao)){
-    botao.addEventListener('click', (evento) => {
-      acaoClickIncluirProponente();
-    })
-  }
+  document.querySelector('[data-action="incluir-proponente"]').addEventListener('click', () => {
+    acaoClickIncluirProponente();
+  })
 }
 
 const acaoClickIncluirProponente = () => {
+  // alert('Ação!');
   const div = document.createElement('div');
   div.classList.value = `accordion-item`;
   div.innerHTML = `${conteudos.accordion_item(document.querySelectorAll('.accordion-item').length + 1)}`;
   document.querySelector('.accordion').appendChild(div);
-  
-  if(Array.from($('.accordion-item')).length > 1){
+
+  if (Array.from($('.accordion-item')).length > 1) {
     $(div).find('.accordion-button').click();
   }
-  
+
   setTimeout(() => {
     $(div).find('[data-input="nome"]').focus();
   }, 100);
-  
+
   renderResumo();
   renderPendencias();
   clickRemoverRenda();
@@ -113,6 +111,9 @@ const acaoClickIncluirProponente = () => {
   atualizar();
 }
 
+// FIX - Verificar falha no evento de escuta em clickIncluirProponente
+window.acaoClickIncluirProponente = acaoClickIncluirProponente;
+
 const clickRemoverProponente = () => {
   const botao = document.querySelectorAll('[data-action="remover-proponente"]');
   botao.forEach(botao => {
@@ -120,7 +121,7 @@ const clickRemoverProponente = () => {
     botao.addEventListener('click', async (evento) => {
       evento.preventDefault();
       SwalAlert('confirmacao', 'question', 'Tem certeza que deseja remover?', 'Esta ação não poderá ser desfeita').then((retorno) => {
-        if(retorno.isConfirmed){
+        if (retorno.isConfirmed) {
           botao.closest('.accordion-item').remove();
           renderResumo();
           atualizarNumerosProponentes();
@@ -134,31 +135,31 @@ const clickRemoverProponente = () => {
 const clickCopiar = () => {
   const btns = document.querySelectorAll('[data-action="copiar"]');
   btns.forEach(btn => {
-    if(!isEmpty(btn)){
+    if (!isEmpty(btn)) {
       acaoClickCopiar(btn)
     }
   })
 }
 
 const acaoClickCopiar = (btn) => {
-  try{
+  try {
     btn.addEventListener('click', () => {
       let e = null;
       let html_retorno = null;
-      if(isEmpty(btn.dataset.actionTarget) && btn.dataset.actionTarget !== 'copiar-nomes'){
+      if (isEmpty(btn.dataset.actionTarget) && btn.dataset.actionTarget !== 'copiar-nomes') {
         const elemento = btn.closest('[data-node="card"]').querySelector('[data-copiar="texto"]');
         e = elemento.value || elemento.innerText;
-        
+
         const data_input = elemento.dataset.input;
-        
-        if(!isEmpty(data_input) && data_input.trim().toLowerCase() == 'nome'){
+
+        if (!isEmpty(data_input) && data_input.trim().toLowerCase() == 'nome') {
           e = e.toUpperCase();
         }
-        
-        else if(!isEmpty(data_input) && data_input.trim().toLowerCase() == 'cpf'){
+
+        else if (!isEmpty(data_input) && data_input.trim().toLowerCase() == 'cpf') {
           e = (sanitizarCPF(e));
         }
-      }else{
+      } else {
         e = new Array();
         document.querySelectorAll('[data-input="nome"]').forEach(nome => {
           !isEmpty(nome.value) ? e.push(nome.value.trim().toUpperCase()) : '';
@@ -166,20 +167,20 @@ const acaoClickCopiar = (btn) => {
         e = e.join(', ');
         html_retorno = 'N_'
       }
-      
+
       copiar(e).then(() => {
-        if(btn.getAttribute('onclick')){
-          feedbackButton(btn, {html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success', html_retorno: html_retorno});
-        }else{
-          feedbackButton(btn, {html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success', html_retorno: html_retorno});
+        if (btn.getAttribute('onclick')) {
+          feedbackButton(btn, { html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success', html_retorno: html_retorno });
+        } else {
+          feedbackButton(btn, { html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success', html_retorno: html_retorno });
         }
       });
     })
-  }catch(error){
-    if(btn.getAttribute('onclick')){
-      feedbackButton(btn, {html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-outline-danger'});
-    }else{
-      feedbackButton(btn, {html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-danger', html_retorno: html_retorno});
+  } catch (error) {
+    if (btn.getAttribute('onclick')) {
+      feedbackButton(btn, { html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-outline-danger' });
+    } else {
+      feedbackButton(btn, { html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-danger', html_retorno: html_retorno });
     }
   }
 }
@@ -191,61 +192,61 @@ const clickDownload = (elemento, evento) => {
   const saida = new Array();
   const proponentes = document.querySelectorAll('.accordion-item');
   const primeirosNomes = new Array();
-  
+
   proponentes.forEach((proponente) => {
     !isEmpty(proponente.querySelector('[data-input="nome"]').value.trim()) ? primeirosNomes.push(primeiroNome(proponente.querySelector('[data-input="nome"]').value.trim())) : '';
   })
-  
-  switch(elemento.dataset.download){
+
+  switch (elemento.dataset.download) {
     case 'baixar-dados':
-    baixarDados(proponentes, primeirosNomes, saida);
-    break;
-    
+      baixarDados(proponentes, primeirosNomes, saida);
+      break;
+
     case 'baixar-relatorio':
-    baixarRelatorio(primeirosNomes);
-    break;
-    
+      baixarRelatorio(primeirosNomes);
+      break;
+
     case 'baixar-pendencias':
-    baixarPendencias(primeirosNomes);
-    break;
-    
+      baixarPendencias(primeirosNomes);
+      break;
+
     case 'baixar-acompanhar-fid':
-    try{
-      const link = new URL(document.querySelector('#input-URL-acompanhar-FID').value);
-      const split = link.search.split('codigo=');
-      const FID = split[1].split("=")[0].split("&")[0];
+      try {
+        const link = new URL(document.querySelector('#input-URL-acompanhar-FID').value);
+        const split = link.search.split('codigo=');
+        const FID = split[1].split("=")[0].split("&")[0];
 
-      const valido = [
-        link.origin.toLowerCase() == 'https://portalsafi.direcional.com.br', 
-        link.pathname.toLowerCase() == '/fluxo', 
-        link.search.includes("codigo"),
-        split.length == 2, 
-        typeof (parseInt(FID) === "number") && !isNaN(parseInt(split[1]))
-      ]
+        const valido = [
+          link.origin.toLowerCase() == 'https://portalsafi.direcional.com.br',
+          link.pathname.toLowerCase() == '/fluxo',
+          link.search.includes("codigo"),
+          split.length == 2,
+          typeof (parseInt(FID) === "number") && !isNaN(parseInt(split[1]))
+        ]
 
-      if(verificarSeFIDvalido(FID) && valido.every(e => e == true)){
-        reportar(true);
-        criarEBaixarHTMLAcompanhamento(parseInt(FID), `Acompanhe o FID ${parseInt(FID)}`);
-      }else{
+        if (verificarSeFIDvalido(FID) && valido.every(e => e == true)) {
+          reportar(true);
+          criarEBaixarHTMLAcompanhamento(parseInt(FID), `Acompanhe o FID ${parseInt(FID)}`);
+        } else {
+          reportar(false, 'O link informado para o FID não é válido');
+        }
+
+      } catch (error) {
         reportar(false, 'O link informado para o FID não é válido');
       }
-      
-    }catch(error){
-      reportar(false, 'O link informado para o FID não é válido');
-    }
-    
-    function reportar(condicao, texto){
-      const retorno = document.querySelector('[data-element="retorno-link-fid"]');
-      if(!condicao){
-        retorno.setAttribute('class', 'alert alert-danger mt-3 mb-0');
-        retorno.innerText = texto;
-      }else{
-        retorno.setAttribute('class', '');
-        retorno.innerText = '';
+
+      function reportar(condicao, texto) {
+        const retorno = document.querySelector('[data-element="retorno-link-fid"]');
+        if (!condicao) {
+          retorno.setAttribute('class', 'alert alert-danger mt-3 mb-0');
+          retorno.innerText = texto;
+        } else {
+          retorno.setAttribute('class', '');
+          retorno.innerText = '';
+        }
       }
-    }
-    
-    break;
+
+      break;
   }
 }
 window.clickDownload = clickDownload;
@@ -254,7 +255,7 @@ const baixarDados = (proponentes, primeirosNomes, saida) => {
   //Selecionar Nome, CPF e data de nascimento de todos os proponentes
   proponentes.forEach((proponente, index) => {
     const nome = proponente.querySelector('[data-input="nome"]').value.trim();
-    saida.push(`PROPONENTE ${index + 1}\n` +`NOME: ${!isEmpty(nome) ? nome.toUpperCase() : ''}\n` + `CPF: ${sanitizarCPF(proponente.querySelector('[data-input="cpf"]').value.trim())}\n` + `DT NASC: ${proponente.querySelector('[data-input="data_nascimento"]').value.trim()}\n` + `TELEFONE: ${proponente.querySelector('[data-input="telefone"]').value.replaceAll('-', '').trim()}\n` + `EMAIL: ${proponente.querySelector('[data-input="email"]').value.trim()}\n\n`)
+    saida.push(`PROPONENTE ${index + 1}\n` + `NOME: ${!isEmpty(nome) ? nome.toUpperCase() : ''}\n` + `CPF: ${sanitizarCPF(proponente.querySelector('[data-input="cpf"]').value.trim())}\n` + `DT NASC: ${proponente.querySelector('[data-input="data_nascimento"]').value.trim()}\n` + `TELEFONE: ${proponente.querySelector('[data-input="telefone"]').value.replaceAll('-', '').trim()}\n` + `EMAIL: ${proponente.querySelector('[data-input="email"]').value.trim()}\n\n`)
   });
   criarEBaixarTXT(JSON.stringify(saida.join('\n')), `DADOS${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
 }
@@ -280,51 +281,51 @@ const criarEBaixarTXT = (conteudo, nome, origin) => {
     }
   }
 
-  let blob = new Blob([`${JSON.parse(conteudo)}`], {type: "text/plain;charset=utf-8"});
+  let blob = new Blob([`${JSON.parse(conteudo)}`], { type: "text/plain;charset=utf-8" });
   saveAs(blob, `${nome.toUpperCase()}.txt`);
 }
 
 const criarEBaixarJSON = (conteudo, nome) => {
-  let blob = new Blob([`${JSON.stringify(conteudo)}`], {type: "text/plain;charset=utf-8"});
+  let blob = new Blob([`${JSON.stringify(conteudo)}`], { type: "text/plain;charset=utf-8" });
   saveAs(blob, `${nome.toUpperCase()}.json`);
 }
 
 const criarEBaixarHTMLAcompanhamento = (FID, nome) => {
-  let blob = new Blob([`${conteudos.HTMLacompanharFID(String(FID), `https://portalsafi.direcional.com.br/Fluxo?codigo=${FID}`)}`], {type: "text/plain;charset=utf-8"});
+  let blob = new Blob([`${conteudos.HTMLacompanharFID(String(FID), `https://portalsafi.direcional.com.br/Fluxo?codigo=${FID}`)}`], { type: "text/plain;charset=utf-8" });
   saveAs(blob, `${nome.trim()}.html`);
 }
 
-function clickLimparProcesso(){
+function clickLimparProcesso() {
   const btn = document.querySelector('[data-action="limpar-processo"]');
-  
-  if(!isEmpty(btn)){
+
+  if (!isEmpty(btn)) {
     btn.addEventListener('click', (evento) => {
       evento.preventDefault();
-      
+
       SwalAlert('confirmacao', 'question', 'Tem certeza que deseja limpar todo o processo?', 'Esta ação não poderá ser desfeita').then((retorno) => {
-        if(retorno.isConfirmed){
+        if (retorno.isConfirmed) {
           verificarInputsRecarregamento('clear');
           localStorage.clear();
           sessionStorage.clear();
           window.location.reload();
-          
+
           document.querySelectorAll('[data-input]').forEach(input => {
-            if(input.tagName.toLowerCase() == 'textarea' || input.tagName.toLowerCase() == 'input' && input.getAttribute('type') == 'text'){
+            if (input.tagName.toLowerCase() == 'textarea' || input.tagName.toLowerCase() == 'input' && input.getAttribute('type') == 'text') {
               input.value = '';
-            }else if(input.tagName.toLowerCase() == 'input' && input.getAttribute('type') == 'checkbox'){
+            } else if (input.tagName.toLowerCase() == 'input' && input.getAttribute('type') == 'checkbox') {
               input.checked = false;
-            }      
+            }
           })
-          
+
           document.querySelectorAll('textarea').forEach(textarea => {
             textarea.value = '';
             textarea.style.height = '100px';
           })
-          
+
           document.querySelectorAll('input[type=url]').forEach(input => {
             input.value = '';
           })
-          
+
           document.querySelectorAll('.accordion-item').forEach(item => { item.remove() });
           renderResumo();
           atualizarNumerosProponentes();
@@ -335,14 +336,14 @@ function clickLimparProcesso(){
   }
 }
 
-function clickAddInformacoes(){
+function clickAddInformacoes() {
   const modal = document.querySelector('#modal-informacoes-adicionais');
-  if(!isEmpty(modal)){
+  if (!isEmpty(modal)) {
     document.querySelector('[data-action="add-informacoes"]').addEventListener('click', (evento) => {
       evento.preventDefault();
       acionarModalAddInformacoes();
     })
-    
+
     modal.querySelector('form').addEventListener('submit', (evento) => {
       evento.preventDefault();
       const dados = {
@@ -354,22 +355,22 @@ function clickAddInformacoes(){
         'add_data_hora': evento.target.querySelector('#add-data-hora').checked,
         'limpar_txt_area': evento.target.querySelector('#limpar-txt-area').checked,
       };
-      
+
       const textarea = document.querySelector('[data-content="relatorio"]');
-      
+
       !isEmpty(dados.limpar_txt_area) ? dados.limpar_txt_area ? textarea.value = '' : '' : '';
-      
-      textarea.value += 
-      `FID: ${dados.fid}\n` +
-      `GERENTE: ${!isEmpty(dados.gerente) ? dados.gerente.trim().toUpperCase() : ''}\n` +
-      `EMPREENDIMENTO: ${!isEmpty(dados.empreendimento) ? dados.empreendimento.trim().toUpperCase() : ''}\n` + 
-      `VALOR IMÓVEL: ${dados.valor}\n`;
-      
-      !isEmpty(dados.add_data_hora) ? dados.add_data_hora ? textarea.value += `\n## ${moment().format('DD/MM/YYYY HH:mm')} - ${!isEmpty(dados.analista.value) ? dados.analista.value.toUpperCase().trim() : '[ANALISTA]'} ##\n` : ''  : '';
-      
+
+      textarea.value +=
+        `FID: ${dados.fid}\n` +
+        `GERENTE: ${!isEmpty(dados.gerente) ? dados.gerente.trim().toUpperCase() : ''}\n` +
+        `EMPREENDIMENTO: ${!isEmpty(dados.empreendimento) ? dados.empreendimento.trim().toUpperCase() : ''}\n` +
+        `VALOR IMÓVEL: ${dados.valor}\n`;
+
+      !isEmpty(dados.add_data_hora) ? dados.add_data_hora ? textarea.value += `\n## ${moment().format('DD/MM/YYYY HH:mm')} - ${!isEmpty(dados.analista.value) ? dados.analista.value.toUpperCase().trim() : '[ANALISTA]'} ##\n` : '' : '';
+
       resizeTextArea(textarea);
       $(modal).modal('hide');
-      
+
       setTimeout(() => {
         textarea.focus()
       }, 500);
@@ -377,7 +378,7 @@ function clickAddInformacoes(){
   }
 }
 
-function acionarModalAddInformacoes(){
+function acionarModalAddInformacoes() {
   const modal = document.querySelector('#modal-informacoes-adicionais');
   // console.log('aqui')
   $(modal).modal('show');
@@ -387,9 +388,9 @@ function acionarModalAddInformacoes(){
   }, 500)
 }
 
-function clickVisibilidadeSenha(){
+function clickVisibilidadeSenha() {
   const botao = document.querySelector('[data-action="btn-visibilidade-senha"]');
-  if(!isEmpty(botao)){
+  if (!isEmpty(botao)) {
     botao.addEventListener('click', (evento) => {
       evento.preventDefault();
       const input = botao.parentElement.querySelectorAll('input')[0];
@@ -398,9 +399,9 @@ function clickVisibilidadeSenha(){
   }
 }
 
-function clickAddDevolucaoFID(){
+function clickAddDevolucaoFID() {
   const botao = document.querySelector('[data-action="add-devolucao-fid"]');
-  if(!isEmpty(botao)){
+  if (!isEmpty(botao)) {
     botao.addEventListener('click', (evento) => {
       evento.preventDefault();
       acionarDevolucaoFID();
@@ -408,33 +409,33 @@ function clickAddDevolucaoFID(){
   }
 }
 
-function acionarDevolucaoFID(){
+function acionarDevolucaoFID() {
   const modal = document.querySelector('#modal-devolucao-fid');
   // SwalAlert('aviso', 'error', 'Desculpe. Esta função ainda não foi implementada.', '');
   $(modal).modal('show');
-  
+
   setTimeout(() => {
     modal.querySelectorAll('input')[0].focus();
     modal.querySelector('#dev-analista').value = `ANL. ${new Settings().getOption('id-analyst')}` || '';
   }, 500);
 }
 
-function submitAddDevolucaoFID(){
+function submitAddDevolucaoFID() {
   const modal = document.querySelector('#modal-devolucao-fid');
-  if(!isEmpty(modal)){
+  if (!isEmpty(modal)) {
     modal.querySelector('form').addEventListener('submit', (evento) => {
       evento.preventDefault();
       const form = evento.target;
       const finac = form.querySelector('#dev-financ-NPMCMV').checked ? 'NPMCMV' : form.querySelector('#dev-financ-SBPE').checked ? 'SBPE' : form.querySelector('#dev-financ-PROCOTISTA').checked ? 'Pró-cotista' : '';
-      
+
       const subsidio_valido = !isEmpty(form.querySelector('#dev-subsidio').value.trim()) && form.querySelector('#dev-subsidio').value.trim() !== 'R$ 0,00';
-      
+
       const FGTS_valido = !isEmpty(form.querySelector('#dev-FGTS').value.trim()) && form.querySelector('#dev-FGTS').value.trim() !== 'R$ 0,00';
-      
+
       const analista = form.querySelector('#dev-analista').value.trim();
-      
+
       const complemento = { tela_endividamento: '', FGTS_solicitado: '', verificacao_FGTS: '', autorizacao_FGTS: '', aviso_IRPF: '', restricao_externa: '', prejuizo_scr: '', dividas_vencidas: '', pendencia_cef: '', autorizacao_pesquisa: '', ciencia_DARF: '', autorizacoes_pesquisas: '' }
-      
+
       evento.target.querySelectorAll('.selecao-multiplas-opcoes input[type=checkbox]').forEach(input => {
         // console.log(input, input.dataset.valueFormComp, input.checked)
         complemento[input.getAttribute('id').replaceAll('-', '_')] = input.checked ? input.dataset.valueFormComp.toString() : '';
@@ -442,7 +443,7 @@ function submitAddDevolucaoFID(){
       })
 
       // console.log(complemento);
-      
+
       const dev = {
         renda: `Renda: ${form.querySelector('#dev-renda').value.trim()}. `,
         parcela: `Parcela ${form.querySelector('#dev-status-parcela-aprovado').checked ? 'aprovada' : 'possível'}: ${form.querySelector('#dev-parcela').value}. `,
@@ -505,7 +506,7 @@ function submitAddDevolucaoFID(){
 
       const condicionou = percent_comprom !== 'Não calculado' ? maximo_financiamento_condicionamento[finac.toUpperCase()]["comprometimento"][form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'] > parseFloat(percent_comprom.replace('%.', '') / 100) ? 'Sim' : 'Não' : 'Não calculado.';
 
-      const res = `<b>- Percentual de Financiamento:</b> ${percent_financiamento}<br><b>- Percentual de Comprometimento:</b> ${percent_comprom}<br><b>- Condicionou: ${ condicionou }</b>`;
+      const res = `<b>- Percentual de Financiamento:</b> ${percent_financiamento}<br><b>- Percentual de Comprometimento:</b> ${percent_comprom}<br><b>- Condicionou: ${condicionou}</b>`;
 
       Swal.fire({
         title: 'Percentuais de Financiamento e Comprometimento',
@@ -514,9 +515,9 @@ function submitAddDevolucaoFID(){
       })
 
       // Exibindo no console para verificação de falha no cálculo
-      console.groupCollapsed('Percentuais de Financiamento e Comprometimento - Devolução FID - ' + new Date().toLocaleString()); 
+      console.groupCollapsed('Percentuais de Financiamento e Comprometimento - Devolução FID - ' + new Date().toLocaleString());
       console.table({
-        'Valor de compra e venda': BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim()), 
+        'Valor de compra e venda': BRLToFloat(document.querySelector('[data-input="id-valor-imovel"]').value.trim()),
         'Valor de financiamento': BRLToFloat(form.querySelector('#dev-valor-de-financiamento').value.trim()),
         'Renda': BRLToFloat(form.querySelector('#dev-renda').value.trim()),
         'Parcela': BRLToFloat(form.querySelector('#dev-parcela').value.trim()),
@@ -527,13 +528,13 @@ function submitAddDevolucaoFID(){
       console.groupEnd();
 
       let devolucao = dev.renda + dev.parcela + complemento.tela_endividamento + complemento.dividas_vencidas + complemento.pendencia_cef + complemento.prejuizo_scr + complemento.restricao_externa + dev.situacao + dev.modalidade + dev.prazo + dev.primeira + dev.subsidio + dev.financiamento + dev.taxa + complemento.FGTS_solicitado + complemento.verificacao_FGTS + complemento.autorizacao_FGTS + dev.FGTS + dev.pendencias + complemento.ciencia_DARF + complemento.aviso_IRPF + dev.restricoes + dev.analista + `\n\n${res.replace(/<br>/g, '\n').replace(/<\/*b>/g, '')}`;
-      
+
       const textarea = document.querySelector('[data-content="relatorio"]');
       textarea.value += `Prezados, ${cumprimentoHorario()}! ${devolucao}`;
-      
+
       $(modal).modal('hide');
       resizeTextArea(textarea);
-      
+
       setTimeout(() => {
         textarea.focus()
       }, 500);
@@ -541,9 +542,9 @@ function submitAddDevolucaoFID(){
   }
 }
 
-function clickImportarPendencias(){
+function clickImportarPendencias() {
   const botao = document.querySelector('[data-action="importar-pendencias"]');
-  if(!isEmpty(botao)){
+  if (!isEmpty(botao)) {
     botao.addEventListener('click', (evento) => {
       evento.preventDefault();
       const textarea = botao.closest('.row').querySelector('#dev-pendencias');
@@ -555,27 +556,27 @@ function clickImportarPendencias(){
   }
 }
 
-function submitInformarRestricoes(){
+function submitInformarRestricoes() {
   $('#modal-informar-restricoes form').submit((evento) => {
     evento.preventDefault();
     const text_area = evento.target.querySelector('#text-restricoes');
     let valor_text_area = evento.target.querySelector('#text-restricoes').value;
-    
-    if(!isEmpty(valor_text_area) && valor_text_area.trim().length > 0){
+
+    if (!isEmpty(valor_text_area) && valor_text_area.trim().length > 0) {
       valor_text_area = valor_text_area.replaceAll('\n', '')
       const valor_split = valor_text_area.split(' ');
-      
+
       const saida = (valor_split.filter(e => e !== '').map(e => e.trim())).join(' ')
       // console.log(saida)
-      
+
       $('#dev-restricoes').val(saida);
       $('#modal-informar-restricoes').modal('hide');
       $('#modal-devolucao-fid').modal('show');
-      
+
       setTimeout(() => {
         $('#dev-restricoes').focus();
       }, 500);
-    }else{
+    } else {
       // Informar que o campo está em branco
       text_area.value = '';
       text_area.focus();
@@ -583,38 +584,38 @@ function submitInformarRestricoes(){
   })
 }
 
-function clickLimparTudoSecao(){
+function clickLimparTudoSecao() {
   $('[data-action="limpar-tudo-secao"]').each((index, botao) => {
     $(botao).click((evento) => {
       // Implementado apenas para limpar os inputs/textareas dos modais da seção de relatório
-      
+
       const elementos_nomes = [
         'modal-informacoes-adicionais',
         'modal-devolucao-fid',
         'modal-informar-restricoes',
         'modal-calcular-percentual'
       ]
-      
-      try{
+
+      try {
         elementos_nomes.forEach(elemento => {
           const formulario = document.querySelectorAll(`#${elemento} form`);
-          
+
           formulario.forEach(form => {
             const [inputs, textareas, inputs_checks] = [form.querySelectorAll(`input`), form.querySelectorAll(`textarea`), form.querySelectorAll(`.form-check-input`)]
-          
-            if(!isEmpty(inputs)){
+
+            if (!isEmpty(inputs)) {
               inputs.forEach(input => {
                 input.value = '';
               })
             }
-            
-            if(!isEmpty(textareas)){
+
+            if (!isEmpty(textareas)) {
               textareas.forEach(textarea => {
                 textarea.value = '';
               })
             }
-            
-            if(!isEmpty(inputs_checks)){
+
+            if (!isEmpty(inputs_checks)) {
               inputs_checks.forEach(input => {
                 input.checked = false;
               })
@@ -633,8 +634,8 @@ function clickLimparTudoSecao(){
           });
         })
 
-        feedbackInfo({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success'}, botao)
-      }catch(error){
+        feedbackInfo({ html: '<i class="bi bi-check2"></i>', classe: 'btn btn-success' }, botao)
+      } catch (error) {
         console.log('Ocorreu um erro ao tentar limpar os elementos. Erro: %s', error);
       }
     })
@@ -646,47 +647,47 @@ const clickEnviarDados = () => {
   botoes.forEach(botao => {
     botao.addEventListener('click', (evento) => {
       evento.preventDefault();
-      
+
       const nomes = [document.querySelectorAll('[data-input="nome"]')[0], document.querySelectorAll('[data-input="nome"]')[1]];
       const CPFs = [document.querySelectorAll('[data-input="cpf"]')[0], document.querySelectorAll('[data-input="cpf"]')[1]];
       const saida = new Array();
-      
-      if(!nomes.every(nome => nome == undefined) && !CPFs.every(CPF => CPF == undefined)){
-        if(nomes[0] !== undefined){
-          if(!isEmpty(nomes[0].value)){
+
+      if (!nomes.every(nome => nome == undefined) && !CPFs.every(CPF => CPF == undefined)) {
+        if (nomes[0] !== undefined) {
+          if (!isEmpty(nomes[0].value)) {
             saida.push(`nome_1=${sanitizarStringParaURL(nomes[0].value)}`);
           }
         }
-        
-        if(CPFs[0] !== undefined){
-          if(!isEmpty(CPFs[0].value)){
+
+        if (CPFs[0] !== undefined) {
+          if (!isEmpty(CPFs[0].value)) {
             saida.push(`CPF_1=${sanitizarStringParaURL(CPFs[0].value)}`);
           }
         }
-        
-        if(nomes[1] !== undefined){
-          if(!isEmpty(nomes[1].value)){
+
+        if (nomes[1] !== undefined) {
+          if (!isEmpty(nomes[1].value)) {
             saida.push(`nome_2=${sanitizarStringParaURL(nomes[1].value)}`);
           }
         }
-        
-        if(CPFs[1] !== undefined){
-          if(!isEmpty(CPFs[1].value)){
+
+        if (CPFs[1] !== undefined) {
+          if (!isEmpty(CPFs[1].value)) {
             saida.push(`CPF_2=${sanitizarStringParaURL(CPFs[1].value)}`);
           }
         }
       }
-      
-      if(!isEmpty(saida)){
+
+      if (!isEmpty(saida)) {
         window.open(`https://gabriersdev.github.io/capa-de-dossies?${saida.join('&')}`)
-      }else{
+      } else {
         SwalAlert('error', 'warning', 'Necessário preencher os dados básicos do(s) proponente(s)');
       }
-      
-      function sanitizarStringParaURL(string){
-        if(!isEmpty(string)){
+
+      function sanitizarStringParaURL(string) {
+        if (!isEmpty(string)) {
           return string.trim().toLowerCase().replaceAll(' ', '-');
-        }else{
+        } else {
           return '';
         }
       }
@@ -703,7 +704,7 @@ const subirProponente = (element, event) => {
   if (accordion && accordionItens.length > 0 && accordionElement) {
     if (accordionItens.indexOf(accordionElement) > 0) {
       accordionItens.forEach((item) => {
-        if (item !== accordionElement){
+        if (item !== accordionElement) {
           item.remove();
           $(accordion).append(item);
         }
