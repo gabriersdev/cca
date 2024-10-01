@@ -92,6 +92,7 @@ const clickIncluirProponente = () => {
 }
 
 const acaoClickIncluirProponente = () => {
+  // console.log('Click!');
   // alert('Ação!');
   const div = document.createElement('div');
   div.classList.value = `accordion-item`;
