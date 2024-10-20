@@ -1,7 +1,7 @@
 "use strict";
 
 import { conteudos } from './modulos/conteudos.js';
-import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarNumero, sanitizarString, criarEBaixarArquivo, resizeTextArea, splitArray } from './modulos/utilitarios.js';
+import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarNumero, sanitizarString, criarEBaixarArquivo, resizeTextArea, splitArray, SwalAlert } from './modulos/utilitarios.js';
 import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
 import { adicionarOpcoesAutoComplete, renderConteudosPagina, setAutocomplete, setTheme } from './modulos/funcoes-de-conteudo.js';
@@ -200,6 +200,9 @@ import { Settings } from './classes/Settings.js';
           $('#lista-cartorios').append(`<option value='${cartorio}'></option>`);
         }
       }
+    }).catch(error => {
+      SwalAlert('error', 'error', 'Erro ao carregar os cartórios de imóveis!', 'Por favor, tente novamente mais tarde ou contacte o administrador.');
+      console.error('Erro ao carregar os cartórios de imóveis.', error);
     })
   }
 
