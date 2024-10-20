@@ -391,6 +391,93 @@ const nav = `<nav class="navbar mt-5">
 </div>
 </nav>`;
 
+let srcStartWith = './'
+
+if (!['/', '/cca/', '/cca/index.html'].includes(window.location.pathname)) {
+  srcStartWith = '../'
+}
+
+const modal_tutorial = `<div class="modal fade" id="modal-tutorial" aria-hidden="true" aria-labelledby="modal-tutorial-Label" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modal-tutorial-Label">Tutorial</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0"
+          aria-valuemax="100" style="height: 2px">
+          <div class="progress-bar" style="width: 0%"></div>
+        </div>
+        <br>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>1. Inclua os proponentes do processo</strong>
+            <button class="elem-proj btn btn-primary" data-action="incluir-proponente">Incluir proponente</button>
+          </li>
+          <li class="list-group-item">
+            <strong>2. Preencha os dados básicos deles</strong>
+            <img src="${srcStartWith}/assets/img/tutorial-2.png" alt="Captura de tela do projeto com dados sendo preenchidos"
+              title="Captura de tela do projeto com dados sendo preenchidos" class="img-fluid rounded">
+          </li>
+          <li class="list-group-item">
+            <strong>3. Use as ferramentas de análise de crédito</strong><br>
+            <p class="text-secondary mt-2">Tabelas de apuração, formulários de relatório, calculadoras de renda
+              necessária, de comprometimento e parcela liberada.
+            </p>
+            <img src="${srcStartWith}/assets/img/tutorial-3.png"
+              alt="Captura de tela do projeto com o cursor sobre um link de Tabela de Apuração"
+              title="Captura de tela do projeto com o cursor sobre um link de Tabela de Apuração"
+              class="img-fluid rounded">
+          </li>
+        </ul>
+        <ul class="list-group none">
+          <li class="list-group-item">
+            <strong>4. Calcule o tempo de serviço</strong>
+            <img src="${srcStartWith}/assets/img/tutorial-4.png" alt="Tela da calculadora de tempo de serviço"
+              title="Tela da calculadora de tempo de serviço" class="img-fluid rounded">
+          </li>
+          <li class="list-group-item">
+            <strong>5. Verifique e valide as informações</strong>
+            <img src="${srcStartWith}/assets/img/tutorial-5.png"
+              alt="Captura de tela da página de consultas onde 'CADMUT' é pesquisado."
+              title="Captura de tela da página de consultas onde 'CADMUT' é pesquisado" class="img-fluid rounded">
+          </li>
+          <li class="list-group-item">
+            <strong>6. Deixe o programa pensar por você</strong><br>
+            <p class="text-secondary mt-2">As pendências são geradas automaticamente conforme os critérios
+              definidos.
+            </p>
+            <img src="${srcStartWith}/assets/img/tutorial-6.png"
+              alt="Captura de tela de pendências geradas pelo projeto a partir de dados inseridos pelo usuário"
+              title="Captura de tela de pendências geradas pelo projeto a partir de dados inseridos pelo usuário"
+              class="img-fluid rounded">
+          </li>
+        </ul>
+        <ul class="list-group none">
+          <li class="list-group-item">
+            <strong>7. Use os modelos de solicitação de serviços</strong><br>
+            <p class="text-secondary mt-2">Para comitês e análise de crédito internalizada.</p>
+            <img src="${srcStartWith}/assets/img/tutorial-7.png"
+              alt="Captura de tela do texto de rascunho para solicitar comitê de baixa"
+              title="Captura de tela do texto de rascunho para solicitar comitê de baixa" class="img-fluid rounded">
+          </li>
+          <li class="list-group-item">
+            <strong>8. Use os modelos de formulários</strong><br>
+            <p class="text-secondary mt-2">Carta de cancelamento, de descontinuidade de renda e de estado civil,
+              além de checklist de desligamento e manuais operacionais públicos.
+            </p>
+            <img src="${srcStartWith}/assets/img/tutorial-3.png"
+              alt="Captura de tela dos formulários disponibilizados no projeto. Na imagem se vê os links para os formulários de ateste, capa, carta de descontinuidade de renda, checklist e declaração de estado civil"
+              title="Captura de tela dos formulários disponibilizados no projeto. Na imagem se vê os links para os formulários de ateste, capa, carta de descontinuidade de renda, checklist e declaração de estado civil"
+              class="img-fluid rounded">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>`;
+
 export const conteudos = {
   selecoes,
   accordion_item,
@@ -404,5 +491,6 @@ export const conteudos = {
   conteudo_pagina_arquivos,
   conteudo_pagina_desligamento,
   HTMLacompanharFID,
-  nav
+  nav,
+  modal_tutorial
 };

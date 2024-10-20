@@ -91,6 +91,7 @@ import { Settings } from './classes/Settings.js';
     accordion_item.classList.value = 'accordion-item';
     accordion_item.innerHTML = conteudos.accordion_item(1);
     document.querySelector('.accordion').appendChild(accordion_item);
+    document.querySelector('#modais').innerHTML += conteudos.modal_tutorial;
   }
 
   else if (pagina == 'consultas/index.html' || pagina == 'cca/consultas/' || pagina == 'cca/consultas/index.html') {
@@ -204,6 +205,7 @@ import { Settings } from './classes/Settings.js';
 
   $(body).prepend(conteudos.nav)
   $(body).append(conteudos.rodape)
+  if (!($('#modal-tutorial').length)) $(body).append(conteudos.modal_tutorial)
 
   window.addEventListener("load", function () {
     // TODO: Separar responsabilidades e scripts carregados por página
