@@ -1,12 +1,26 @@
 "use strict";
 
-import { conteudos } from './modulos/conteudos.js';
-import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarNumero, sanitizarString, criarEBaixarArquivo, resizeTextArea, splitArray, SwalAlert } from './modulos/utilitarios.js';
-import { verificacao } from './modulos/confirmacao.js';
-import { funcoesBase } from './modulos/funcoes-base.js';
-import { adicionarOpcoesAutoComplete, renderConteudosPagina, setAutocomplete, setTheme } from './modulos/funcoes-de-conteudo.js';
-import { cartoriosImoveis } from './modulos/dados.js';
-import { Settings } from './classes/Settings.js';
+import {conteudos} from './modulos/conteudos.js';
+import {
+  atualizarDatas,
+  isEmpty,
+  atribuirLinks,
+  ordernarString,
+  limparEFocar,
+  sanitizarNumero,
+  sanitizarString,
+  criarEBaixarArquivo,
+  resizeTextArea,
+  splitArray,
+  SwalAlert
+} from './modulos/utilitarios.js';
+import {verificacao} from './modulos/confirmacao.js';
+import {funcoesBase} from './modulos/funcoes-base.js';
+import {
+  adicionarOpcoesAutoComplete, renderConteudosPagina, setAutocomplete, setTheme
+} from './modulos/funcoes-de-conteudo.js';
+import {cartoriosImoveis} from './modulos/dados.js';
+import {Settings} from './classes/Settings.js';
 
 (() => {
 
@@ -17,24 +31,19 @@ import { Settings } from './classes/Settings.js';
     console.groupEnd();
 
     console.groupCollapsed('New features');
-    novas_funcionalidades.toSorted((a, b) => a.localeCompare(b)).forEach((feature) => { console.info(`${feature}`); });
+    novas_funcionalidades.toSorted((a, b) => a.localeCompare(b)).forEach((feature) => {
+      console.info(`${feature}`);
+    });
     console.groupEnd();
     // Fim da apresentação do projeto
   }
 
   // Apresentação do Projeto no console
   let dados_do_projeto = {
-    Hostname: new URL(window.location).hostname,
-    Origin: new URL(window.location).origin,
-    Status: 'Active',
+    Hostname: new URL(window.location).hostname, Origin: new URL(window.location).origin, Status: 'Active',
   };
 
-  const novas_funcionalidades = [
-    'Funcionalidade de alteração de ordem de proponente implementada',
-    'Adicionado tema escuro',
-    'Opções de personalização e configurações aperfeiçoadas',
-    'Funcionalidade de download de planilha de apuração do mês implementada',
-  ];
+  const novas_funcionalidades = ['Funcionalidade de alteração de ordem de proponente implementada', 'Adicionado tema escuro', 'Opções de personalização e configurações aperfeiçoadas', 'Funcionalidade de download de planilha de apuração do mês implementada',];
 
   // Carregando dados do arquivo de manifest.json
   let path = 'manifest.json';
@@ -73,6 +82,7 @@ import { Settings } from './classes/Settings.js';
   function clickEnviarConfirmacaoSenha(evento, elemento, referencia) {
     verificacao(evento, elemento, referencia);
   }
+
   window.clickEnviarConfirmacaoSenha = clickEnviarConfirmacaoSenha;
 
   document.querySelectorAll('[data-recarrega-pagina]').forEach(botao => {
@@ -92,17 +102,13 @@ import { Settings } from './classes/Settings.js';
     accordion_item.innerHTML = conteudos.accordion_item(1);
     document.querySelector('.accordion').appendChild(accordion_item);
     document.querySelector('#modais').innerHTML += conteudos.modal_tutorial;
-  }
-
-  else if (pagina == 'consultas/index.html' || pagina == 'cca/consultas/' || pagina == 'cca/consultas/index.html') {
+  } else if (pagina == 'consultas/index.html' || pagina == 'cca/consultas/' || pagina == 'cca/consultas/index.html') {
     body.innerHTML += conteudos.conteudo_pagina_consultas;
     const area_consultas = document.querySelector('[data-content="area-consultas"]');
 
     renderConteudosPagina(area_consultas, ordernarString(conteudos.consultas), 'consultas');
     adicionarOpcoesAutoComplete();
-  }
-
-  else if (pagina == 'arquivos/index.html' || pagina == 'cca/arquivos/' || pagina == 'cca/arquivos/index.html') {
+  } else if (pagina == 'arquivos/index.html' || pagina == 'cca/arquivos/' || pagina == 'cca/arquivos/index.html') {
     body.innerHTML += conteudos.conteudo_pagina_arquivos;
     const area_arquivos = document.querySelector('[data-content="area-arquivos"]');
 
@@ -130,10 +136,9 @@ import { Settings } from './classes/Settings.js';
         modal.querySelector('button[type="submit"]').setAttribute('onclick', `clickEnviarConfirmacaoSenha(event, this, '${elemento.getAttribute('confirm')}')`);
       }, 500);
     }
-    window.clickConfirm = clickConfirm;
-  }
 
-  else if (pagina == 'desligamento/index.html' || pagina == 'cca/desligamento/' || pagina == 'cca/desligamento/index.html') {
+    window.clickConfirm = clickConfirm;
+  } else if (pagina == 'desligamento/index.html' || pagina == 'cca/desligamento/' || pagina == 'cca/desligamento/index.html') {
     $(body).append(conteudos.conteudo_pagina_desligamento)
     // $(body).load('../assets/html/pagina-desligamento.html')
 
@@ -177,33 +182,11 @@ import { Settings } from './classes/Settings.js';
       })
     })
 
-    try { document.querySelector('[data-form="desligamento-internalizado"] [data-form="conteudo-texto"]').value = `Prezados, bom dia! \n\nGentileza gerar formulários e dar andamento ao processo que está em desligamento.\n\nModalidade: \nEmpreendimento: \nUnidade: \nValor de contrato: \nValor de financiamento: \nValor de FGTS: \n\n[Observações]`; } catch (error) { }
-
-    // TODO: Separar responsabilidades e scripts carregados por página
-    // Carregando cartórios de imóveis usando a API do Registro Civil
-    async function getCartorios() {
-      const response = await fetch('https://apicartorioshmlg.registrocivil.org.br/api/cartorios/geolocalizacao?estado=MG&apikey=SECRET')
-      return response.json();
+    try {
+      document.querySelector('[data-form="desligamento-internalizado"] [data-form="conteudo-texto"]').value = `Prezados, bom dia! \n\nGentileza gerar formulários e dar andamento ao processo que está em desligamento.\n\nModalidade: \nEmpreendimento: \nUnidade: \nValor de contrato: \nValor de financiamento: \nValor de FGTS: \n\n[Observações]`;
+    } catch (error) {
+      console.error(error);
     }
-
-    let cartorios = new Array();
-
-    getCartorios().then((retorno) => {
-      // Concatenando o que foi obtido da API com os cartórios de imóveis de Belo Horizonte
-      cartorios = retorno.concat(cartoriosImoveis)
-      let cartorio;
-
-      for (cartorio of cartorios) {
-        if (cartorio.nome !== undefined) {
-          $('#lista-cartorios').append(`<option value='${cartorio.nome}'></option>`);
-        } else {
-          $('#lista-cartorios').append(`<option value='${cartorio}'></option>`);
-        }
-      }
-    }).catch(error => {
-      SwalAlert('error', 'error', 'Erro ao carregar os cartórios de imóveis!', 'Por favor, tente novamente mais tarde ou contacte o administrador.');
-      console.error('Erro ao carregar os cartórios de imóveis.', error);
-    })
   }
 
   $(body).prepend(conteudos.nav)
@@ -251,7 +234,7 @@ import { Settings } from './classes/Settings.js';
               }
               index++
               $(Array.from(listas)[index - 1]).hide()
-              window.scrollTo({ top: 0, behavior: 'smooth' })
+              window.scrollTo({top: 0, behavior: 'smooth'})
               $(Array.from(listas)[index]).show()
             }, 100 * i);
           }
