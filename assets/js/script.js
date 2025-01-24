@@ -43,7 +43,7 @@ import {Settings} from './classes/Settings.js';
     Hostname: new URL(window.location).hostname, Origin: new URL(window.location).origin, Status: 'Active',
   };
 
-  const novas_funcionalidades = ['Funcionalidade de alteração de ordem de proponente implementada', 'Adicionado tema escuro', 'Opções de personalização e configurações aperfeiçoadas', 'Funcionalidade de download de planilha de apuração do mês implementada',];
+  const novas_funcionalidades = [...'Corrigido problemas de resposta na API de Cartórios', 'Melhorias de design e responsividade realizadas'];
 
   // Carregando dados do arquivo de manifest.json
   let path = 'manifest.json';
