@@ -15,21 +15,21 @@ const conteudos = [
     {
         conteudo: 'Carta de Descontinuidade de Renda',
         link: {
-            "target": window.location.hostname === "https://gabriersdev.github.io" ? "https://gabriersdev.github.io/cca/assets/docs/Carta_de_Descontinuidade_de_Renda.pdf" : "/assets/docs/Carta_de_Descontinuidade_de_Renda.pdf",
+            "target": window.location.hostname === "gabriersdev.github.io" ? "https://gabriersdev.github.io/cca/assets/docs/Carta_de_Descontinuidade_de_Renda.pdf" : "/assets/docs/Carta_de_Descontinuidade_de_Renda.pdf",
             "rel": "noopener noreferrer"
         }
     },
     {
         conteudo: 'Carta de Cancelamento',
         link: {
-            "target": window.location.hostname === "https://gabriersdev.github.io" ? "https://gabriersdev.github.io/cca/assets/docs/Carta_de_Cancelamento.pdf" : "/assets/docs/Carta_de_Cancelamento.pdf",
+            "target": window.location.hostname === "gabriersdev.github.io" ? "https://gabriersdev.github.io/cca/assets/docs/Carta_de_Cancelamento.pdf" : "/assets/docs/Carta_de_Cancelamento.pdf",
             "rel": "noopener noreferrer"
         }
     },
     {
         conteudo: 'Declaração de Estado Civil',
         link: {
-            "target": window.location.hostname === "https://gabriersdev.github.io" ? "https://gabriersdev.github.io/cca/assets/docs/Declaracao_de_Estado_Civil.pdf" : "/assets/docs/Declaracao_de_Estado_Civil.pdf",
+            "target": window.location.hostname === "gabriersdev.github.io" ? "https://gabriersdev.github.io/cca/assets/docs/Declaracao_de_Estado_Civil.pdf" : "/assets/docs/Declaracao_de_Estado_Civil.pdf",
             "rel": "noopener noreferrer"
         }
     },

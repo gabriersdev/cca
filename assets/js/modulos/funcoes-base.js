@@ -202,7 +202,7 @@ const getURLPlanilhaPerMonth = (month) => {
 
   if (![null, undefined].includes(planilhas.find(planilha => planilha.month === monthTrated).code) && ![null, undefined].includes(monthTrated)) {
     // return `https://drive.google.com/uc?export=download&id=${planilhas.find(planilha => planilha.month === monthTrated).code || codePlanilhaDefault}`;
-    return window.location.hostname === "https://gabriersdev.github.io" ? `https://gabriersdev.github.io/cca/assets/docs/MODELO ${monthTrated + 1} - APURACAO.xlsx` : `/assets/docs/MODELO ${monthTrated + 1} - APURACAO.xlsx`;
+    return window.location.hostname === "gabriersdev.github.io" ? `https://gabriersdev.github.io/cca/assets/docs/MODELO ${monthTrated + 1} - APURACAO.xlsx` : `/assets/docs/MODELO ${monthTrated + 1} - APURACAO.xlsx`;
   } else {
     return null;
   }
