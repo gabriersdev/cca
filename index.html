@@ -1,437 +1,443 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-bs-theme="normal">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-    <meta name="keywords" content="CCA; Confirmação; Dados; Conferência">
-    <meta name="author" content="Gabriel Ribeiro">
-    <meta name="robots" content="follow">
-    <meta name="description"
-      content="Confirmação de dados e verificação para Processos Habitacionais. É possível gerar relatórios e pendências sobre os dados e os documentos usados.">
-    <meta name="theme-color" content="#F6F6F6">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+  <meta name="keywords" content="CCA; Confirmação; Dados; Conferência">
+  <meta name="author" content="Gabriel Ribeiro">
+  <meta name="robots" content="follow">
+  <meta name="description"
+        content="Confirmação de dados e verificação para Processos Habitacionais. É possível gerar relatórios e pendências sobre os dados e os documentos usados.">
+  <meta name="theme-color" content="#F6F6F6">
 
-    <meta property="og:title" content="Confirmação de Dados - CCA">
-    <meta property="og:description"
-      content="Confirmação de dados e verificação para Processos Habitacionais. É possível gerar relatórios e pendências sobre os dados e os documentos usados.">
-    <meta property="og:url" content="#">
-    <meta property="og:image" content="https://gabriersdev.github.io/confirmacao-cca/assets/img/banner.png">
-    <meta property="og:image:secure_url" content="https://gabriersdev.github.io/confirmacao-cca/assets/img/banner.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="400">
-    <meta property="og:image:height" content="300">
+  <meta property="og:title" content="Confirmação de Dados - CCA">
+  <meta property="og:description"
+        content="Confirmação de dados e verificação para Processos Habitacionais. É possível gerar relatórios e pendências sobre os dados e os documentos usados.">
+  <meta property="og:url" content="#">
+  <meta property="og:image" content="https://gabriersdev.github.io/confirmacao-cca/assets/img/banner.png">
+  <meta property="og:image:secure_url" content="https://gabriersdev.github.io/confirmacao-cca/assets/img/banner.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="400">
+  <meta property="og:image:height" content="300">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; 
-  style-src 'self' 'unsafe-inline'; 
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline';
   style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;
-  img-src 'self' 'unsafe-inline' data:; 
-  font-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://cdn.jsdelivr.net/; 
-  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://code.jquery.com/ https://cdnjs.cloudflare.com/; 
+  img-src 'self' 'unsafe-inline' data:;
+  font-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://cdn.jsdelivr.net/;
+  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://code.jquery.com/ https://cdnjs.cloudflare.com/ https://gabriers.up.railway.app;
   frame-src 'self' 'unsafe-inline';
   connect-src 'self' 'unsafe-inline';">
 
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/cores-default.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/cores-default.css">
 
-    <link rel="manifest" href="./manifest.json">
-    <link rel="shortcut icon" href="./assets/img/favicon.svg" type="image/x-icon">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="shortcut icon" href="./assets/img/favicon.svg" type="image/x-icon">
 
-    <title>Confirmação de dados - CCA</title>
+  <title>Confirmação de dados - CCA</title>
 
-    <script src="./assets/js/frameworks/simpleMaskMoney.js" defer></script>
-    <script src="./assets/js/frameworks/jquery.js" defer></script>
-    <script src="./assets/js/frameworks/bootstrap.js" defer></script>
-    <script src="./assets/js/frameworks/pooper.js" async="true"></script>
-    <script src="./assets/js/frameworks/sweet-alert.js" defer></script>
-    <script src="./assets/js/frameworks/jquery-mask.js" defer></script>
-    <script src="./assets/js/frameworks/moment.js" async="true"></script>
-    <script src="./assets/js/frameworks/fileSaver.js" async="true"></script>
-    <script type="module" src="./assets/js/script.js" defer></script>
-  </head>
+  <script src="./assets/js/frameworks/simpleMaskMoney.js" defer></script>
+  <script src="./assets/js/frameworks/jquery.js" defer></script>
+  <script src="./assets/js/frameworks/bootstrap.js" defer></script>
+  <script src="./assets/js/frameworks/pooper.js" async="true"></script>
+  <script src="./assets/js/frameworks/sweet-alert.js" defer></script>
+  <script src="./assets/js/frameworks/jquery-mask.js" defer></script>
+  <script src="./assets/js/frameworks/moment.js" async="true"></script>
+  <script src="./assets/js/frameworks/fileSaver.js" async="true"></script>
+  <script type="module" src="./assets/js/script.js" defer></script>
+</head>
 
-  <body class="body">
-    <noscript>
-      <div class="box-no-script">
-        <div class="texto-pagina-centralizado-alt">
-          <h2 class="titulo-texto-pagina-centralizado">
-            Este site não funciona com o
-            <span class="destaque-pagina-centralizado">Javascript desabilitado</span>
-          </h2>
-          <br>
-          <p class="label-texto-pagina-centralizado">Muitos dos recursos usados funcionam através do Javascript e sem
-            ele a navegabilidade e o próprio funcionamento do site são comprometidos</p>
-          <p class="label-texto-pagina-centralizado">Portanto, habilite o Javascript e navegue pelo site</p><br>
-          <button data-recarrega-pagina class="btn-principal-no-script" id="btn-redirecionar-inicio"
-            name="btn-redirecionar-inicio">Recarregar</button>
+<body class="body">
+<noscript>
+  <div class="box-no-script">
+    <div class="texto-pagina-centralizado-alt">
+      <h2 class="titulo-texto-pagina-centralizado">
+        Este site não funciona com o
+        <span class="destaque-pagina-centralizado">Javascript desabilitado</span>
+      </h2>
+      <br>
+      <p class="label-texto-pagina-centralizado">Muitos dos recursos usados funcionam através do Javascript e sem
+        ele a navegabilidade e o próprio funcionamento do site são comprometidos</p>
+      <p class="label-texto-pagina-centralizado">Portanto, habilite o Javascript e navegue pelo site</p><br>
+      <button data-recarrega-pagina class="btn-principal-no-script" id="btn-redirecionar-inicio"
+              name="btn-redirecionar-inicio">Recarregar
+      </button>
+    </div>
+  </div>
+</noscript>
+
+<div id="modais">
+  <div class="modal fade" id="modal-informacoes-adicionais" aria-hidden="true"
+       aria-labelledby="modal-informacoes-adicionais-Label" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-informacoes-adicionais-Label">Adicionar informações</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <div class="form-group">
+              <label for="id-fid" class="mb-1">FID</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="id-fid" name="id-fid" data-element="input"
+                       data-input="id-fid" autocomplete="off">
+                <button type="button" tabindex="-1" class="btn btn-outline-secondary" disabled
+                        data-element="btn-ref-link-FID" data-action="ir-para-link-FID-gerado" data-toggle="tooltip"
+                        title="Link para o FID">Link
+                </button>
+                <button type="button" tabindex="0" class="btn btn-outline-secondary" disabled
+                        data-element="btn-ref-link-FID" data-action="baixar-acompanhamento-FID" data-toggle="tooltip"
+                        title="Baixar link para acompanhamento"><i class="bi bi-file-earmark-arrow-down"></i></button>
+                <button type="button" tabindex="-1" class="btn btn-outline-secondary" disabled
+                        data-element="btn-ref-link-FID" data-action="abrir-link-FID" data-toggle="tooltip"
+                        title="Abrir o FID"><i class="bi bi-arrow-up-right"></i></button>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <label for="id-empreendimento" class="mb-1">Empreendimento</label>
+              <input type="text" class="form-control" id="id-empreendimento" name="id-empreendimento"
+                     data-element="input" data-input="id-empreendimento">
+            </div>
+            <div class="form-group mt-3">
+              <label for="id-gerente-ou-corretor" class="mb-1">Gerente ou Corretor</label>
+              <input type="text" class="form-control" id="id-gerente-ou-corretor" name="id-gerente-ou-corretor"
+                     data-element="input" data-input="id-gerente-ou-corretor">
+            </div>
+            <div class="form-group mt-3">
+              <label for="id-valor-imovel" class="mb-1">Valor do imóvel</label>
+              <input type="text" class="form-control" id="id-valor-imovel" name="id-valor-imovel"
+                     data-element="input" data-input="id-valor-imovel">
+            </div>
+            <div class="form-group mt-3">
+              <label for="id-analista" class="mb-1">Analista</label>
+              <input type="text" class="form-control" id="id-analista" name="id-analista" data-element="input"
+                     data-input="id-analista">
+            </div>
+            <div class="form-group mt-3">
+              <input type="checkbox" class="form-check-input" name="add-data-hora" id="add-data-hora" checked>
+              <label for="add-data-hora">Adicionar data e hora</label>
+            </div>
+            <div class="form-group mt-2">
+              <input type="checkbox" class="form-check-input" name="limpar-txt-area" id="limpar-txt-area">
+              <label for="limpar-txt-area">Limpar relatório</label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4 mb-2" style="width: 100%;">Add. dados</button>
+          </form>
         </div>
       </div>
-    </noscript>
+    </div>
+  </div>
 
-    <div id="modais">
-      <div class="modal fade" id="modal-informacoes-adicionais" aria-hidden="true"
-        aria-labelledby="modal-informacoes-adicionais-Label" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="modal-informacoes-adicionais-Label">Adicionar informações</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
+  <div class="modal fade" id="modal-calcular-percentual" aria-hidden="true"
+       aria-labelledby="modal-calcular-percentual-Label" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-calcular-percentual-Label">Calcular percentual</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" data-bs-toggle="tab"
+                 data-bs-target="#nav-percent-parcela" role="tab">Percent. parcela</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" data-bs-toggle="tab"
+                 data-bs-target="#nav-percent-financiamento" role="tab">Percent. financiamento</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" data-bs-toggle="tab" data-bs-target="#nav-renda-necessaria"
+                 role="tab">Renda necessária</a>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="nav-tabContent">
+            <div data-tab="percent-parcela" class="tab-pane fade active show" id="nav-percent-parcela"
+                 role="tabpanel">
               <form action="">
                 <div class="form-group">
-                  <label for="id-fid" class="mb-1">FID</label>
-                  <div class="input-group">
-                    <input type="text" class="form-control" id="id-fid" name="id-fid" data-element="input"
-                      data-input="id-fid" autocomplete="off">
-                    <button type="button" tabindex="-1" class="btn btn-outline-secondary" disabled
-                      data-element="btn-ref-link-FID" data-action="ir-para-link-FID-gerado" data-toggle="tooltip"
-                      title="Link para o FID">Link</button>
-                    <button type="button" tabindex="0" class="btn btn-outline-secondary" disabled
-                      data-element="btn-ref-link-FID" data-action="baixar-acompanhamento-FID" data-toggle="tooltip"
-                      title="Baixar link para acompanhamento"><i class="bi bi-file-earmark-arrow-down"></i></button>
-                    <button type="button" tabindex="-1" class="btn btn-outline-secondary" disabled
-                      data-element="btn-ref-link-FID" data-action="abrir-link-FID" data-toggle="tooltip"
-                      title="Abrir o FID"><i class="bi bi-arrow-up-right"></i></button>
-                  </div>
+                  <label for="renda-bruta-total" class="mb-1">Renda bruta total</label>
+                  <input type="text" class="form-control" id="renda-bruta-total" name="renda-bruta-total"
+                         data-element="input" data-input="renda-bruta-total" data-maskc="money" autocomplete="off"
+                         required>
                 </div>
                 <div class="form-group mt-3">
-                  <label for="id-empreendimento" class="mb-1">Empreendimento</label>
-                  <input type="text" class="form-control" id="id-empreendimento" name="id-empreendimento"
-                    data-element="input" data-input="id-empreendimento">
+                  <label for="parcela-liberada" class="mb-1">Parcela liberada</label>
+                  <input type="text" class="form-control" id="parcela-liberada" name="parcela-liberada"
+                         data-element="input" data-input="parcela-liberada" data-maskc="money" required>
                 </div>
-                <div class="form-group mt-3">
-                  <label for="id-gerente-ou-corretor" class="mb-1">Gerente ou Corretor</label>
-                  <input type="text" class="form-control" id="id-gerente-ou-corretor" name="id-gerente-ou-corretor"
-                    data-element="input" data-input="id-gerente-ou-corretor">
+                <div class="mt-4 mb-2"
+                     style="display: grid; grid-template-columns: repeat(auto-fill, calc(50% - 0.5rem)); gap: 1rem;">
+                  <button type="submit" class="btn btn-primary">Calcular</button>
+                  <button type="reset" class="btn btn-secondary">Limpar</button>
                 </div>
-                <div class="form-group mt-3">
-                  <label for="id-valor-imovel" class="mb-1">Valor do imóvel</label>
-                  <input type="text" class="form-control" id="id-valor-imovel" name="id-valor-imovel"
-                    data-element="input" data-input="id-valor-imovel">
-                </div>
-                <div class="form-group mt-3">
-                  <label for="id-analista" class="mb-1">Analista</label>
-                  <input type="text" class="form-control" id="id-analista" name="id-analista" data-element="input"
-                    data-input="id-analista">
-                </div>
-                <div class="form-group mt-3">
-                  <input type="checkbox" class="form-check-input" name="add-data-hora" id="add-data-hora" checked>
-                  <label for="add-data-hora">Adicionar data e hora</label>
-                </div>
-                <div class="form-group mt-2">
-                  <input type="checkbox" class="form-check-input" name="limpar-txt-area" id="limpar-txt-area">
-                  <label for="limpar-txt-area">Limpar relatório</label>
-                </div>
-                <button type="submit" class="btn btn-primary mt-4 mb-2" style="width: 100%;">Add. dados</button>
               </form>
+              <div class="percent-retorno">
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="modal fade" id="modal-calcular-percentual" aria-hidden="true"
-        aria-labelledby="modal-calcular-percentual-Label" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="modal-calcular-percentual-Label">Calcular percentual</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div data-tab="percent-financiamento" class="tab-pane fade" id="nav-percent-financiamento"
+                 role="tabpanel">
+              <form action="">
+                <div class="form-group">
+                  <label for="valor-de-compra-e-venda" class="mb-1">Valor de compra e venda</label>
+                  <input type="text" class="form-control" id="valor-de-compra-e-venda"
+                         name="valor-de-compra-e-venda" data-element="input" data-input="valor-de-compra-e-venda"
+                         data-maskc="money" autocomplete="off" required>
+                </div>
+                <div class="form-group mt-3">
+                  <label for="valor-financiado" class="mb-1">Valor financiado</label>
+                  <input type="text" class="form-control" id="valor-financiado" name="valor-financiado"
+                         data-element="input" data-input="valor-financiado" data-maskc="money" required>
+                </div>
+                <div class="mt-4 mb-2"
+                     style="display: grid; grid-template-columns: repeat(auto-fill, calc(50% - 0.5rem)); gap: 1rem;">
+                  <button type="submit" class="btn btn-primary">Calcular</button>
+                  <button type="reset" class="btn btn-secondary">Limpar</button>
+                </div>
+              </form>
+              <div class="percent-retorno">
+              </div>
             </div>
-            <div class="modal-body">
-              <ul class="nav nav-tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" data-bs-toggle="tab"
-                    data-bs-target="#nav-percent-parcela" role="tab">Percent. parcela</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" data-bs-toggle="tab"
-                    data-bs-target="#nav-percent-financiamento" role="tab">Percent. financiamento</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" data-bs-toggle="tab" data-bs-target="#nav-renda-necessaria"
-                    role="tab">Renda necessária</a>
-                </li>
-              </ul>
 
-              <div class="tab-content" id="nav-tabContent">
-                <div data-tab="percent-parcela" class="tab-pane fade active show" id="nav-percent-parcela"
-                  role="tabpanel">
-                  <form action="">
-                    <div class="form-group">
-                      <label for="renda-bruta-total" class="mb-1">Renda bruta total</label>
-                      <input type="text" class="form-control" id="renda-bruta-total" name="renda-bruta-total"
-                        data-element="input" data-input="renda-bruta-total" data-maskc="money" autocomplete="off"
-                        required>
-                    </div>
-                    <div class="form-group mt-3">
-                      <label for="parcela-liberada" class="mb-1">Parcela liberada</label>
-                      <input type="text" class="form-control" id="parcela-liberada" name="parcela-liberada"
-                        data-element="input" data-input="parcela-liberada" data-maskc="money" required>
-                    </div>
-                    <div class="mt-4 mb-2"
-                      style="display: grid; grid-template-columns: repeat(auto-fill, calc(50% - 0.5rem)); gap: 1rem;">
-                      <button type="submit" class="btn btn-primary">Calcular</button>
-                      <button type="reset" class="btn btn-secondary">Limpar</button>
-                    </div>
-                  </form>
-                  <div class="percent-retorno">
-                  </div>
+            <div data-tab="renda-necessaria" class="tab-pane fade" id="nav-renda-necessaria" role="tabpanel">
+              <form action="">
+                <div class="form-group">
+                  <label for="percentual-condicionamento" class="mb-1">Percentual de condicionamento</label>
+                  <span class="text-muted">(Apenas números)</span>
+                  <input type="number" step="0.001" class="form-control" id="percentual-condicionamento"
+                         name="percentual-condicionamento" placeholder="0.000" data-element="input"
+                         data-input="percentual-condicionamento" autocomplete="off" required>
                 </div>
-
-                <div data-tab="percent-financiamento" class="tab-pane fade" id="nav-percent-financiamento"
-                  role="tabpanel">
-                  <form action="">
-                    <div class="form-group">
-                      <label for="valor-de-compra-e-venda" class="mb-1">Valor de compra e venda</label>
-                      <input type="text" class="form-control" id="valor-de-compra-e-venda"
-                        name="valor-de-compra-e-venda" data-element="input" data-input="valor-de-compra-e-venda"
-                        data-maskc="money" autocomplete="off" required>
-                    </div>
-                    <div class="form-group mt-3">
-                      <label for="valor-financiado" class="mb-1">Valor financiado</label>
-                      <input type="text" class="form-control" id="valor-financiado" name="valor-financiado"
-                        data-element="input" data-input="valor-financiado" data-maskc="money" required>
-                    </div>
-                    <div class="mt-4 mb-2"
-                      style="display: grid; grid-template-columns: repeat(auto-fill, calc(50% - 0.5rem)); gap: 1rem;">
-                      <button type="submit" class="btn btn-primary">Calcular</button>
-                      <button type="reset" class="btn btn-secondary">Limpar</button>
-                    </div>
-                  </form>
-                  <div class="percent-retorno">
-                  </div>
+                <div class="form-group mt-3">
+                  <label for="parcela-necessaria" class="mb-1">Parcela necessária</label>
+                  <input type="text" class="form-control" id="parcela-necessaria" name="parcela-necessaria"
+                         data-element="input" data-input="parcela-necessaria" data-maskc="money" required>
                 </div>
-
-                <div data-tab="renda-necessaria" class="tab-pane fade" id="nav-renda-necessaria"" role=" tabpanel">
-                  <form action="">
-                    <div class="form-group">
-                      <label for="percentual-condicionamento" class="mb-1">Percentual de condicionamento</label>
-                      <span class="text-muted">(Apenas números)</span>
-                      <input type="number" step="0.001" class="form-control" id="percentual-condicionamento"
-                        name="percentual-condicionamento" placeholder="0.000" data-element="input"
-                        data-input="percentual-condicionamento" autocomplete="off" required>
-                    </div>
-                    <div class="form-group mt-3">
-                      <label for="parcela-necessaria" class="mb-1">Parcela necessária</label>
-                      <input type="text" class="form-control" id="parcela-necessaria" name="parcela-necessaria"
-                        data-element="input" data-input="parcela-necessaria" data-maskc="money" required>
-                    </div>
-                    <div class="mt-4 mb-2"
-                      style="display: grid; grid-template-columns: repeat(auto-fill, calc(50% - 0.5rem)); gap: 1rem;">
-                      <button type="submit" class="btn btn-primary">Calcular</button>
-                      <button type="reset" class="btn btn-secondary">Limpar</button>
-                    </div>
-                  </form>
-                  <div class="percent-retorno">
-                  </div>
+                <div class="mt-4 mb-2"
+                     style="display: grid; grid-template-columns: repeat(auto-fill, calc(50% - 0.5rem)); gap: 1rem;">
+                  <button type="submit" class="btn btn-primary">Calcular</button>
+                  <button type="reset" class="btn btn-secondary">Limpar</button>
                 </div>
+              </form>
+              <div class="percent-retorno">
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="modal fade" id="modal-devolucao-fid" aria-hidden="true" aria-labelledby="modal-2-Label" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="modal-2-Label">Devolução do FID</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="modal fade" id="modal-devolucao-fid" aria-hidden="true" aria-labelledby="modal-2-Label" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-2-Label">Devolução do FID</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <div class="row">
+              <div class="col form-group">
+                <input type="radio" class="form-check-input" name="dev-financ" id="dev-financ-NPMCMV" required>
+                <label for="dev-financ-NPMCMV" class="form-check-label">NPMCMV</label><br>
+                <input type="radio" class="form-check-input" name="dev-financ" id="dev-financ-SBPE" required>
+                <label for="dev-financ-SBPE" class="form-check-label">SBPE</label><br>
+                <input type="radio" class="form-check-input" name="dev-financ" id="dev-financ-PROCOTISTA" required>
+                <label for="dev-financ-PROCOTISTA" class="form-check-label">Pró-cotista</label>
+              </div>
+              <div class="col form-group">
+                <label for="dev-renda" class="mb-1">Renda</label>
+                <input type="text" class="form-control" id="dev-renda" name="dev-renda" data-element="input"
+                       data-maskc="money" required>
+              </div>
             </div>
-            <div class="modal-body">
-              <form action="">
-                <div class="row">
-                  <div class="col form-group">
-                    <input type="radio" class="form-check-input" name="dev-financ" id="dev-financ-NPMCMV" required>
-                    <label for="dev-financ-NPMCMV" class="form-check-label">NPMCMV</label><br>
-                    <input type="radio" class="form-check-input" name="dev-financ" id="dev-financ-SBPE" required>
-                    <label for="dev-financ-SBPE" class="form-check-label">SBPE</label><br>
-                    <input type="radio" class="form-check-input" name="dev-financ" id="dev-financ-PROCOTISTA" required>
-                    <label for="dev-financ-PROCOTISTA" class="form-check-label">Pró-cotista</label>
-                  </div>
-                  <div class="col form-group">
-                    <label for="dev-renda" class="mb-1">Renda</label>
-                    <input type="text" class="form-control" id="dev-renda" name="dev-renda" data-element="input"
-                      data-maskc="money" required>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col form-group">
-                    <label for="dev-parcela" class="mb-1">Parcela</label>
-                    <input type="text" class="form-control" id="dev-parcela" name="dev-parcela" data-element="input"
-                      data-maskc="money" required>
-                  </div>
-                  <div class="col form-group">
-                    <input type="radio" class="form-check-input" name="dev-status-parcela"
-                      id="dev-status-parcela-aprovado" required>
-                    <label for="dev-status-parcela-aprovado" class="form-check-label">Aprovado</label><br>
-                    <input type="radio" class="form-check-input" name="dev-status-parcela"
-                      id="dev-status-parcela-condicionado" required>
-                    <label for="dev-status-parcela-condicionado" class="form-check-label">Condicionado</label>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col form-group">
-                    <label for="dev-parcela-1" class="mb-1">1ª parcela</label>
-                    <input type="text" class="form-control" id="dev-parcela-1" name="dev-parcela-1" data-element="input"
-                      data-maskc="money" required>
-                  </div>
-                  <div class="col form-group">
-                    <label for="dev-seguro" class="mb-1">Seguro</label>
-                    <input list="lista-seguros" class="form-control" id="dev-seguro" name="dev-seguro"
-                      data-element="input" autocomplete="off" required>
-                    <datalist id="lista-seguros">
-                      <option value="Caixa Residencial Habitacional"></option>
-                      <option value="American Life"></option>
-                      <option value="Too Seguros"></option>
-                      <option value="Caixa Residencial Habitacional Residencial"></option>
-                      <option value="Tokio Marine Seguradora"></option>
-                    </datalist>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col form-group">
-                    <label for="dev-valor-de-financiamento" class="mb-1">Valor de financiamento</label>
-                    <input type="text" class="form-control" id="dev-valor-de-financiamento"
-                      name="dev-valor-de-financiamento" data-element="input" data-maskc="money" required>
-                  </div>
-                  <div class="col form-group">
-                    <label for="dev-prazo" class="mb-1">Prazo</label>
-                    <input type="number" class="form-control" id="dev-prazo" name="dev-prazo" data-element="input"
-                      min="0" max="420" required>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col form-group">
-                    <input type="radio" class="form-check-input" name="dev-tabela" id="dev-tabela-price" required>
-                    <label for="dev-tabela-price" class="form-check-label">PRICE</label><br>
-                    <input type="radio" class="form-check-input" name="dev-tabela" id="dev-tabela-sac" required>
-                    <label for="dev-tabela-sac" class="form-check-label">SAC</label>
-                  </div>
-                  <div class="col form-group">
-                    <label for="dev-taxa-juros" class="mb-1">Taxa de juros</label>
-                    <input type="number" class="form-control" id="dev-taxa-juros" name="dev-taxa-juros"
-                      data-element="input" step="0.01" required>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col form-group">
-                    <label for="dev-subsidio" class="mb-1">Subsídio</label>
-                    <input type="text" class="form-control" id="dev-subsidio" name="dev-subsidio" data-element="input"
-                      data-maskc="money">
-                  </div>
-                  <div class="col form-group">
-                    <label for="dev-FGTS" class="mb-1">FGTS</label>
-                    <input type="text" class="form-control" id="dev-FGTS" name="dev-FGTS" data-element="input"
-                      data-maskc="money">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col form-group mt-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <label for="dev-pendencias" class="mb-1">Pendência(s)</label>
-                      <button class="btn btn-sm btn-light mb-2" tabindex="-1" data-toggle="tooltip" type="button"
-                        data-action="importar-pendencias" data-placement="bottom" title="Importar pendências"><i
-                          class="bi bi-arrow-up"></i></button>
-                    </div>
-                    <input type="text" class="form-control" id="dev-pendencias" name="dev-pendencias"
-                      data-element="input" autocomplete="off" spellcheck="true">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col form-group mt-3">
-                    <span class="d-block mb-2">Opções de fácil acesso</span>
-                    <div class="selecao-multiplas-opcoes">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col form-group mt-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <label for="dev-restricoes" class="mb-1">Restrição(s)</label>
-                      <button class="btn btn-sm btn-light mb-2" tabindex="0" data-toggle="tooltip" type="button"
-                        data-bs-target="#modal-informar-restricoes" data-bs-toggle="modal" data-action="acionar-modal"
-                        data-placement="bottom" title="Informar restrições"><i
-                          class="bi bi-currency-dollar"></i></button>
-                    </div>
-                    <input type="text" class="form-control" id="dev-restricoes" name="dev-restricoes"
-                      data-element="input" autocomplete="off" spellcheck="true">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col form-group mt-3">
-                    <label for="dev-analista" class="mb-1">Analista</label>
-                    <input type="text" class="form-control" id="dev-analista" name="dev-analista" data-element="input"
-                      autocomplete="off" required></input>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary mt-4 mb-2" style="width: 100%;">Add. informações</button>
-              </form>
+            <div class="row mt-3">
+              <div class="col form-group">
+                <label for="dev-parcela" class="mb-1">Parcela</label>
+                <input type="text" class="form-control" id="dev-parcela" name="dev-parcela" data-element="input"
+                       data-maskc="money" required>
+              </div>
+              <div class="col form-group">
+                <input type="radio" class="form-check-input" name="dev-status-parcela"
+                       id="dev-status-parcela-aprovado" required>
+                <label for="dev-status-parcela-aprovado" class="form-check-label">Aprovado</label><br>
+                <input type="radio" class="form-check-input" name="dev-status-parcela"
+                       id="dev-status-parcela-condicionado" required>
+                <label for="dev-status-parcela-condicionado" class="form-check-label">Condicionado</label>
+              </div>
             </div>
-          </div>
+            <div class="row mt-3">
+              <div class="col form-group">
+                <label for="dev-parcela-1" class="mb-1">1ª parcela</label>
+                <input type="text" class="form-control" id="dev-parcela-1" name="dev-parcela-1" data-element="input"
+                       data-maskc="money" required>
+              </div>
+              <div class="col form-group">
+                <label for="dev-seguro" class="mb-1">Seguro</label>
+                <input list="lista-seguros" class="form-control" id="dev-seguro" name="dev-seguro"
+                       data-element="input" autocomplete="off" required>
+                <datalist id="lista-seguros">
+                  <option value="Caixa Residencial Habitacional"></option>
+                  <option value="American Life"></option>
+                  <option value="Too Seguros"></option>
+                  <option value="Caixa Residencial Habitacional Residencial"></option>
+                  <option value="Tokio Marine Seguradora"></option>
+                </datalist>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col form-group">
+                <label for="dev-valor-de-financiamento" class="mb-1">Valor de financiamento</label>
+                <input type="text" class="form-control" id="dev-valor-de-financiamento"
+                       name="dev-valor-de-financiamento" data-element="input" data-maskc="money" required>
+              </div>
+              <div class="col form-group">
+                <label for="dev-prazo" class="mb-1">Prazo</label>
+                <input type="number" class="form-control" id="dev-prazo" name="dev-prazo" data-element="input"
+                       min="0" max="420" required>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col form-group">
+                <input type="radio" class="form-check-input" name="dev-tabela" id="dev-tabela-price" required>
+                <label for="dev-tabela-price" class="form-check-label">PRICE</label><br>
+                <input type="radio" class="form-check-input" name="dev-tabela" id="dev-tabela-sac" required>
+                <label for="dev-tabela-sac" class="form-check-label">SAC</label>
+              </div>
+              <div class="col form-group">
+                <label for="dev-taxa-juros" class="mb-1">Taxa de juros</label>
+                <input type="number" class="form-control" id="dev-taxa-juros" name="dev-taxa-juros"
+                       data-element="input" step="0.01" required>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col form-group">
+                <label for="dev-subsidio" class="mb-1">Subsídio</label>
+                <input type="text" class="form-control" id="dev-subsidio" name="dev-subsidio" data-element="input"
+                       data-maskc="money">
+              </div>
+              <div class="col form-group">
+                <label for="dev-FGTS" class="mb-1">FGTS</label>
+                <input type="text" class="form-control" id="dev-FGTS" name="dev-FGTS" data-element="input"
+                       data-maskc="money">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col form-group mt-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <label for="dev-pendencias" class="mb-1">Pendência(s)</label>
+                  <button class="btn btn-sm btn-light mb-2" tabindex="-1" data-toggle="tooltip" type="button"
+                          data-action="importar-pendencias" data-placement="bottom" title="Importar pendências"><i
+                    class="bi bi-arrow-up"></i></button>
+                </div>
+                <input type="text" class="form-control" id="dev-pendencias" name="dev-pendencias"
+                       data-element="input" autocomplete="off" spellcheck="true">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col form-group mt-3">
+                <span class="d-block mb-2">Opções de fácil acesso</span>
+                <div class="selecao-multiplas-opcoes">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col form-group mt-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <label for="dev-restricoes" class="mb-1">Restrição(s)</label>
+                  <button class="btn btn-sm btn-light mb-2" tabindex="0" data-toggle="tooltip" type="button"
+                          data-bs-target="#modal-informar-restricoes" data-bs-toggle="modal" data-action="acionar-modal"
+                          data-placement="bottom" title="Informar restrições"><i
+                    class="bi bi-currency-dollar"></i></button>
+                </div>
+                <input type="text" class="form-control" id="dev-restricoes" name="dev-restricoes"
+                       data-element="input" autocomplete="off" spellcheck="true">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col form-group mt-3">
+                <label for="dev-analista" class="mb-1">Analista</label>
+                <input type="text" class="form-control" id="dev-analista" name="dev-analista" data-element="input"
+                       autocomplete="off" required></input>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4 mb-2" style="width: 100%;">Add. informações</button>
+          </form>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="modal fade" id="modal-informar-restricoes" aria-hidden="true"
-        aria-labelledby="modal-informar-restricoes-Label" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="modal-informar-restricoes-Label">Informar restrições</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="modal fade" id="modal-informar-restricoes" aria-hidden="true"
+       aria-labelledby="modal-informar-restricoes-Label" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-informar-restricoes-Label">Informar restrições</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <button type="button" class="btn btn-secondary" data-bs-target="#modal-devolucao-fid"
+                    data-action="acionar-modal" data-bs-toggle="modal" data-placement="bottom">Voltar
+            </button>
+            <div class="form-group mt-4 mb-1">
+              <label for="text-restricoes" class="mb-1">Restrições</label>
+              <textarea class="form-control" name="text-restricoes" id="text-restricoes"
+                        data-content="text-restricoes" data-element="input" required></textarea>
             </div>
-            <div class="modal-body">
-              <form action="">
-                <button type="button" class="btn btn-secondary" data-bs-target="#modal-devolucao-fid"
-                  data-action="acionar-modal" data-bs-toggle="modal" data-placement="bottom">Voltar</button>
-                <div class="form-group mt-4 mb-1">
-                  <label for="text-restricoes" class="mb-1">Restrições</label>
-                  <textarea class="form-control" name="text-restricoes" id="text-restricoes"
-                    data-content="text-restricoes" data-element="input" required></textarea>
-                </div>
-                <span class="text-muted d-block mb-3">Cole na caixa de texto as restrições do cliente.</span>
-                <button type="submit" class="btn btn-primary mt-2" style="width: 100%;">Enviar</button>
-              </form>
-            </div>
-          </div>
+            <span class="text-muted d-block mb-3">Cole na caixa de texto as restrições do cliente.</span>
+            <button type="submit" class="btn btn-primary mt-2" style="width: 100%;">Enviar</button>
+          </form>
         </div>
       </div>
+    </div>
+  </div>
 
-      <dialog class="modal-informacoes-pagina">
-        <div class="d-flex justify-content-between align-items-center">
+  <dialog class="modal-informacoes-pagina">
+    <div class="d-flex justify-content-between align-items-center">
           <span>
             Use teclas de atalho para acionar as funções:
           </span>
-          <button data-action="fechar-modal-dialog">
-            <i class="bi bi-x-lg"></i>
-          </button>
-        </div>
-        <p class="mt-3"><kbd>Insert</kbd> para incluir um proponente novo</p>
-        <p class="mt-1"><kbd>F2</kbd> + <kbd>D</kbd> para baixar o arquivo de dados dos usuários</p>
-        <p class="mt-1"><kbd>F2</kbd> + <kbd>F</kbd> para ir para o campo de "Acompanhar o FID"</p>
-        <p class="mt-1"><kbd>F2</kbd> + <kbd>I</kbd> para acionar inserção de dados de FID</p>
-        <p class="mt-1"><kbd>F2</kbd> + <kbd>P</kbd> para baixar o arquivo de pendências</p>
-        <p class="mt-1"><kbd>F2</kbd> + <kbd>R</kbd> para baixar o arquivo de relatório</p>
-        <p class="mt-1"><kbd>F2</kbd> + <kbd>V</kbd> para acionar devolução de FID</p>
-        <p class="mt-3 text-muted">Para fechar esse popup <kbd>ESC</kbd> <button class="link-visivel"
-            data-action="fechar-modal-dialog">ou clique aqui</button></p>
-      </dialog>
+      <button data-action="fechar-modal-dialog">
+        <i class="bi bi-x-lg"></i>
+      </button>
     </div>
+    <p class="mt-3"><kbd>Insert</kbd> para incluir um proponente novo</p>
+    <p class="mt-1"><kbd>F2</kbd> + <kbd>D</kbd> para baixar o arquivo de dados dos usuários</p>
+    <p class="mt-1"><kbd>F2</kbd> + <kbd>F</kbd> para ir para o campo de "Acompanhar o FID"</p>
+    <p class="mt-1"><kbd>F2</kbd> + <kbd>I</kbd> para acionar inserção de dados de FID</p>
+    <p class="mt-1"><kbd>F2</kbd> + <kbd>P</kbd> para baixar o arquivo de pendências</p>
+    <p class="mt-1"><kbd>F2</kbd> + <kbd>R</kbd> para baixar o arquivo de relatório</p>
+    <p class="mt-1"><kbd>F2</kbd> + <kbd>V</kbd> para acionar devolução de FID</p>
+    <p class="mt-3 text-muted">Para fechar esse popup <kbd>ESC</kbd>
+      <button class="link-visivel"
+              data-action="fechar-modal-dialog">ou clique aqui
+      </button>
+    </p>
+  </dialog>
+</div>
 
-    <div class="overlay">
-      <div class="spinner-first-load"></div>
-    </div>
+<div class="overlay">
+  <div class="spinner-first-load"></div>
+</div>
 
-    <div class="toast" id="toast-feedback" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <strong class="me-auto">Aviso</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body"></div>
-    </div>
+<div class="toast" id="toast-feedback" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <strong class="me-auto">Aviso</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body"></div>
+</div>
 
-  </body>
+</body>
 
 </html>
