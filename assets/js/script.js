@@ -23,7 +23,6 @@ import {cartoriosImoveis} from './modulos/dados.js';
 import {Settings} from './classes/Settings.js';
 
 (() => {
-
   const apresentarDadosProjeto = (dados_do_projeto, novas_funcionalidades) => {
     // Exibindo dados
     console.groupCollapsed(`${dados_do_projeto['Project name'] ?? 'Projeto'}, Version ${dados_do_projeto.Version ?? '-'}`);
