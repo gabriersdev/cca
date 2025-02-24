@@ -28,9 +28,9 @@
   style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;
   img-src 'self' 'unsafe-inline' data:;
   font-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://cdn.jsdelivr.net/;
-  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://code.jquery.com/ https://cdnjs.cloudflare.com/ https://gabriers.up.railway.app;
+  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://code.jquery.com/ https://cdnjs.cloudflare.com/;
   frame-src 'self' 'unsafe-inline';
-  connect-src 'self' 'unsafe-inline';">
+  connect-src 'self' 'unsafe-inline' https://gabriers.up.railway.app/api/text-generator/ http://localhost:8001/api/text-generator/;">
 
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/cores-default.css">
@@ -396,6 +396,27 @@
             </div>
             <span class="text-muted d-block mb-3">Cole na caixa de texto as restrições do cliente.</span>
             <button type="submit" class="btn btn-primary mt-2" style="width: 100%;">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal-gerar-texto-ia">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Criar relatório com IA</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="#" id="form-gerar-texto-ia">
+            <label for="txt-gerar-texto-ia" class="form-label mb-2">
+              <span>Digite um texto para o prompt</span>
+              <span class="text-body-tertiary d-block">Até 200 caracteres</span>
+            </label>
+            <textarea class="form-control" id="txt-gerar-texto-ia" name="txt-gerar-texto-ia" maxlength="200" style="min-height: 100px" required></textarea>
+            <button type="submit" class="btn btn-primary mt-3" style="width: 100%;">Gerar</button>
           </form>
         </div>
       </div>
