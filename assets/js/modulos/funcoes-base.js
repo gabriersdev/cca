@@ -281,7 +281,6 @@ function funcoesBase() {
       e.stopPropagation();
       e.stopImmediatePropagation();
       e.preventDefault();
-      console.log('SUBMIT')
       const textPrompt = e.target.querySelector('textarea#txt-gerar-texto-ia');
       const btn = e.target.querySelector('button[type="submit"]');
       const btnClassBase = [...btn.classList].filter(c => c !== 'btn-primary');
