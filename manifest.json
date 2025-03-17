@@ -1,10 +1,9 @@
 {
   "name": "CCA",
-  "developer": "Gabriel Ribeiro",
-  "version": "3.1.0",
-  "release_date": "2025-01-24",
-  "description": "Projeto para a verificação e validação prévia de dados básicos de clientes de Correspondentes Caixa Aqui",
   "short_name": "CCA",
-  "background": "#F6F6F6",
-  "icons": []
+  "version": "3.1.0",
+  "description": "Projeto para a verificação e validação prévia de dados básicos de clientes de Correspondentes Caixa Aqui",
+  "background_color": "#F6F6F6",
+  "display": "standalone",
+  "start_url": "/"
 }

@@ -1,56 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-  <meta name="keywords" content="CCA; Consulta; Dados; Conferência">
-  <meta name="author" content="Gabriel Ribeiro">
-  <meta name="robots" content="follow">
-  <meta name="description" content="Arquivos usados no cotidiano para os processos de consulta, apuração, validação e produção de levantamento e dossiês.">
-  <meta name="theme-color" content="#F6F6F6">
 
-  <meta property="og:title" content="Arquivos - CCA">
-  <meta property="og:description" content="Arquivos usados no cotidiano para os processos de consulta, apuração, validação e produção de levantamento e dossiês.">
-  <meta property="og:url" content="https://gabriersdev.github.io/confirmacao-cca/arquivos/">
-  <meta property="og:image" content="https://gabriersdev.github.io/confirmacao-cca/assets/img/banner-arquivos.png">
-  <meta property="og:image:secure_url" content="https://gabriersdev.github.io/confirmacao-cca/assets/img/banner-arquivos.png"> 
-  <meta property="og:image:type" content="image/png"> 
-  <meta property="og:image:width" content="400"> 
-  <meta property="og:image:height" content="300"> 
-  
-  <meta http-equiv="Content-Security-Policy" 
-  content="default-src 'self' 'unsafe-inline'; 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+    <meta name="keywords" content="CCA; Consulta; Dados; Conferência">
+    <meta name="author" content="Gabriel Ribeiro">
+    <meta name="robots" content="follow">
+    <meta name="description" content="Arquivos usados no cotidiano para os processos de consulta, apuração, validação e produção de levantamento e dossiês.">
+    <meta name="theme-color" content="#F6F6F6">
+
+    <meta property="og:title" content="Arquivos - CCA">
+    <meta property="og:description" content="Arquivos usados no cotidiano para os processos de consulta, apuração, validação e produção de levantamento e dossiês.">
+    <meta property="og:url" content="https://gabriersdev.github.io/confirmacao-cca/arquivos/">
+    <meta property="og:image" content="https://gabriersdev.github.io/confirmacao-cca/assets/img/banner-arquivos.png">
+    <meta property="og:image:secure_url" content="https://gabriersdev.github.io/confirmacao-cca/assets/img/banner-arquivos.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="300">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; 
   style-src 'self' 'unsafe-inline'; 
   style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;
   img-src 'self' 'unsafe-inline' data:; 
   font-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://cdn.jsdelivr.net/; 
   script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://code.jquery.com/ https://cdnjs.cloudflare.com/; 
   frame-src 'self' 'unsafe-inline';
-  connect-src 'self' 'unsafe-inline';">   
-  
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/cores-default.css">
+  connect-src 'self' 'unsafe-inline';">
 
-  <link rel="manifest" href="../manifest.json">
-  <link rel="stylesheet/less" type="text/css" href="../styles.less">
-  
-  <link rel="shortcut icon" href="../assets/img/favicon-arquivos.svg" type="image/x-icon">
-  
-  <title>Arquivos - CCA</title>
-  
-  <script src="../assets/js/frameworks/jquery.js" defer></script>
-  <script src="../assets/js/frameworks/bootstrap.js" defer></script>
-  <script src="../assets/js/frameworks/pooper.js" async="true"></script>
-  <script src="../assets/js/frameworks/sweet-alert.js" defer></script>
-  <script src="../assets/js/frameworks/moment.js" defer></script>
-  <script src="../assets/js/frameworks/crypto.js" defer></script>
-  <script type="module" src="../assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/cores-default.css">
+
+    <link rel="shortcut icon" href="../assets/img/favicon-arquivos.svg" type="image/x-icon">
+
+    <title>Arquivos - CCA</title>
+
+    <script src="../assets/js/frameworks/jquery.js" defer></script>
+    <script src="../assets/js/frameworks/bootstrap.js" defer></script>
+    <script src="../assets/js/frameworks/pooper.js" async="async"></script>
+    <script src="../assets/js/frameworks/sweet-alert.js" defer></script>
+    <script src="../assets/js/frameworks/moment.js" defer></script>
+    <script src="../assets/js/frameworks/crypto.js" defer></script>
+    <script type="module" src="../assets/js/script.js" defer></script>
 </head>
+
 <body class="body">
-  
-  <noscript>
+
+    <noscript>
     <div class="box-no-script">         
       <div class="texto-pagina-centralizado-alt">
         <h2 class="titulo-texto-pagina-centralizado">
@@ -64,36 +62,37 @@
       </div>
     </div>
   </noscript>
-  
-  <div class="overlay">
-    <div class="spinner-first-load"></div>
-  </div>
-  
-  <div id="modais">
-    <div class="modal fade" id="modal-confirmar-senha" aria-hidden="true" aria-labelledby="modal-confirmar-senha-Label" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="modal-confirmar-senha-Label">Informe a senha</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form action="">
-              <div class="form-group">
-                <label for="senha-arquivo" class="mb-1">Senha</label>
-                <div class="input-group">
-                  <input type="password" id="senha-arquivo" class="form-control" placeholder="A senha vai aqui" maxlength="8" minlength="6" autocomplete="off" required>
-                  <button type="button" class="btn btn-outline-secondary" data-action="btn-visibilidade-senha"><i class="bi bi-eye-fill"></i></button>
-                </div>
-              </div>
-              <a href="" data-element="link-referencia" rel="noreferrer noopener"></a>
-              <button type="submit" class="btn btn-outline-primary mt-3" style="width: 100%;" onclick="clickEnviarConfirmacaoSenha(event, this)">Enviar</button>
-            </form>
-          </div>
-        </div>
-      </div>
+
+    <div class="overlay">
+        <div class="spinner-first-load"></div>
     </div>
-  </div>
-  
+
+    <div id="modais">
+        <div class="modal fade" id="modal-confirmar-senha" aria-labelledby="modal-confirmar-senha-Label" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modal-confirmar-senha-Label">Informe a senha</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="form-group">
+                                <label for="senha-arquivo" class="mb-1">Senha</label>
+                                <div class="input-group">
+                                    <input type="password" id="senha-arquivo" class="form-control" placeholder="A senha vai aqui" maxlength="8" minlength="6" autocomplete="off" required>
+                                    <button type="button" class="btn btn-outline-secondary" data-action="btn-visibilidade-senha"><i class="bi bi-eye-fill"></i></button>
+                                </div>
+                            </div>
+                            <a href="" data-element="link-referencia" rel="noreferrer noopener"></a>
+                            <button type="submit" class="btn btn-outline-primary mt-3" style="width: 100%;" onclick="clickEnviarConfirmacaoSenha(event, this)">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
