@@ -19,6 +19,10 @@ import {
   adicionarOpcoesAutoComplete, renderConteudosPagina, setAutocomplete, setTheme
 } from './modulos/funcoes-de-conteudo.js';
 import {Settings} from './classes/Settings.js';
+import {eventManager} from './classes/EventManager.js';
+import {initializeClickHandlers, registerClickGlobalHandlers} from './modulos/event-handlers/click-handlers.js';
+import {initializeInputHandlers, setupInputMasking} from './modulos/event-handlers/input-handlers.js';
+import {initializeFormHandlers} from './modulos/event-handlers/form-handlers.js';
 
 (() => {
     const apresentarDadosProjeto = (dados_do_projeto, novas_funcionalidades) => {
@@ -80,13 +84,20 @@ import {Settings} from './classes/Settings.js';
       verificacao(evento, elemento, referencia);
     }
 
-    window.clickEnviarConfirmacaoSenha = clickEnviarConfirmacaoSenha;
+    // Register with EventManager instead of global window assignment
+    eventManager.registerGlobalHandler('clickEnviarConfirmacaoSenha', clickEnviarConfirmacaoSenha);
 
-    document.querySelectorAll('[data-recarrega-pagina]').forEach(botao => {
-      botao.addEventListener('click', () => {
-        window.location.reload;
-      })
-    })
+    // Initialize centralized event management
+    eventManager.initializeCommonPatterns();
+    initializeClickHandlers();
+    initializeInputHandlers();
+    initializeFormHandlers();
+    
+    // Register global handlers for backward compatibility
+    registerClickGlobalHandlers();
+
+    // Simplified page reload handler (now managed by EventManager)
+    // eventManager already handles [data-recarrega-pagina] clicks
 
     const pagina = new URL(window.location).pathname.trim().replace('/', '');
     const body = document.querySelector('body');
@@ -134,7 +145,8 @@ import {Settings} from './classes/Settings.js';
         }, 500);
       }
 
-      window.clickConfirm = clickConfirm;
+      // Register with EventManager instead of global window assignment
+      eventManager.registerGlobalHandler('clickConfirm', clickConfirm);
     } else if (pagina == 'desligamento/index.html' || pagina == 'cca/desligamento/' || pagina == 'cca/desligamento/index.html') {
       $(body).append(conteudos.conteudo_pagina_desligamento)
       // $(body).load('../assets/html/pagina-desligamento.html')
@@ -191,12 +203,17 @@ import {Settings} from './classes/Settings.js';
     if (!($('#modal-tutorial').length)) $(body).append(conteudos.modal_tutorial)
 
     window.addEventListener("load", function () {
-      // TODO: Separar responsabilidades e scripts carregados por página
-      // Carregando configurações do localStorage
+      // Initialize centralized event management system
+      eventManager.initializeCommonPatterns();
+      
+      // Load settings and apply theme/autocomplete
       const settings = new Settings();
       settings.createSettingsObject(localStorage.getItem('cca-configs'))
       setTheme(settings.getOption('theme'));
       setAutocomplete(settings.getOption('autocomplete'));
+
+      // Initialize input masking for existing elements
+      setupInputMasking();
 
       const modal = $('#modal-tutorial');
       let intervaloAtualizacao = null
@@ -263,41 +280,8 @@ import {Settings} from './classes/Settings.js';
         }
       }, (1000 * 10))
 
-      $('[data-content="secao-controlada"] .card-header').on('click', (evento) => {
-        const secao = evento.target.closest('[data-content="secao-controlada"]');
-        $(secao).find('.card-body').toggleClass('none');
-        if ($(secao).find('.card-body').css('display') !== 'none') {
-          // $('[data-content="secao-controlada"] .card-header span').text('Clique para fechar');
-          $(secao).find('.card-header span').text('');
-        } else {
-          $(secao).find('.card-header span').text('Clique para abrir');
-        }
-      })
-
-      $('.btn-copy-float').on('click', (evento) => {
-        evento.preventDefault();
-        const secao = evento.target.closest('[data-content="secao-controlada"]');
-        const btn = secao.querySelector('.btn-copy-float');
-
-        const [html_inicial, cor_inicial, display_inicial] = ['<i class="bi bi-clipboard2"></i>', btn.closest('html').getAttribute('data-bs-theme') === 'dark' ? '#FFFFFF50' : '#D3D3D3', 'none'];
-        try {
-          navigator.clipboard.writeText(secao.querySelector('[data-form="conteudo-texto"]').innerText.trim() || secao.querySelector('[data-form="conteudo-texto"]').value.trim()).then(() => {
-          })
-          btn.style.backgroundColor = '#99CC99';
-          btn.innerHTML = '<i class="bi bi-clipboard2-check"></i>';
-        } catch {
-          btn.style.backgroundColor = '#F0928B';
-          btn.innerHTML = '<i class="bi bi-clipboard2-x"></i>';
-        } finally {
-          btn.style.display = 'block';
-        }
-
-        setTimeout(() => {
-          btn.style.backgroundColor = cor_inicial;
-          btn.innerHTML = html_inicial;
-          btn.style.display = display_inicial;
-        }, 1000)
-      })
+      // Section toggle handler - now managed by EventManager in click-handlers.js
+      // Copy button handler - now managed by EventManager in click-handlers.js
     })
 
   }
